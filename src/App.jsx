@@ -35,8 +35,7 @@ const Navbar = () => {
                  [&.scrolled-nav]:bg-background/80 [&.scrolled-nav]:backdrop-blur-xl [&.scrolled-nav]:text-primary [&.scrolled-nav]:shadow-lg [&.scrolled-nav]:border [&.scrolled-nav]:border-primary/10"
         >
             <div className="font-bold text-xl tracking-tighter uppercase font-heading flex items-center gap-3">
-                <img src="/favicon.png" alt="Inovisionn Logo" className="w-8 h-8 object-contain" />
-                Inovisionn
+                <img src="/logo-full.png" alt="Inovisionn Logo" className="h-8 md:h-10 w-auto object-contain" />
             </div>
             <div className="hidden md:flex items-center gap-8 font-medium text-sm">
                 <a href="#features" className="link-lift">AI-Teams</a>
