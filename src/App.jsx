@@ -537,6 +537,7 @@ const ContactSection = () => {
         try {
             const formData = new FormData(e.target);
             const data = Object.fromEntries(formData.entries());
+            data.form_type = 'contact';
 
             await fetch('https://api.github.com/repos/Inovisionn/inovsionn-website-onepage/dispatches', {
                 method: 'POST',
