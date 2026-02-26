@@ -36,6 +36,7 @@ const Navbar = () => {
         >
             <div className="font-bold text-xl tracking-tighter uppercase font-heading flex items-center gap-3">
                 <img src="/logo-full.png" alt="Inovisionn Logo" className="h-8 md:h-10 w-auto object-contain" />
+                Inovisionn
             </div>
             <div className="hidden md:flex items-center gap-8 font-medium text-sm">
                 <a href="#features" className="link-lift">AI-Teams</a>
