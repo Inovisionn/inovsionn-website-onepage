@@ -1,0 +1,42 @@
+name: Inovisionn Lead Scraper
+
+on:
+  repository_dispatch:
+    types: [scrape_leads]
+
+jobs:
+  run-scraper:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r agent/requirements.txt
+        
+    - name: Run Lead Scraper Agent
+      env:
+        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+        GMAIL_EMAIL: ${{ secrets.GMAIL_EMAIL }}
+        GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+      run: |
+        # De data komt binnen via de github dispatch payload:
+        # github.event.client_payload
+        python agent/lead_scraper.py \
+          --form_type "${{ github.event.client_payload.form_type }}" \
+          --bedrijfsnaam "${{ github.event.client_payload.bedrijfsnaam }}" \
+          --naam "${{ github.event.client_payload.naam }}" \
+          --email "${{ github.event.client_payload.email }}" \
+          --vraag "${{ github.event.client_payload.vraag }}" \
+          --branche "${{ github.event.client_payload.branche }}" \
+          --regio "${{ github.event.client_payload.regio }}" \
+          --extra_criteria "${{ github.event.client_payload.extra_criteria }}"
