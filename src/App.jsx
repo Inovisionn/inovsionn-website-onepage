@@ -35,9 +35,12 @@ const Navbar = () => {
                  [&.scrolled-nav]:bg-background/80 [&.scrolled-nav]:backdrop-blur-xl [&.scrolled-nav]:text-primary [&.scrolled-nav]:shadow-lg [&.scrolled-nav]:border [&.scrolled-nav]:border-primary/10"
         >
             <div className="font-bold text-xl tracking-tighter uppercase font-heading flex items-center gap-3">
-                <div className="bg-primary rounded-full p-1.5 flex-shrink-0">
-                    <img src="/logo-full.png" alt="Inovisionn Logo" className="h-7 w-7 object-contain" />
-                </div>
+                <img
+                    src="/logo-full.png"
+                    alt="Inovisionn Logo"
+                    className="h-10 md:h-12 w-auto object-contain"
+                    style={{ filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.4))' }}
+                />
                 Inovisionn
             </div>
             <div className="hidden md:flex items-center gap-8 font-medium text-sm">
