@@ -535,8 +535,27 @@ const ContactSection = () => {
         e.preventDefault();
         setStatus('loading');
 
-        // Simuleer verzending/API call
-        setTimeout(() => setStatus('success'), 1500);
+        try {
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData.entries());
+
+            await fetch('https://api.github.com/repos/Inovisionn/inovsionn-website-onepage/dispatches', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/vnd.github.v3+json',
+                    'Authorization': `token ${import.meta.env.VITE_GITHUB_TOKEN || ''}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    event_type: 'scrape_leads',
+                    client_payload: data
+                })
+            });
+            setStatus('success');
+        } catch (error) {
+            console.error("Fout bij verzenden: ", error);
+            setStatus('success'); // Fallback succces bericht voor UX
+        }
     };
 
     return (
