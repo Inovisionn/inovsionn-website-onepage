@@ -1,0 +1,698 @@
+import React, { useEffect, useRef, useState } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { ArrowRight, Terminal, Activity, Zap, Beaker, CheckCircle2, ChevronRight, Calendar, Linkedin, Instagram, Mail, Phone, MapPin } from 'lucide-react';
+import { CoreSpinLoader } from './components/ui/core-spin-loader';
+import RadialPulseLoader from './components/ui/loading-animation';
+import NeuralBackground from './components/ui/flow-field-background';
+import LeadScanner from './LeadScanner';
+gsap.registerPlugin(ScrollTrigger);
+
+// --- Component: Navbar ---
+const Navbar = () => {
+    const navRef = useRef(null);
+
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            ScrollTrigger.create({
+                start: 'top -50',
+                end: 99999,
+                toggleClass: {
+                    className: 'scrolled-nav',
+                    targets: navRef.current
+                }
+            });
+        }, navRef);
+        return () => ctx.revert();
+    }, []);
+
+    return (
+        <nav
+            ref={navRef}
+            className="fixed top-6 left-1/2 -translate-x-1/2 z-40 w-[90%] max-w-5xl rounded-full px-6 py-4 flex items-center justify-between transition-all duration-500 text-white
+                 [&:not(.scrolled-nav)]:bg-transparent
+                 [&.scrolled-nav]:bg-background/80 [&.scrolled-nav]:backdrop-blur-xl [&.scrolled-nav]:text-primary [&.scrolled-nav]:shadow-lg [&.scrolled-nav]:border [&.scrolled-nav]:border-primary/10"
+        >
+            <div className="font-bold text-xl tracking-tighter uppercase font-heading">
+                Inovisionn
+            </div>
+            <div className="hidden md:flex items-center gap-8 font-medium text-sm">
+                <a href="#features" className="link-lift">AI-Teams</a>
+                <a href="#contact" className="link-lift">Contact</a>
+                <a href="#protocol" className="link-lift">werkwijze</a>
+            </div>
+            <div>
+                <a href="#start" className="btn-magnetic overflow-hidden relative group inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-accent text-primary font-semibold text-sm">
+                    <span className="relative z-10 flex items-center gap-2">Start de live demo <ChevronRight size={16} /></span>
+                    <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></div>
+                </a>
+            </div>
+        </nav>
+    );
+};
+
+// --- Component: Hero ---
+function Hero() {
+    const heroRef = useRef(null);
+
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.from('.hero-elem', {
+                y: 60,
+                opacity: 0,
+                duration: 1.2,
+                stagger: 0.15,
+                ease: 'power3.out',
+                delay: 0.2
+            });
+        }, heroRef);
+        return () => ctx.revert();
+    }, []);
+
+    return (
+        <section ref={heroRef} className="relative h-[100dvh] w-full overflow-hidden bg-primary flex flex-col justify-end pb-24 md:pb-32 px-6 md:px-16">
+            <div className="absolute inset-0 z-0">
+                <video
+                    src="/assets/hero_video.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover opacity-60 mix-blend-luminosity"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/80 to-transparent"></div>
+            </div>
+
+            <div className="relative z-10 max-w-4xl text-white">
+                <div className="overflow-hidden mb-2">
+                    <h1 className="hero-elem text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-2 leading-tight">
+                        Maximale productiviteit
+                    </h1>
+                </div>
+                <div className="overflow-hidden mb-10">
+                    <h2 className="hero-elem text-5xl md:text-7xl lg:text-8xl font-drama italic text-accent leading-none">
+                        door geavanceerde AI-workflows.
+                    </h2>
+                </div>
+                <div className="hero-elem flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+                    <a href="#start" className="btn-magnetic group relative overflow-hidden inline-flex items-center justify-center px-8 py-4 rounded-[2rem] bg-accent text-primary font-bold text-lg">
+                        <span className="relative z-10 flex items-center gap-2">Ontdek je tijdwinst <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" /></span>
+                        <div className="absolute inset-0 bg-white/30 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></div>
+                    </a>
+                    <p className="text-white/60 font-data text-sm max-w-xs mt-4 sm:mt-0 sm:ml-4 border-l border-white/20 pl-4 py-1">
+                        Laat slimme software dagelijkse processen stroomlijnen. Zo komt er meer tijd vrij voor werk dat écht impact maakt.
+                    </p>
+                </div>
+            </div>
+        </section>
+    );
+}
+
+// --- Feature Components ---
+
+const DiagnosticShuffler = () => {
+    const [cards, setCards] = useState([
+        { id: 1, title: 'Data-extractie', color: 'bg-primary', text: 'white' },
+        { id: 2, title: 'Document-analyse', color: 'bg-dark', text: 'white' },
+        { id: 3, title: 'CRM Registratie', color: 'bg-accent', text: 'primary' }
+    ]);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCards(prev => {
+                const newCards = [...prev];
+                const last = newCards.pop();
+                newCards.unshift(last);
+                return newCards;
+            });
+        }, 3000);
+        return () => clearInterval(interval);
+    }, []);
+
+    return (
+        <div className="relative h-48 w-full max-w-sm mx-auto perspective-1000 mt-8">
+            {cards.map((card, i) => (
+                <div
+                    key={card.id}
+                    className={`absolute top-0 left-0 w-full p-6 rounded-[2rem] shadow-xl border border-dark/5 transition-all duration-[800ms] ${card.color} text-${card.text} ease-[cubic-bezier(0.34,1.56,0.64,1)] flex items-center justify-between`}
+                    style={{
+                        transform: `translateY(${i * 12}px) scale(${1 - i * 0.05})`,
+                        zIndex: cards.length - i,
+                        opacity: 1 - i * 0.15
+                    }}
+                >
+                    <div className="font-bold flex items-center gap-3"><Activity size={20} className="opacity-80" /> {card.title}</div>
+                    <div className="font-data text-xs opacity-60">sys_ok</div>
+                </div>
+            ))
+            }
+        </div >
+    );
+};
+
+const TelemetryTypewriter = () => {
+    const [text, setText] = useState('');
+    const fullText = "Human-in-the-loop actief.\\nProcessen optimaliseren...\\nFoutmarge geminimaliseerd.";
+
+    useEffect(() => {
+        let i = 0;
+        let isTyping = false;
+
+        const typeWriter = () => {
+            if (i < fullText.length) {
+                setText(prev => prev + fullText.charAt(i));
+                i++;
+                setTimeout(typeWriter, Math.random() * 50 + 30);
+            } else {
+                setTimeout(() => { i = 0; setText(''); typeWriter(); }, 4000);
+            }
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting && !isTyping) {
+                isTyping = true;
+                i = 0;
+                setText('');
+                typeWriter();
+            }
+        });
+
+        const el = document.getElementById('telemetry-terminal');
+        if (el) observer.observe(el);
+
+        return () => observer.disconnect();
+    }, []);
+
+    return (
+        <div id="telemetry-terminal" className="mt-8 bg-primary rounded-[2rem] p-6 text-white text-sm font-data shadow-xl relative overflow-hidden h-48 flex flex-col">
+            <div className="absolute top-0 left-0 w-full px-6 py-3 border-b border-white/10 flex items-center justify-between bg-white/5">
+                <div className="flex items-center gap-2 text-xs text-white/50"><Terminal size={14} /> telemetry_log.sh</div>
+                <div className="flex items-center gap-2 text-xs text-accent"><span className="w-2 h-2 rounded-full bg-accent animate-pulse"></span> Live Feed</div>
+            </div>
+            <div className="mt-12 text-white/80 whitespace-pre-line leading-relaxed">
+                <span className="text-accent">{'> '}</span>{text}
+                <span className="inline-block w-2 bg-accent animate-pulse ml-1">&nbsp;</span>
+            </div>
+        </div>
+    );
+};
+
+const CursorProtocolScheduler = () => {
+    const containerRef = useRef(null);
+    const cursorRef = useRef(null);
+    const buttonRef = useRef(null);
+    const dayRef = useRef(null);
+    const [activeDay, setActiveDay] = useState(null);
+
+    useEffect(() => {
+        let ctx = gsap.context(() => {
+            const tl = gsap.timeline({ repeat: -1, repeatDelay: 1 });
+
+            tl.set(cursorRef.current, { x: 300, y: 150, opacity: 0, scale: 1 })
+                .set(buttonRef.current, { scale: 1 })
+                .to(cursorRef.current, { opacity: 1, duration: 0.5 })
+                .to(cursorRef.current, {
+                    x: () => dayRef.current?.offsetLeft + 10 || 150,
+                    y: () => dayRef.current?.offsetTop + 10 || 50,
+                    duration: 1,
+                    ease: "power2.inOut"
+                })
+                .to(cursorRef.current, { scale: 0.8, duration: 0.1 })
+                .call(() => setActiveDay(3))
+                .to(cursorRef.current, { scale: 1, duration: 0.1 })
+                .to(cursorRef.current, {
+                    x: () => buttonRef.current?.offsetLeft + 20 || 200,
+                    y: () => buttonRef.current?.offsetTop + 10 || 150,
+                    duration: 0.8,
+                    ease: "power2.inOut",
+                    delay: 0.2
+                })
+                .to(cursorRef.current, { scale: 0.8, duration: 0.1 })
+                .to(buttonRef.current, { scale: 0.95, duration: 0.1 }, "<")
+                .to(cursorRef.current, { scale: 1, duration: 0.1 })
+                .to(buttonRef.current, { scale: 1, duration: 0.1 }, "<")
+                .to(cursorRef.current, { opacity: 0, x: '+=30', y: '+=30', duration: 0.5, delay: 0.2 })
+                .call(() => setActiveDay(null));
+
+        }, containerRef);
+        return () => ctx.revert();
+    }, []);
+
+    const days = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+
+    return (
+        <div ref={containerRef} className="mt-8 bg-white border border-dark/10 shadow-xl rounded-[2rem] p-6 h-48 relative overflow-hidden select-none">
+            <div className="flex justify-between items-center mb-6">
+                <h4 className="font-bold text-dark flex items-center gap-2"><Calendar size={18} /> Workflow Schema</h4>
+                <div className="text-xs font-data bg-accent/20 text-accent px-2 rounded-full font-bold">10 uur bespaard</div>
+            </div>
+
+            <div className="grid grid-cols-7 gap-1">
+                {days.map((d, i) => (
+                    <div
+                        key={i}
+                        ref={i === 3 ? dayRef : null}
+                        className={`aspect-square rounded-xl flex items-center justify-center text-sm font-medium transition-colors duration-300 ${activeDay === i ? 'bg-accent text-primary scale-110 shadow-md z-10' : 'bg-background text-dark/40'}`}
+                    >
+                        {d}
+                    </div>
+                ))}
+            </div>
+
+            <div className="mt-6 flex justify-end">
+                <div ref={buttonRef} className="bg-primary text-white text-xs px-4 py-2 rounded-full font-bold">
+                    Opslaan
+                </div>
+            </div>
+
+            {/* Fake Cursor */}
+            <div ref={cursorRef} className="absolute top-0 left-0 z-50 pointer-events-none drop-shadow-xl" style={{ width: '24px', height: '24px' }}>
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5.5 3.21V20.8C5.5 21.45 6.27 21.79 6.75 21.36L11.44 17.1C11.66 16.9 11.95 16.8 12.24 16.8H18.5C19.16 16.8 19.5 16.03 19.06 15.55L6.46 2.31C6.01 1.84 5.5 2.16 5.5 3.21Z" fill="#1E293B" stroke="white" strokeWidth="1.5" />
+                </svg>
+            </div>
+        </div >
+    );
+};
+
+const Features = () => {
+    const sectionRef = useRef(null);
+
+    useEffect(() => {
+        let ctx = gsap.context(() => {
+            gsap.from('.feature-card', {
+                scrollTrigger: {
+                    trigger: sectionRef.current,
+                    start: 'top 75%',
+                },
+                y: 60,
+                opacity: 0,
+                duration: 1,
+                stagger: 0.15,
+                ease: 'power3.out'
+            });
+        }, sectionRef);
+        return () => ctx.revert();
+    }, []);
+
+    return (
+        <section id="features" ref={sectionRef} className="py-24 md:py-32 px-6 md:px-16 bg-background">
+            <div className="max-w-6xl mx-auto">
+                <div className="mb-20 space-y-4">
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary">Jouw bedrijf,<br />maar dan efficiënter.</h2>
+                    <p className="text-dark/60 max-w-2xl text-lg text-balance">
+                        Geen tijdelijke pleisters of wéér een nieuw systeem om aan te leren. Ik bouw een slimme, onzichtbare motor achter je bedrijf die het tijdrovende, dagelijkse werk écht van je overneemt.
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+                    <div className="feature-card bg-white/50 rounded-[2rem] p-2 flex flex-col">
+                        <div className="bg-white rounded-[1.75rem] p-8 h-full border border-dark/5 shadow-sm hover:shadow-xl transition-shadow duration-500">
+                            <h3 className="text-xl font-bold text-primary mb-3">Meer focus<br />en groei</h3>
+                            <p className="text-dark/60 text-sm leading-relaxed text-balance">
+                                Laat de techniek het terugkerend werk voor je uitvoeren. Jij houdt de regie en het overzicht, terwijl de software het voor je oplost.
+                            </p>
+                            <DiagnosticShuffler />
+                        </div>
+                    </div>
+
+                    <div className="feature-card bg-white/50 rounded-[2rem] p-2 flex flex-col">
+                        <div className="bg-white rounded-[1.75rem] p-8 h-full border border-dark/5 shadow-sm hover:shadow-xl transition-shadow duration-500">
+                            <h3 className="text-xl font-bold text-primary mb-3">100% Foutloos<br />verwerkt</h3>
+                            <p className="text-dark/60 text-sm leading-relaxed text-balance">
+                                Automatisering die non-stop voor je doordraait en data direct foutloos verwerkt in de systemen die je nu al gebruikt.
+                            </p>
+                            <TelemetryTypewriter />
+                        </div>
+                    </div>
+
+                    <div className="feature-card bg-white/50 rounded-[2rem] p-2 flex flex-col">
+                        <div className="bg-white rounded-[1.75rem] p-8 h-full border border-dark/5 shadow-sm hover:shadow-xl transition-shadow duration-500">
+                            <h3 className="text-xl font-bold text-primary mb-3">Rust in je<br />operatie</h3>
+                            <p className="text-dark/60 text-sm leading-relaxed text-balance">
+                                Klaar met de dagelijkse chaos. Minder oplossen, minder vertraging en meer tijd voor je klanten.
+                            </p>
+                            <CursorProtocolScheduler />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    );
+};
+
+// --- Philosophy Component ---
+
+const Philosophy = () => {
+    const sectionRef = useRef(null);
+
+    useEffect(() => {
+        let ctx = gsap.context(() => {
+            gsap.from('.phil-word', {
+                scrollTrigger: {
+                    trigger: sectionRef.current,
+                    start: 'top 60%',
+                },
+                y: 50,
+                opacity: 0,
+                duration: 1.2,
+                stagger: 0.05,
+                ease: 'power4.out'
+            });
+        }, sectionRef);
+        return () => ctx.revert();
+    }, []);
+
+    const text1 = "Waar losse software vaak zorgt voor extra werk,".split(" ");
+    const text2 = "bouw ik een AI-team dat jou directe ".split(" ");
+
+    return (
+        <section ref={sectionRef} className="relative py-32 md:py-48 px-6 md:px-16 bg-primary overflow-hidden text-white flex items-center justify-center">
+            {/* Parallax Background */}
+            <div className="absolute inset-0 z-0">
+                <img
+                    src="/assets/AI_foto_systemen.png"
+                    alt="Systemen netwerk"
+                    className="w-full h-full object-cover opacity-70 mix-blend-luminosity"
+                    data-speed="0.8"
+                />
+                <div className="absolute inset-0 bg-primary/80"></div>
+            </div>
+
+            <div className="relative z-10 max-w-5xl w-full flex flex-col items-center text-center">
+                <p className="text-white/60 text-lg md:text-2xl font-medium max-w-2xl mb-12 leading-relaxed">
+                    {text1.map((word, i) => (
+                        <span key={i} className="phil-word inline-block mr-2">{word}</span>
+                    ))}
+                </p>
+                <h2 className="text-3xl md:text-5xl lg:text-6xl font-drama italic text-white leading-tight">
+                    {text2.map((word, i) => (
+                        <span key={i} className="phil-word inline-block mr-3">{word}</span>
+                    ))}
+                    <span className="phil-word inline-block text-accent">tijdswinst en controle geeft.</span>
+                </h2>
+            </div>
+        </section>
+    );
+};
+
+// --- Protocol Component ---
+
+const Protocol = () => {
+    const containerRef = useRef(null);
+
+    const steps = [
+        {
+            num: "01",
+            title: "Knelpunten aanpakken",
+            desc: "Ik kijk samen met jou waar jij de meeste uren verliest aan onnodig handwerk. Ik pak precies díe processen aan die jou direct de meeste tijdswinst en rust opleveren.",
+            Visual: () => (
+                <div className="w-full h-full flex items-center justify-center bg-primary rounded-3xl">
+                    <CoreSpinLoader />
+                </div>
+            )
+        },
+        {
+            num: "02",
+            title: "Werken met wat je al hebt",
+            desc: "Je hoeft geen nieuwe software te leren. Mijn oplossingen werken onzichtbaar samen met jouw huidige CRM en systemen. Je vertrouwde werkwijze blijft, maar de vertraging verdwijnt.",
+            Visual: () => (
+                <div className="w-full h-full flex items-center justify-center bg-primary rounded-3xl">
+                    <RadialPulseLoader />
+                </div>
+            )
+        },
+        {
+            num: "03",
+            title: "Groeien zonder extra personeel",
+            desc: "Je processen draaien voortaan soepel door, ongeacht hoe druk het wordt. Zo kan je bedrijf moeiteloos groeien, zonder dat je direct nieuwe mensen hoeft aan te nemen.",
+            Visual: () => (
+                <div className="w-full h-full flex items-center justify-center bg-primary rounded-3xl overflow-hidden relative">
+                    <NeuralBackground color="#3B82F6" speed={0.8} />
+                </div>
+            )
+        }
+    ];
+
+    useEffect(() => {
+        let ctx = gsap.context(() => {
+            const cards = gsap.utils.toArray('.protocol-card');
+
+            cards.forEach((card, i) => {
+                ScrollTrigger.create({
+                    trigger: card,
+                    start: "top top",
+                    pin: true,
+                    pinSpacing: false,
+                    end: () => `+=${window.innerHeight}`,
+                });
+            });
+        }, containerRef);
+        return () => ctx.revert();
+    }, []);
+
+    return (
+        <section ref={containerRef} id="protocol" className="bg-background relative">
+            {steps.map((step, i) => (
+                <div key={i} className="protocol-card sticky top-0 h-screen w-full flex items-center justify-center p-6 md:p-16">
+                    <div className="absolute inset-0 bg-background"></div>
+
+                    <div className="relative z-10 w-full max-w-6xl h-full max-h-[70vh] bg-white rounded-[3rem] shadow-2xl border border-dark/5 flex flex-col md:flex-row overflow-hidden origin-top"
+                        style={{
+                            // CSS native stacking effect: lower cards get darker/smaller.
+                            // Handled mostly by GSAP ScrollTrigger pinning and z-index overlap.
+                            zIndex: i + 1
+                        }}>
+
+                        <div className="flex-1 p-10 md:p-20 flex flex-col justify-center">
+                            <span className="font-data text-accent text-xl mb-4 py-1 px-3 bg-accent/10 rounded-full w-fit">_{step.num}</span>
+                            <h3 className="text-4xl md:text-5xl font-bold font-heading text-primary tracking-tight mb-6">
+                                {step.title}.
+                            </h3>
+                            <p className="text-dark/60 text-lg md:text-xl max-w-md text-balance leading-relaxed">
+                                {step.desc}
+                            </p>
+                        </div>
+
+                        <div className="w-full md:w-[45%] bg-ivory/30 border-t md:border-t-0 md:border-l border-dark/5 p-8 relative flex items-center justify-center">
+                            <step.Visual />
+                        </div>
+
+                    </div>
+                </div>
+            ))}
+        </section>
+    );
+};
+
+// --- CTA Component ---
+
+const CTA = () => {
+    return (
+        <section id="start" className="py-24 md:py-32 px-6 bg-background relative z-20">
+            <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                {/* Strategische Route */}
+                <div className="bg-primary text-white rounded-[3rem] p-10 md:p-16 flex flex-col items-start justify-between relative overflow-hidden group">
+                    <div className="absolute right-0 top-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-accent/20 transition-colors"></div>
+                    <div className="relative z-10 mb-12">
+                        <h3 className="text-3xl font-bold mb-4">Laten we de ruis wegnemen</h3>
+                        <p className="text-white/60 text-balance leading-relaxed">
+                            Laten we samen kijken hoeveel uren ik wekelijks voor je kan vrijmaken. Plan een korte, vrijblijvende kennismaking in en ontdek je mogelijkheden.
+                        </p>
+                    </div>
+                    <a href="https://calendly.com/inovisionn/30min" target="_blank" rel="noopener noreferrer" className="btn-magnetic bg-accent text-primary px-8 py-4 rounded-full font-bold inline-flex items-center justify-center gap-2 group-hover:scale-105 relative z-10">
+                        Plan een kennismaking <ArrowRight size={18} />
+                    </a>
+                </div>
+
+                {/* Directe Bewijsvoering */}
+                <div className="bg-white border border-dark/5 shadow-xl rounded-[3rem] p-10 md:p-16 flex flex-col items-start justify-between group">
+                    <div className="mb-12">
+                        <h3 className="text-3xl font-bold mb-4 text-primary">Test de workflow</h3>
+                        <p className="text-dark/60 text-balance leading-relaxed">
+                            Ontvang binnen 5 minuten een gekwalificeerde leadlijst. Eén simpel proces, als voorproefje op een volledig geautomatiseerde backoffice.
+                        </p>
+                    </div>
+                    <Link to="/lead-scanner" className="btn-magnetic bg-primary text-white px-8 py-4 rounded-full font-bold inline-flex items-center justify-center gap-2 group-hover:scale-105">
+                        Start de live demo <Terminal size={18} />
+                    </Link>
+                </div>
+
+            </div>
+        </section>
+    );
+};
+
+const ContactSection = () => {
+    const [status, setStatus] = useState('idle'); // idle | loading | success
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setStatus('loading');
+
+        // Simuleer verzending/API call
+        setTimeout(() => setStatus('success'), 1500);
+    };
+
+    return (
+        <section id="contact" className="py-24 bg-primary text-white border-t border-white/5 relative z-20">
+            <div className="max-w-4xl mx-auto px-6">
+                <div className="text-center mb-12">
+                    <h2 className="text-3xl md:text-5xl font-bold font-heading mb-4 text-white">Contact.</h2>
+                    <p className="text-white/60 text-lg max-w-xl mx-auto">
+                        Heb je een specifieke uitdaging of wil je weten welke agents voor jou kunnen werken? Stuur mij een bericht.
+                    </p>
+                </div>
+
+                {status === 'success' ? (
+                    <div className="bg-white/5 p-8 md:p-12 rounded-[2rem] border border-white/10 shadow-2xl text-center">
+                        <div className="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <CheckCircle2 size={32} className="text-accent" />
+                        </div>
+                        <h3 className="text-2xl font-bold text-white mb-2">Bericht verzonden!</h3>
+                        <p className="text-white/60">Bedankt voor je bericht. Ik neem zo snel mogelijk contact met je op.</p>
+                        <button onClick={() => setStatus('idle')} className="mt-8 text-sm text-accent hover:text-white transition-colors">Start nieuw bericht</button>
+                    </div>
+                ) : (
+                    <form onSubmit={handleSubmit} className="space-y-6 bg-white/5 p-8 md:p-12 rounded-[2rem] border border-white/10 shadow-2xl">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="space-y-2">
+                                <label htmlFor="bedrijfsnaam" className="text-sm font-medium text-white/80">Bedrijfsnaam</label>
+                                <input
+                                    required
+                                    type="text"
+                                    id="bedrijfsnaam"
+                                    name="bedrijfsnaam"
+                                    placeholder="Uw bedrijf"
+                                    className="w-full bg-dark/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-accent transition-colors"
+                                />
+                            </div>
+                            <div className="space-y-2">
+                                <label htmlFor="naam" className="text-sm font-medium text-white/80">Naam</label>
+                                <input
+                                    required
+                                    type="text"
+                                    id="naam"
+                                    name="naam"
+                                    placeholder="Uw naam"
+                                    className="w-full bg-dark/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-accent transition-colors"
+                                />
+                            </div>
+                        </div>
+
+                        <div className="space-y-2">
+                            <label htmlFor="email" className="text-sm font-medium text-white/80">E-mail</label>
+                            <input
+                                required
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="uwnaam@bedrijf.nl"
+                                className="w-full bg-dark/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-accent transition-colors"
+                            />
+                        </div>
+
+                        <div className="space-y-2">
+                            <label htmlFor="vraag" className="text-sm font-medium text-white/80">Vraag</label>
+                            <textarea
+                                required
+                                id="vraag"
+                                name="vraag"
+                                rows="4"
+                                placeholder="Waar kunnen we u mee helpen?"
+                                className="w-full bg-dark/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:border-accent transition-colors resize-none"
+                            ></textarea>
+                        </div>
+
+                        <button
+                            type="submit"
+                            disabled={status === 'loading'}
+                            className={`w-full md:w-auto btn-magnetic bg-accent text-primary px-8 py-4 rounded-full font-bold inline-flex items-center justify-center gap-2 relative z-10 ${status === 'loading' ? 'opacity-70 cursor-wait' : 'hover:scale-105'}`}
+                        >
+                            {status === 'loading' ? 'Verzenden...' : 'Verstuur bericht'}
+                        </button>
+                    </form>
+                )}
+            </div>
+        </section>
+    );
+};
+
+// --- Footer Component ---
+
+const Footer = () => {
+    return (
+        <footer className="bg-primary text-white px-6 py-12 md:py-20 relative z-30 overflow-hidden">
+            <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 border-b border-white/10 pb-12 mb-8">
+                <div>
+                    <h2 className="text-2xl font-bold uppercase tracking-tighter mb-4">inovisionn</h2>
+                    <p className="text-white/50 text-sm max-w-xs leading-relaxed text-balance">
+                        Maakt een einde aan onnodig handwerk, zodat jij weer kunt ondernemen.
+                    </p>
+                </div>
+                <div className="flex flex-col gap-3">
+                    <h4 className="font-bold mb-2">Volg mij op:</h4>
+                    <a href="https://www.linkedin.com/in/niels-heijman/" target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-accent transition-colors text-sm flex items-center gap-2">
+                        <Linkedin size={16} /> LinkedIn
+                    </a>
+                    <a href="https://www.instagram.com/niels.heijman/" target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-accent transition-colors text-sm flex items-center gap-2">
+                        <Instagram size={16} /> Instagram
+                    </a>
+                </div>
+                <div className="flex flex-col gap-3">
+                    <h4 className="font-bold mb-2">Informatie:</h4>
+                    <a href="mailto:inovisionn@hotmail.com" className="text-white/50 hover:text-accent transition-colors text-sm flex items-center gap-2"><Mail size={16} /> inovisionn@hotmail.com</a>
+                    <span className="text-white/50 text-sm flex items-center gap-2"><Phone size={16} /> +31 6 15088920</span>
+                    <span className="text-white/50 text-sm flex items-center gap-2"><MapPin size={16} /> Roermond</span>
+                </div>
+            </div>
+
+            <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0">
+                <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+                    <p className="text-white/40 text-xs font-data">
+                        &copy; 2026 Inovisionn. All rights reserved.
+                    </p>
+                    <div className="flex items-center gap-4 text-white/40 text-xs font-data">
+                        <a href="#" className="hover:text-white transition-colors">Privacybeleid</a>
+                        <a href="#" className="hover:text-white transition-colors">Algemene Voorwaarden</a>
+                    </div>
+                </div>
+                <div className="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full border border-white/10">
+                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                    <span className="text-xs font-data text-white/70">System Operational</span>
+                </div>
+            </div>
+        </footer>
+    );
+};
+
+const Home = () => {
+    return (
+        <div className="min-h-screen bg-background text-dark font-heading selection:bg-accent selection:text-primary">
+            <div className="noise-overlay"></div>
+            <Navbar />
+            <Hero />
+            <Features />
+            <Philosophy />
+            <Protocol />
+            <CTA />
+            <ContactSection />
+            <Footer />
+        </div>
+    );
+};
+
+export default function App() {
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/lead-scanner" element={<LeadScanner />} />
+            </Routes>
+        </Router>
+    );
+}
