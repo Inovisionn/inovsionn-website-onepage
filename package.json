@@ -11,7 +11,7 @@
   "dependencies": {
     "clsx": "^2.1.1",
     "gsap": "^3.12.5",
-    "lucide-react": "^0.344.0",
+    "lucide-react": "^0.575.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.13.1",
