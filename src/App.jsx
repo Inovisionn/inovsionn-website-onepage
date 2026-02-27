@@ -12,6 +12,7 @@ gsap.registerPlugin(ScrollTrigger);
 // --- Component: Navbar ---
 const Navbar = () => {
     const navRef = useRef(null);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -30,29 +31,50 @@ const Navbar = () => {
     return (
         <nav
             ref={navRef}
-            className="fixed top-6 left-1/2 -translate-x-1/2 z-40 w-[90%] max-w-5xl rounded-full px-6 py-4 flex items-center justify-between transition-all duration-500 text-white
+            className="fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-5xl rounded-full md:rounded-full px-4 md:px-6 py-3 md:py-4 flex items-center justify-between transition-all duration-500 text-white
                  [&:not(.scrolled-nav)]:bg-transparent
-                 [&.scrolled-nav]:bg-background/80 [&.scrolled-nav]:backdrop-blur-xl [&.scrolled-nav]:text-primary [&.scrolled-nav]:shadow-lg [&.scrolled-nav]:border [&.scrolled-nav]:border-primary/10"
+                 [&.scrolled-nav]:bg-background/90 [&.scrolled-nav]:backdrop-blur-xl [&.scrolled-nav]:text-primary [&.scrolled-nav]:shadow-lg [&.scrolled-nav]:border [&.scrolled-nav]:border-primary/10"
         >
-            <div className="font-bold text-xl tracking-tighter uppercase font-heading flex items-center gap-3">
+            <div className="font-bold text-lg md:text-xl tracking-tighter uppercase font-heading flex items-center gap-2 md:gap-3">
                 <img
                     src="/logo-full.png"
                     alt="Inovisionn Logo"
-                    className="h-10 md:h-12 w-auto object-contain"
+                    className="h-8 md:h-12 w-auto object-contain"
                     style={{ filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.4))' }}
                 />
-                Inovisionn
+                <span className="hidden xs:inline">Inovisionn</span>
             </div>
+
+            {/* Desktop Links */}
             <div className="hidden md:flex items-center gap-8 font-medium text-sm">
                 <a href="#features" className="link-lift">AI-Teams</a>
                 <a href="#contact" className="link-lift">Contact</a>
                 <a href="#protocol" className="link-lift">werkwijze</a>
             </div>
-            <div>
-                <a href="#start" className="btn-magnetic overflow-hidden relative group inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-accent text-primary font-semibold text-sm">
-                    <span className="relative z-10 flex items-center gap-2">Start de live demo <ChevronRight size={16} /></span>
+
+            <div className="flex items-center gap-2">
+                <a href="#start" className="btn-magnetic overflow-hidden relative group hidden sm:inline-flex items-center justify-center px-4 md:px-5 py-2 md:py-2.5 rounded-full bg-accent text-primary font-semibold text-xs md:text-sm">
+                    <span className="relative z-10 flex items-center gap-2">Start demo <ChevronRight size={14} className="md:size-4" /></span>
                     <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></div>
                 </a>
+
+                {/* Mobile Toggle */}
+                <button
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    className="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1 bg-accent/20 rounded-full text-accent"
+                >
+                    <span className={`w-5 h-0.5 bg-current transition-all ${isMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></span>
+                    <span className={`w-5 h-0.5 bg-current transition-all ${isMenuOpen ? 'opacity-0' : ''}`}></span>
+                    <span className={`w-5 h-0.5 bg-current transition-all ${isMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></span>
+                </button>
+            </div>
+
+            {/* Mobile Menu Overlay */}
+            <div className={`fixed inset-0 bg-background/95 backdrop-blur-2xl z-[-1] transition-all duration-500 ease-expo flex flex-col items-center justify-center gap-8 text-primary md:hidden ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+                <a href="#features" onClick={() => setIsMenuOpen(false)} className="text-3xl font-bold font-heading">AI-Teams</a>
+                <a href="#contact" onClick={() => setIsMenuOpen(false)} className="text-3xl font-bold font-heading">Contact</a>
+                <a href="#protocol" onClick={() => setIsMenuOpen(false)} className="text-3xl font-bold font-heading">Werkwijze</a>
+                <a href="#start" onClick={() => setIsMenuOpen(false)} className="bg-accent text-primary px-10 py-4 rounded-full font-bold text-xl mt-4">Start demo</a>
             </div>
         </nav>
     );
@@ -77,7 +99,7 @@ function Hero() {
     }, []);
 
     return (
-        <section ref={heroRef} className="relative h-[100dvh] w-full overflow-hidden bg-primary flex flex-col justify-end pb-24 md:pb-32 px-6 md:px-16">
+        <section ref={heroRef} className="relative h-[100dvh] w-full overflow-hidden bg-primary flex flex-col justify-end pb-20 md:pb-32 px-6 md:px-16">
             <div className="absolute inset-0 z-0">
                 <video
                     src="/assets/hero_video.mp4"
@@ -91,22 +113,22 @@ function Hero() {
             </div>
 
             <div className="relative z-10 max-w-4xl text-white">
-                <div className="overflow-hidden mb-2">
-                    <h1 className="hero-elem text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-2 leading-tight">
+                <div className="overflow-hidden mb-1 md:mb-2">
+                    <h1 className="hero-elem text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-2 leading-tight">
                         Maximale productiviteit
                     </h1>
                 </div>
-                <div className="overflow-hidden mb-10">
-                    <h2 className="hero-elem text-5xl md:text-7xl lg:text-8xl font-drama italic text-accent leading-none">
+                <div className="overflow-hidden mb-8 md:mb-10">
+                    <h2 className="hero-elem text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-drama italic text-accent leading-none">
                         door geavanceerde AI-workflows.
                     </h2>
                 </div>
-                <div className="hero-elem flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-                    <a href="#start" className="btn-magnetic group relative overflow-hidden inline-flex items-center justify-center px-8 py-4 rounded-[2rem] bg-accent text-primary font-bold text-lg">
+                <div className="hero-elem flex flex-col sm:flex-row gap-6 sm:gap-4 items-start sm:items-center">
+                    <a href="#start" className="btn-magnetic group relative overflow-hidden inline-flex items-center justify-center px-6 md:px-8 py-3.5 md:py-4 rounded-[1.5rem] md:rounded-[2rem] bg-accent text-primary font-bold text-base md:text-lg">
                         <span className="relative z-10 flex items-center gap-2">Ontdek je tijdwinst <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" /></span>
                         <div className="absolute inset-0 bg-white/30 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></div>
                     </a>
-                    <p className="text-white/60 font-data text-sm max-w-xs mt-4 sm:mt-0 sm:ml-4 border-l border-white/20 pl-4 py-1">
+                    <p className="text-white/60 font-data text-xs md:text-sm max-w-[280px] md:max-w-xs border-l border-white/20 pl-4 py-1">
                         Laat slimme software dagelijkse processen stroomlijnen. Zo komt er meer tijd vrij voor werk dat écht impact maakt.
                     </p>
                 </div>
@@ -137,19 +159,19 @@ const DiagnosticShuffler = () => {
     }, []);
 
     return (
-        <div className="relative h-48 w-full max-w-sm mx-auto perspective-1000 mt-8">
+        <div className="relative h-40 md:h-48 w-full max-w-[280px] sm:max-w-sm mx-auto perspective-1000 mt-6 md:mt-8">
             {cards.map((card, i) => (
                 <div
                     key={card.id}
-                    className={`absolute top-0 left-0 w-full p-6 rounded-[2rem] shadow-xl border border-dark/5 transition-all duration-[800ms] ${card.color} text-${card.text} ease-[cubic-bezier(0.34,1.56,0.64,1)] flex items-center justify-between`}
+                    className={`absolute top-0 left-0 w-full p-4 md:p-6 rounded-[1.5rem] md:rounded-[2rem] shadow-xl border border-dark/5 transition-all duration-[800ms] ${card.color} text-${card.text} ease-[cubic-bezier(0.34,1.56,0.64,1)] flex items-center justify-between`}
                     style={{
-                        transform: `translateY(${i * 12}px) scale(${1 - i * 0.05})`,
+                        transform: `translateY(${i * 8}px) scale(${1 - i * 0.04})`,
                         zIndex: cards.length - i,
-                        opacity: 1 - i * 0.15
+                        opacity: 1 - i * 0.2
                     }}
                 >
-                    <div className="font-bold flex items-center gap-3"><Activity size={20} className="opacity-80" /> {card.title}</div>
-                    <div className="font-data text-xs opacity-60">sys_ok</div>
+                    <div className="font-bold text-sm md:text-base flex items-center gap-2 md:gap-3"><Activity size={18} className="md:size-5 opacity-80" /> {card.title}</div>
+                    <div className="font-data text-[10px] md:text-xs opacity-60">sys_ok</div>
                 </div>
             ))
             }
@@ -191,14 +213,14 @@ const TelemetryTypewriter = () => {
     }, []);
 
     return (
-        <div id="telemetry-terminal" className="mt-8 bg-primary rounded-[2rem] p-6 text-white text-sm font-data shadow-xl relative overflow-hidden h-48 flex flex-col">
-            <div className="absolute top-0 left-0 w-full px-6 py-3 border-b border-white/10 flex items-center justify-between bg-white/5">
-                <div className="flex items-center gap-2 text-xs text-white/50"><Terminal size={14} /> telemetry_log.sh</div>
-                <div className="flex items-center gap-2 text-xs text-accent"><span className="w-2 h-2 rounded-full bg-accent animate-pulse"></span> Live Feed</div>
+        <div id="telemetry-terminal" className="mt-6 md:mt-8 bg-primary rounded-[1.5rem] md:rounded-[2rem] p-4 md:p-6 text-white text-xs md:text-sm font-data shadow-xl relative overflow-hidden h-40 md:h-48 flex flex-col">
+            <div className="absolute top-0 left-0 w-full px-4 md:px-6 py-2.5 md:py-3 border-b border-white/10 flex items-center justify-between bg-white/5">
+                <div className="flex items-center gap-2 text-[10px] md:text-xs text-white/50"><Terminal size={12} className="md:size-3.5" /> telemetry_log.sh</div>
+                <div className="flex items-center gap-2 text-[10px] md:text-xs text-accent"><span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-accent animate-pulse"></span> Live Feed</div>
             </div>
-            <div className="mt-12 text-white/80 whitespace-pre-line leading-relaxed">
+            <div className="mt-10 md:mt-12 text-white/80 whitespace-pre-line leading-relaxed">
                 <span className="text-accent">{'> '}</span>{text}
-                <span className="inline-block w-2 bg-accent animate-pulse ml-1">&nbsp;</span>
+                <span className="inline-block w-1.5 md:w-2 bg-accent animate-pulse ml-1">&nbsp;</span>
             </div>
         </div>
     );
@@ -248,10 +270,10 @@ const CursorProtocolScheduler = () => {
     const days = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 
     return (
-        <div ref={containerRef} className="mt-8 bg-white border border-dark/10 shadow-xl rounded-[2rem] p-6 h-48 relative overflow-hidden select-none">
-            <div className="flex justify-between items-center mb-6">
-                <h4 className="font-bold text-dark flex items-center gap-2"><Calendar size={18} /> Workflow Schema</h4>
-                <div className="text-xs font-data bg-accent/20 text-accent px-2 rounded-full font-bold">10 uur bespaard</div>
+        <div ref={containerRef} className="mt-6 md:mt-8 bg-white border border-dark/10 shadow-xl rounded-[1.5rem] md:rounded-[2rem] p-4 md:p-6 h-40 md:h-48 relative overflow-hidden select-none">
+            <div className="flex justify-between items-center mb-4 md:mb-6">
+                <h4 className="font-bold text-dark text-sm md:text-base flex items-center gap-1.5 md:gap-2"><Calendar size={16} className="md:size-[18px]" /> Workflow</h4>
+                <div className="text-[10px] font-data bg-accent/20 text-accent px-2 rounded-full font-bold">10u winst</div>
             </div>
 
             <div className="grid grid-cols-7 gap-1">
@@ -259,21 +281,21 @@ const CursorProtocolScheduler = () => {
                     <div
                         key={i}
                         ref={i === 3 ? dayRef : null}
-                        className={`aspect-square rounded-xl flex items-center justify-center text-sm font-medium transition-colors duration-300 ${activeDay === i ? 'bg-accent text-primary scale-110 shadow-md z-10' : 'bg-background text-dark/40'}`}
+                        className={`aspect-square rounded-lg md:rounded-xl flex items-center justify-center text-[10px] md:text-sm font-medium transition-colors duration-300 ${activeDay === i ? 'bg-accent text-primary scale-110 shadow-md z-10' : 'bg-background text-dark/40'}`}
                     >
                         {d}
                     </div>
                 ))}
             </div>
 
-            <div className="mt-6 flex justify-end">
-                <div ref={buttonRef} className="bg-primary text-white text-xs px-4 py-2 rounded-full font-bold">
+            <div className="mt-4 md:mt-6 flex justify-end">
+                <div ref={buttonRef} className="bg-primary text-white text-[10px] md:text-xs px-3 md:px-4 py-1.5 md:py-2 rounded-full font-bold">
                     Opslaan
                 </div>
             </div>
 
             {/* Fake Cursor */}
-            <div ref={cursorRef} className="absolute top-0 left-0 z-50 pointer-events-none drop-shadow-xl" style={{ width: '24px', height: '24px' }}>
+            <div ref={cursorRef} className="absolute top-0 left-0 z-50 pointer-events-none drop-shadow-xl" style={{ width: '20px', height: '20px' }}>
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M5.5 3.21V20.8C5.5 21.45 6.27 21.79 6.75 21.36L11.44 17.1C11.66 16.9 11.95 16.8 12.24 16.8H18.5C19.16 16.8 19.5 16.03 19.06 15.55L6.46 2.31C6.01 1.84 5.5 2.16 5.5 3.21Z" fill="#1E293B" stroke="white" strokeWidth="1.5" />
                 </svg>
@@ -303,11 +325,11 @@ const Features = () => {
     }, []);
 
     return (
-        <section id="features" ref={sectionRef} className="py-24 md:py-32 px-6 md:px-16 bg-background">
+        <section id="features" ref={sectionRef} className="py-20 md:py-32 px-6 md:px-16 bg-background">
             <div className="max-w-6xl mx-auto">
-                <div className="mb-20 space-y-4">
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary">Jouw bedrijf,<br />maar dan efficiënter.</h2>
-                    <p className="text-dark/60 max-w-2xl text-lg text-balance">
+                <div className="mb-14 md:mb-20 space-y-4">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary leading-tight">Jouw bedrijf,<br />maar dan efficiënter.</h2>
+                    <p className="text-dark/60 max-w-2xl text-base md:text-lg text-balance">
                         Geen tijdelijke pleisters of wéér een nieuw systeem om aan te leren. Ik bouw een slimme, onzichtbare motor achter je bedrijf die het tijdrovende, dagelijkse werk écht van je overneemt.
                     </p>
                 </div>
@@ -463,27 +485,25 @@ const Protocol = () => {
     return (
         <section ref={containerRef} id="protocol" className="bg-background relative">
             {steps.map((step, i) => (
-                <div key={i} className="protocol-card sticky top-0 h-screen w-full flex items-center justify-center p-6 md:p-16">
+                <div key={i} className="protocol-card sticky top-0 h-screen w-full flex items-center justify-center p-4 sm:p-6 md:p-16">
                     <div className="absolute inset-0 bg-background"></div>
 
-                    <div className="relative z-10 w-full max-w-6xl h-full max-h-[70vh] bg-white rounded-[3rem] shadow-2xl border border-dark/5 flex flex-col md:flex-row overflow-hidden origin-top"
+                    <div className="relative z-10 w-full max-w-6xl h-full max-h-[85vh] md:max-h-[70vh] bg-white rounded-[2rem] md:rounded-[3rem] shadow-2xl border border-dark/5 flex flex-col md:flex-row overflow-hidden origin-top"
                         style={{
-                            // CSS native stacking effect: lower cards get darker/smaller.
-                            // Handled mostly by GSAP ScrollTrigger pinning and z-index overlap.
                             zIndex: i + 1
                         }}>
 
-                        <div className="flex-1 p-10 md:p-20 flex flex-col justify-center">
-                            <span className="font-data text-accent text-xl mb-4 py-1 px-3 bg-accent/10 rounded-full w-fit">_{step.num}</span>
-                            <h3 className="text-4xl md:text-5xl font-bold font-heading text-primary tracking-tight mb-6">
+                        <div className="flex-1 p-8 sm:p-10 md:p-20 flex flex-col justify-center">
+                            <span className="font-data text-accent text-sm md:text-xl mb-3 md:mb-4 py-1 px-3 bg-accent/10 rounded-full w-fit">_{step.num}</span>
+                            <h3 className="text-2xl sm:text-3xl md:text-5xl font-bold font-heading text-primary tracking-tight mb-4 md:mb-6 leading-tight">
                                 {step.title}.
                             </h3>
-                            <p className="text-dark/60 text-lg md:text-xl max-w-md text-balance leading-relaxed">
+                            <p className="text-dark/60 text-base md:text-xl max-w-md text-balance leading-relaxed">
                                 {step.desc}
                             </p>
                         </div>
 
-                        <div className="w-full md:w-[45%] bg-ivory/30 border-t md:border-t-0 md:border-l border-dark/5 p-8 relative flex items-center justify-center">
+                        <div className="w-full md:w-[45%] h-48 sm:h-64 md:h-auto bg-ivory/30 border-t md:border-t-0 md:border-l border-dark/5 p-6 md:p-8 relative flex items-center justify-center">
                             <step.Visual />
                         </div>
 
