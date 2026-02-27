@@ -13,22 +13,12 @@ const LeadScanner = () => {
         const data = Object.fromEntries(formData.entries());
 
         try {
-            // Dit is de GitHub API call om de Github Action af te trappen
-            // Let op: Dit vereist een GitHub Personal Access Token (PAT) met repo rechten.
-            // Dit token mag eigenlijk NIET hardcoded in de React frontend staan i.v.m. scraping/misbruik,
-            // Maar voor dit test/one-page concept gebruiken we import.meta.env.VITE_GITHUB_TOKEN
-
-            await fetch('https://api.github.com/repos/Inovisionn/inovsionn-website-onepage/dispatches', {
+            await fetch('/api/contact', {
                 method: 'POST',
                 headers: {
-                    'Accept': 'application/vnd.github.v3+json',
-                    'Authorization': `token ${import.meta.env.VITE_GITHUB_TOKEN || ''}`,
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({
-                    event_type: 'scrape_leads',
-                    client_payload: data
-                })
+                body: JSON.stringify(data)
             });
             // We simuleren hier succes voor de user experience
             setTimeout(() => setStatus('success'), 1500);

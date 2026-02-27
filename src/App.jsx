@@ -545,24 +545,15 @@ const ContactSection = () => {
             const data = Object.fromEntries(formData.entries());
             data.form_type = 'contact';
 
-            // Debug: check if token is present (masked)
-            const tokenPrefix = (import.meta.env.VITE_GITHUB_TOKEN || "MISSING").substring(0, 7);
-            console.log(`[Debug] Token check: ${tokenPrefix}...`);
-
-            const response = await fetch('https://api.github.com/repos/Inovisionn/inovsionn-website-onepage/dispatches', {
+            const response = await fetch('/api/contact', {
                 method: 'POST',
                 headers: {
-                    'Accept': 'application/vnd.github.v3+json',
-                    'Authorization': `token ${import.meta.env.VITE_GITHUB_TOKEN || ''}`,
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({
-                    event_type: 'scrape_leads',
-                    client_payload: data
-                })
+                body: JSON.stringify(data)
             });
             if (!response.ok) {
-                throw new Error(`GitHub API error: ${response.status}`);
+                throw new Error(`API error: ${response.status}`);
             }
             setStatus('success');
         } catch (error) {
