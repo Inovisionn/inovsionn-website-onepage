@@ -545,7 +545,7 @@ const ContactSection = () => {
             const data = Object.fromEntries(formData.entries());
             data.form_type = 'contact';
 
-            const response = await fetch('https://api.github.com/repos/Inovisionn/inovisionn-website-onepage/dispatches', {
+            const response = await fetch('https://api.github.com/repos/Inovisionn/inovsionn-website-onepage/dispatches', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/vnd.github.v3+json',
