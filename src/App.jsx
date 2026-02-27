@@ -545,6 +545,10 @@ const ContactSection = () => {
             const data = Object.fromEntries(formData.entries());
             data.form_type = 'contact';
 
+            // Debug: check if token is present (masked)
+            const tokenPrefix = (import.meta.env.VITE_GITHUB_TOKEN || "MISSING").substring(0, 7);
+            console.log(`[Debug] Token check: ${tokenPrefix}...`);
+
             const response = await fetch('https://api.github.com/repos/Inovisionn/inovsionn-website-onepage/dispatches', {
                 method: 'POST',
                 headers: {
