@@ -534,7 +534,7 @@ const CTA = () => {
 };
 
 const ContactSection = () => {
-    const [status, setStatus] = useState('idle'); // idle | loading | success
+    const [status, setStatus] = useState('idle'); // idle | loading | success | error
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -545,7 +545,7 @@ const ContactSection = () => {
             const data = Object.fromEntries(formData.entries());
             data.form_type = 'contact';
 
-            await fetch('https://api.github.com/repos/Inovisionn/inovsionn-website-onepage/dispatches', {
+            const response = await fetch('https://api.github.com/repos/Inovisionn/inovisionn-website-onepage/dispatches', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/vnd.github.v3+json',
@@ -557,10 +557,13 @@ const ContactSection = () => {
                     client_payload: data
                 })
             });
+            if (!response.ok) {
+                throw new Error(`GitHub API error: ${response.status}`);
+            }
             setStatus('success');
         } catch (error) {
             console.error("Fout bij verzenden: ", error);
-            setStatus('success'); // Fallback succces bericht voor UX
+            setStatus('error');
         }
     };
 
@@ -574,7 +577,13 @@ const ContactSection = () => {
                     </p>
                 </div>
 
-                {status === 'success' ? (
+                {status === 'error' ? (
+                    <div className="bg-red-500/10 p-8 md:p-12 rounded-[2rem] border border-red-500/30 shadow-2xl text-center">
+                        <h3 className="text-2xl font-bold text-white mb-2">Er ging iets mis.</h3>
+                        <p className="text-white/60">Je bericht kon niet worden verzonden. Probeer het opnieuw of mail rechtstreeks naar <a href="mailto:inovisionn@hotmail.com" className="text-accent underline">inovisionn@hotmail.com</a>.</p>
+                        <button onClick={() => setStatus('idle')} className="mt-8 text-sm text-accent hover:text-white transition-colors">Opnieuw proberen</button>
+                    </div>
+                ) : status === 'success' ? (
                     <div className="bg-white/5 p-8 md:p-12 rounded-[2rem] border border-white/10 shadow-2xl text-center">
                         <div className="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-6">
                             <CheckCircle2 size={32} className="text-accent" />
