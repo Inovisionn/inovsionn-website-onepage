@@ -53,28 +53,32 @@ const Navbar = () => {
             </div>
 
             <div className="flex items-center gap-2">
-                <a href="#start" className="btn-magnetic overflow-hidden relative group hidden sm:inline-flex items-center justify-center px-4 md:px-5 py-2 md:py-2.5 rounded-full bg-accent text-primary font-semibold text-xs md:text-sm">
-                    <span className="relative z-10 flex items-center gap-2">Start demo <ChevronRight size={14} className="md:size-4" /></span>
+                <a href="#start" className="btn-magnetic overflow-hidden relative group inline-flex items-center justify-center px-4 md:px-5 py-2 md:py-2.5 rounded-full bg-accent text-primary font-semibold text-xs md:text-sm shadow-md">
+                    <span className="relative z-10 flex items-center gap-1.5 md:gap-2">Start demo <ChevronRight size={14} className="md:size-4" /></span>
                     <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></div>
                 </a>
 
                 {/* Mobile Toggle */}
                 <button
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    className="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1 bg-accent/20 rounded-full text-accent"
+                    className="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 bg-accent/10 rounded-full text-accent transition-all hover:bg-accent/20"
                 >
-                    <span className={`w-5 h-0.5 bg-current transition-all ${isMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></span>
-                    <span className={`w-5 h-0.5 bg-current transition-all ${isMenuOpen ? 'opacity-0' : ''}`}></span>
-                    <span className={`w-5 h-0.5 bg-current transition-all ${isMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></span>
+                    <span className={`w-5 h-0.5 bg-current rounded-full transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+                    <span className={`w-5 h-0.5 bg-current rounded-full transition-all duration-300 ${isMenuOpen ? 'opacity-0 scale-0' : ''}`}></span>
+                    <span className={`w-5 h-0.5 bg-current rounded-full transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
                 </button>
             </div>
 
             {/* Mobile Menu Overlay */}
-            <div className={`fixed inset-0 bg-background/95 backdrop-blur-2xl z-[-1] transition-all duration-500 ease-expo flex flex-col items-center justify-center gap-8 text-primary md:hidden ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
-                <a href="#features" onClick={() => setIsMenuOpen(false)} className="text-3xl font-bold font-heading">AI-Teams</a>
-                <a href="#contact" onClick={() => setIsMenuOpen(false)} className="text-3xl font-bold font-heading">Contact</a>
-                <a href="#protocol" onClick={() => setIsMenuOpen(false)} className="text-3xl font-bold font-heading">Werkwijze</a>
-                <a href="#start" onClick={() => setIsMenuOpen(false)} className="bg-accent text-primary px-10 py-4 rounded-full font-bold text-xl mt-4">Start demo</a>
+            <div className={`fixed inset-0 bg-background/98 backdrop-blur-3xl z-[100] transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] flex flex-col items-center justify-center gap-10 text-primary md:hidden ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full pointer-events-none'}`}>
+                <button onClick={() => setIsMenuOpen(false)} className="absolute top-8 right-8 w-12 h-12 flex items-center justify-center bg-gray-100 rounded-full text-primary/40 hover:text-primary transition-colors">
+                    <span className="text-2xl font-light">✕</span>
+                </button>
+                <div className="flex flex-col items-center gap-8">
+                    <a href="#features" onClick={() => setIsMenuOpen(false)} className="text-4xl font-bold font-heading hover:text-accent transition-colors">AI-Teams</a>
+                    <a href="#contact" onClick={() => setIsMenuOpen(false)} className="text-4xl font-bold font-heading hover:text-accent transition-colors">Contact</a>
+                    <a href="#protocol" onClick={() => setIsMenuOpen(false)} className="text-4xl font-bold font-heading hover:text-accent transition-colors">Werkwijze</a>
+                </div>
             </div>
         </nav>
     );
