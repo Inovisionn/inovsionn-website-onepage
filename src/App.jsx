@@ -49,7 +49,7 @@ const Navbar = () => {
             <div className="hidden md:flex items-center gap-8 font-medium text-sm">
                 <a href="#features" className="link-lift">AI-Teams</a>
                 <a href="#contact" className="link-lift">Contact</a>
-                <a href="#protocol" className="link-lift">werkwijze</a>
+                <a href="#werkwijze" className="link-lift">werkwijze</a>
             </div>
 
             <div className="flex items-center gap-2">
@@ -77,7 +77,7 @@ const Navbar = () => {
                 <div className="flex flex-col items-center gap-8">
                     <a href="#features" onClick={() => setIsMenuOpen(false)} className="text-4xl font-bold font-heading hover:text-accent transition-colors">AI-Teams</a>
                     <a href="#contact" onClick={() => setIsMenuOpen(false)} className="text-4xl font-bold font-heading text-[#3B82F6] hover:opacity-80 transition-all">Contact</a>
-                    <a href="#protocol" onClick={() => setIsMenuOpen(false)} className="text-4xl font-bold font-heading text-[#3B82F6] hover:opacity-80 transition-all">Werkwijze</a>
+                    <a href="#werkwijze" onClick={() => setIsMenuOpen(false)} className="text-4xl font-bold font-heading text-[#3B82F6] hover:opacity-80 transition-all">Werkwijze</a>
                 </div>
             </div>
         </nav>
@@ -487,7 +487,7 @@ const Protocol = () => {
     }, []);
 
     return (
-        <section ref={containerRef} id="protocol" className="bg-background relative">
+        <section ref={containerRef} id="werkwijze" className="bg-background relative">
             {steps.map((step, i) => (
                 <div key={i} className="protocol-card sticky top-0 h-screen w-full flex items-center justify-center p-4 sm:p-6 md:p-16">
                     <div className="absolute inset-0 bg-background"></div>
