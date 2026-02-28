@@ -47,7 +47,7 @@ const Navbar = () => {
 
             {/* Desktop Links */}
             <div className="hidden md:flex items-center gap-8 font-medium text-sm">
-                <a href="#features" className="link-lift">AI-Teams</a>
+                <a href="#ai-teams" className="link-lift">AI-Teams</a>
                 <a href="#contact" className="link-lift">Contact</a>
                 <a href="#werkwijze" className="link-lift">werkwijze</a>
             </div>
@@ -75,7 +75,7 @@ const Navbar = () => {
                     <span className="text-2xl font-light">✕</span>
                 </button>
                 <div className="flex flex-col items-center gap-8">
-                    <a href="#features" onClick={() => setIsMenuOpen(false)} className="text-4xl font-bold font-heading hover:text-accent transition-colors">AI-Teams</a>
+                    <a href="#ai-teams" onClick={() => setIsMenuOpen(false)} className="text-4xl font-bold font-heading hover:text-accent transition-colors">AI-Teams</a>
                     <a href="#contact" onClick={() => setIsMenuOpen(false)} className="text-4xl font-bold font-heading text-[#3B82F6] hover:opacity-80 transition-all">Contact</a>
                     <a href="#werkwijze" onClick={() => setIsMenuOpen(false)} className="text-4xl font-bold font-heading text-[#3B82F6] hover:opacity-80 transition-all">Werkwijze</a>
                 </div>
@@ -329,7 +329,7 @@ const Features = () => {
     }, []);
 
     return (
-        <section id="features" ref={sectionRef} className="py-20 md:py-32 px-6 md:px-16 bg-background">
+        <section id="ai-teams" ref={sectionRef} className="py-20 md:py-32 px-6 md:px-16 bg-background">
             <div className="max-w-6xl mx-auto">
                 <div className="mb-14 md:mb-20 space-y-4">
                     <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary leading-tight">Jouw bedrijf,<br />maar dan efficiënter.</h2>
