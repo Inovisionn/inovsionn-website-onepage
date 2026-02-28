@@ -194,14 +194,20 @@ def send_gmail_email(to_email, to_name, leads_data):
         msg.attach(part)
     
     try:
+        print(f"DEBUG: Connecting to {SMTP_SERVER}:{SMTP_PORT}...")
         server = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
+        server.set_debuglevel(1) # Extra logging
         server.starttls()
+        print(f"DEBUG: Logging in as {GMAIL_EMAIL}...")
         server.login(GMAIL_EMAIL, GMAIL_PASSWORD)
+        print(f"DEBUG: Sending mail to {to_email}...")
         server.sendmail(GMAIL_EMAIL, to_email, msg.as_string())
         server.quit()
         print("✅ E-mail succesvol verzonden!")
     except Exception as e:
-        print(f"❌ Fout bij het versturen van de email: {e}")
+        print(f"❌ Fout bij het versturen van de email: {str(e)}")
+        import traceback
+        traceback.print_exc()
 
 def send_contact_email(naam, email, bedrijfsnaam, vraag):
     # Stuur de mail direct naar de eigenaar in plaats van naar de aanvrager
@@ -232,14 +238,20 @@ def send_contact_email(naam, email, bedrijfsnaam, vraag):
     msg.attach(MIMEText(html_body, "html"))
     
     try:
+        print(f"DEBUG: Connecting to {SMTP_SERVER}:{SMTP_PORT} for contact mail...")
         server = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
+        server.set_debuglevel(1) # Extra logging
         server.starttls()
+        print(f"DEBUG: Logging in as {GMAIL_EMAIL}...")
         server.login(GMAIL_EMAIL, GMAIL_PASSWORD)
+        print(f"DEBUG: Sending contact mail to {to_email}...")
         server.sendmail(GMAIL_EMAIL, to_email, msg.as_string())
         server.quit()
         print("✅ Contact e-mail succesvol verzonden naar beheerder!")
     except Exception as e:
-        print(f"❌ Fout bij het versturen van de contact email: {e}")
+        print(f"❌ Fout bij het versturen van de contact email: {str(e)}")
+        import traceback
+        traceback.print_exc()
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Inovisionn Lead Scraper Agent")
