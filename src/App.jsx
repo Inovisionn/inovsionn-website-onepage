@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import { ArrowRight, Terminal, Activity, Zap, Beaker, CheckCircle2, ChevronRight, Calendar, Linkedin, Instagram, Mail, Phone, MapPin } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Terminal, Activity, Zap, Beaker, CheckCircle2, ChevronRight, Calendar, Linkedin, Instagram, Mail, Phone, MapPin } from 'lucide-react';
 import { CoreSpinLoader } from './components/ui/core-spin-loader';
 import RadialPulseLoader from './components/ui/loading-animation';
 import NeuralBackground from './components/ui/flow-field-background';
@@ -76,8 +76,8 @@ const Navbar = () => {
                 </button>
                 <div className="flex flex-col items-center gap-8">
                     <a href="#features" onClick={() => setIsMenuOpen(false)} className="text-4xl font-bold font-heading hover:text-accent transition-colors">AI-Teams</a>
-                    <a href="#contact" onClick={() => setIsMenuOpen(false)} className="text-4xl font-bold font-heading hover:text-accent transition-colors">Contact</a>
-                    <a href="#protocol" onClick={() => setIsMenuOpen(false)} className="text-4xl font-bold font-heading hover:text-accent transition-colors">Werkwijze</a>
+                    <a href="#contact" onClick={() => setIsMenuOpen(false)} className="text-4xl font-bold font-heading text-[#3B82F6] hover:opacity-80 transition-all">Contact</a>
+                    <a href="#protocol" onClick={() => setIsMenuOpen(false)} className="text-4xl font-bold font-heading text-[#3B82F6] hover:opacity-80 transition-all">Werkwijze</a>
                 </div>
             </div>
         </nav>
