@@ -127,7 +127,7 @@ def send_gmail_email(to_email, to_name, leads_data):
     
     msg = MIMEMultipart("mixed")
     msg["Subject"] = f"Je AI-gegeneerde Leadlijst voor {to_name} is klaar!"
-    msg["From"] = f"Inovisionn Automation <{GMAIL_EMAIL}>"
+    msg["From"] = f"Inovisionn <{GMAIL_EMAIL}>"
     msg["To"] = to_email
     msg["X-Priority"] = "3"
     msg["X-Mailer"] = "Inovisionn-Agent-v1"
@@ -158,14 +158,14 @@ def send_gmail_email(to_email, to_name, leads_data):
           </p>
           
           <div style="margin: 30px 0;">
-            <a href="https://calendly.com/inovisionn/30min" style="background-color: #cc5833; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block;">Plan een kennismakingsgesprek</a>
+            <a href="https://calendly.com/inovisionn/30min" style="background-color: #1E293B; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block;">Plan een kennismakingsgesprek</a>
           </div>
           
           <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #e2e8f0;">
             <p style="margin: 0;">Met innovatieve groet,</p>
             <br>
-            <p style="margin: 0; font-weight: bold; color: #cc5833;">Niels Heijman</p>
-            <p style="margin: 0; color: #64748b;">Inovisionn</p>
+            <p style="margin: 0; font-weight: bold; color: #1e293b;">Niels Heijman</p>
+            <p style="margin: 0; color: #1e293b;">Inovisionn</p>
           </div>
         </div>
       </body>
