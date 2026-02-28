@@ -13,14 +13,14 @@ from google.genai import types
 import requests
 
 # Zorg ervoor dat deze API keys in je Github Repository Secrets staan!
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
-TAVILY_API_KEY = os.environ.get("TAVILY_API_KEY")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
+TAVILY_API_KEY = os.getenv("TAVILY_API_KEY", "")
 
 # Gmail inloggegevens voor het versturen
 SMTP_SERVER = "smtp.gmail.com"
 SMTP_PORT = 587
-GMAIL_EMAIL = os.environ.get("GMAIL_EMAIL")
-GMAIL_PASSWORD = os.environ.get("GMAIL_APP_PASSWORD") # App password (vereist 2FA)
+GMAIL_EMAIL = os.getenv("GMAIL_EMAIL", "")
+GMAIL_PASSWORD = os.getenv("GMAIL_APP_PASSWORD", "") # App password (vereist 2FA)
 
 def search_leads(branche, regio, extra_criteria):
     """
@@ -28,7 +28,7 @@ def search_leads(branche, regio, extra_criteria):
     """
     print(f"🕵️‍♂️ Zoeken naar: {branche} in {regio}...")
     
-    query = f"Bedrijven in de {branche} gevestigd in {regio}. {extra_criteria}"
+    query = f"Bedrijven in de {branche} gevestigd in {regio}. {extra_criteria} linkedin contact email"
     url = "https://api.tavily.com/search"
     
     payload = {
@@ -38,7 +38,7 @@ def search_leads(branche, regio, extra_criteria):
         "include_answer": False,
         "include_images": False,
         "include_raw_content": False,
-        "max_results": 20
+        "max_results": 40
     }
     
     response = requests.post(url, json=payload)
@@ -77,7 +77,10 @@ def process_leads_with_gemini(search_context, branche, regio, extra_criteria):
     3. Elk JSON object MOET exact de volgende sleutels hebben.
     
     BELANGRIJKE EIS VOOR 100% KWALITEIT: Elk veld MOET concrete, kloppende data bevatten.
-    Ligt een lead-detail (zoals "Emailadres", "Telefoonnummer", "LinkedIn") niet expliciet en 100% helder in de tekst besloten? Dan voldoet deze lead NIET aan de eisen, en moet je deze lead VOLLEDIG NEGEREN en verder zoeken naar een ander bedrijf in de resultaten tot je er 10 hebt waarbij ALLES concreet is ingevuld.
+    Ligt een lead-detail (zoals "Emailadres", "Telefoonnummer", "LinkedIn") niet expliciet en 100% helder in de tekst besloten? Dan voldoet deze lead NIET aan de eisen, en moet je deze lead VOLLEDIG NEGEREN en verder zoeken naar een ander bedrijf in de resultaten.
+    
+    WAARSCHUWING: Verzin NOOIT een LinkedIn link. Als je geen directe LinkedIn URL of specifieke handle vindt voor het bedrijf in de ruwe data, laat het veld dan LEEG ("") of negeer de lead. Ik heb liever 5 perfecte leads met werkende links dan 10 leads waarvan de helft niet klopt.
+    
     Gebruik in GEEN ENKEL geval woorden als "Onbekend", "N.v.t.", "-" of snelle aannames als je het niet zeker weet. 
     De data moet foutloos en hyper-compleet zijn voor de B2B koude acquisitie.
     
@@ -92,7 +95,7 @@ def process_leads_with_gemini(search_context, branche, regio, extra_criteria):
        - "Bedrijfsgrootte" (Bijv. '10-50', maak een professionele data-gedreven schatting als het niet letterlijk is benoemd, NOOIT 'onbekend')
        - "AI-Matching" (1 professionele zin waarin je uitlegt waarom precies dit bedrijf een 100% match is voor de criteria van de gebruiker)
        
-    Retourneer ALLEEN de JSON array met EXACT 10 resultaten. Geen tekst voor of na de JSON.
+    Retourneer een lijst met de BESTE leads die je kunt vinden (maximaal 10). Kwaliteit en geverifieerde links zijn belangrijker dan het aantal. Geen tekst voor of na de JSON.
     """
     
     response = client.models.generate_content(
