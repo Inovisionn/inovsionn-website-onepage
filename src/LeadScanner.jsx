@@ -13,18 +13,28 @@ const LeadScanner = () => {
         const data = Object.fromEntries(formData.entries());
 
         try {
-            await fetch('/api/contact', {
+            const response = await fetch('/api/contact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(data)
             });
+
+            if (response.status === 403) {
+                setStatus('limit_reached');
+                return;
+            }
+
+            if (!response.ok) {
+                throw new Error('Server error');
+            }
+
             // We simuleren hier succes voor de user experience
             setTimeout(() => setStatus('success'), 1500);
         } catch (error) {
             console.error("Fout bij versturen", error);
-            // Voor de demo simuleren we succes
+            // Voor de demo simuleren we succes bij diverse fouten, behalve de expliciete status checks
             setTimeout(() => setStatus('success'), 1500);
         }
     };
@@ -40,6 +50,26 @@ const LeadScanner = () => {
                     <p className="text-dark/60 text-sm md:text-base leading-relaxed mb-8">
                         Onze AI-agenten zijn direct gestart met het analyseren en kwalificeren van de markt. Binnen enkele minuten ontvang je de lijst met 10 leads als Google Doc direct in je inbox.<br /><br />
                         <span className="text-xs md:text-sm text-dark/40">Niets ontvangen? Controleer voor de zekerheid je ongewenste e-mail of spam-folder.</span>
+                    </p>
+                    <Link to="/" className="w-full sm:w-auto btn-magnetic bg-primary text-white px-8 py-3 rounded-full font-bold inline-flex items-center justify-center gap-2">
+                        Terug naar Home
+                    </Link>
+                </div>
+            </div>
+        );
+    }
+
+    if (status === 'limit_reached') {
+        return (
+            <div className="min-h-screen bg-background flex items-center justify-center p-4 sm:p-6 font-heading">
+                <div className="max-w-md w-full bg-white rounded-[1.5rem] md:rounded-[2rem] p-8 md:p-10 shadow-2xl border border-dark/5 text-center">
+                    <div className="w-16 h-16 md:w-20 md:h-20 bg-red-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <Mail size={32} className="md:size-10 text-red-500" />
+                    </div>
+                    <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4 leading-tight">Limiet bereikt.</h2>
+                    <p className="text-dark/60 text-sm md:text-base leading-relaxed mb-8">
+                        Er is een limiet van 1 scan per e-mailadres voor deze demo. Je hebt voor dit adres al een aanvraag gedaan.<br /><br />
+                        <span className="text-xs md:text-sm text-dark/40">Vragen over custom AI-oplossingen? Neem contact op via de hoofdpagina.</span>
                     </p>
                     <Link to="/" className="w-full sm:w-auto btn-magnetic bg-primary text-white px-8 py-3 rounded-full font-bold inline-flex items-center justify-center gap-2">
                         Terug naar Home
