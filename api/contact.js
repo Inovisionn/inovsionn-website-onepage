@@ -3,17 +3,17 @@ export default async function handler(req, res) {
         return res.status(405).json({ message: 'Method not allowed' });
     }
 
-    const token = process.env.VITE_GITHUB_TOKEN;
+    const token = process.env.VITE_GITHUB_TOKEN || process.env.GITHUB_TOKEN || process.env.VERCEL_WEBSITE_WEBHOOK;
 
     if (!token) {
-        console.error("VITE_GITHUB_TOKEN is missing in environment variables");
+        console.error("GitHub token missing (checked VITE_GITHUB_TOKEN, GITHUB_TOKEN, VERCEL_WEBSITE_WEBHOOK)");
         return res.status(500).json({ message: 'Server configuration error: Token missing' });
     }
 
     try {
         const payload = req.body;
 
-        const response = await fetch('https://api.github.com/repos/Inovisionn/inovisionn-website-onepage/dispatches', {
+        const response = await fetch('https://api.github.com/repos/Inovisionn/inovsionn-website-onepage/dispatches', {
             method: 'POST',
             headers: {
                 'Accept': 'application/vnd.github.v3+json',
