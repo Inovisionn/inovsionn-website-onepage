@@ -740,12 +740,42 @@ const Home = () => {
     );
 };
 
+const NotFound = () => {
+    return (
+        <div className="min-h-screen bg-background text-dark font-heading selection:bg-accent selection:text-primary relative overflow-hidden flex items-center justify-center p-6 sm:p-12">
+            <div className="noise-overlay"></div>
+            <div className="absolute top-0 right-0 w-[400px] md:w-[800px] h-[400px] md:h-[800px] bg-accent/5 rounded-full blur-[60px] md:blur-[100px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+
+            <div className="max-w-4xl w-full text-center relative z-10">
+                <div className="mb-8 md:mb-12">
+                    <h1 className="text-8xl md:text-[12rem] font-bold tracking-tight text-primary leading-none opacity-10 select-none">
+                        404
+                    </h1>
+                    <div className="mt-[-4rem] md:mt-[-8rem]">
+                        <h2 className="text-3xl md:text-6xl font-bold tracking-tight text-primary mb-4 leading-tight">
+                            Status: <span className="font-drama italic text-accent capitalize">Niet Gevonden.</span>
+                        </h2>
+                        <p className="text-dark/60 text-base md:text-lg max-w-lg mx-auto mb-10">
+                            De opgevraagde parameter bestaat niet in onze architectuur. Laten we je terugbrengen naar de hoofdpagina.
+                        </p>
+                    </div>
+                </div>
+
+                <Link to="/" className="btn-magnetic bg-primary text-white px-8 md:px-12 py-3.5 md:py-4 rounded-full font-bold inline-flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-all hover:scale-105">
+                    <ArrowLeft size={18} /> Terug naar Home
+                </Link>
+            </div>
+        </div>
+    );
+};
+
 export default function App() {
     return (
         <Router>
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/lead-scanner" element={<LeadScanner />} />
+                <Route path="*" element={<NotFound />} />
             </Routes>
         </Router>
     );
