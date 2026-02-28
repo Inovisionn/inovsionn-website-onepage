@@ -72,14 +72,14 @@ def process_leads_with_gemini(search_context, branche, regio, extra_criteria):
     {search_context}
     
     Taak:
-    1. Filter de ruwe data en extraheer EXACT 10 kloppende B2B leads. Negeer verzamelsites, startpagina's en vacaturesites.
+    1. Filter de ruwe data en extraheer EXACT 10 hoogwaardige B2B leads. Negeer verzamelsites, startpagina's en vacaturesites.
     2. Format deze leads STRIKT als een correcte JSON array van objecten, zonder enige markdown formatteringsblokken (dus geen ```json aan het begin en einde).
     3. Elk JSON object MOET exact de volgende sleutels hebben.
     
     BELANGRIJKE EIS VOOR 100% KWALITEIT: Elk veld MOET concrete, kloppende data bevatten.
-    Ligt een lead-detail (zoals "Emailadres", "Telefoonnummer", "LinkedIn") niet expliciet en 100% helder in de tekst besloten? Dan voldoet deze lead NIET aan de eisen, en moet je deze lead VOLLEDIG NEGEREN en verder zoeken naar een ander bedrijf in de resultaten.
+    Ligt een lead-detail (zoals "Emailadres", "Telefoonnummer", "LinkedIn") niet expliciet en 100% helder in de tekst besloten? Gebruik dan de ruwe data van de 40 zoekresultaten om dieper te graven.
     
-    WAARSCHUWING: Verzin NOOIT een LinkedIn link. Als je geen directe LinkedIn URL of specifieke handle vindt voor het bedrijf in de ruwe data, laat het veld dan LEEG ("") of negeer de lead. Ik heb liever 5 perfecte leads met werkende links dan 10 leads waarvan de helft niet klopt.
+    WAARSCHUWING: Verzin NOOIT een LinkedIn link. Als je geen directe LinkedIn URL vindt voor het bedrijf in de ruwe data, maar je weet 100% zeker dat het bedrijf bestaat (vanwege de andere data), zoek dan in de andere snippetresultaten naar hun LinkedIn. Ik heb EXACT 10 leads nodig, maar ze moeten ALLEMAAL kloppen. Een foute LinkedIn link is schadelijk voor de eerste indruk van mijn klant.
     
     Gebruik in GEEN ENKEL geval woorden als "Onbekend", "N.v.t.", "-" of snelle aannames als je het niet zeker weet. 
     De data moet foutloos en hyper-compleet zijn voor de B2B koude acquisitie.
@@ -95,7 +95,7 @@ def process_leads_with_gemini(search_context, branche, regio, extra_criteria):
        - "Bedrijfsgrootte" (Bijv. '10-50', maak een professionele data-gedreven schatting als het niet letterlijk is benoemd, NOOIT 'onbekend')
        - "AI-Matching" (1 professionele zin waarin je uitlegt waarom precies dit bedrijf een 100% match is voor de criteria van de gebruiker)
        
-    Retourneer een lijst met de BESTE leads die je kunt vinden (maximaal 10). Kwaliteit en geverifieerde links zijn belangrijker dan het aantal. Geen tekst voor of na de JSON.
+    Retourneer een JSON array met EXACT 10 resultaten. Geen tekst voor of na de JSON. Kwaliteit en geverifieerde links zijn een absolute vereiste voor deze 10 leads.
     """
     
     response = client.models.generate_content(
