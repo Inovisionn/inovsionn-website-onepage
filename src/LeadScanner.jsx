@@ -38,7 +38,7 @@ const LeadScanner = () => {
                     </div>
                     <h2 className="text-2xl md:text-3xl font-bold text-primary mb-4 leading-tight">De aanvraag is in behandeling.</h2>
                     <p className="text-dark/60 text-sm md:text-base leading-relaxed mb-8">
-                        Onze AI-agenten zijn direct gestart met het analyseren en kwalificeren van de markt. Binnen 5 minuten ontvang je de lijst met 10 leads als Google Doc direct in je inbox.<br /><br />
+                        Onze AI-agenten zijn direct gestart met het analyseren en kwalificeren van de markt. Binnen enkele minuten ontvang je de lijst met 10 leads als Google Doc direct in je inbox.<br /><br />
                         <span className="text-xs md:text-sm text-dark/40">Niets ontvangen? Controleer voor de zekerheid je ongewenste e-mail of spam-folder.</span>
                     </p>
                     <Link to="/" className="w-full sm:w-auto btn-magnetic bg-primary text-white px-8 py-3 rounded-full font-bold inline-flex items-center justify-center gap-2">

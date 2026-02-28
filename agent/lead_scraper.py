@@ -38,7 +38,7 @@ def search_leads(branche, regio, extra_criteria):
         "include_answer": False,
         "include_images": False,
         "include_raw_content": False,
-        "max_results": 40
+        "max_results": 20
     }
     
     response = requests.post(url, json=payload)
@@ -96,7 +96,7 @@ def process_leads_with_gemini(search_context, branche, regio, extra_criteria):
     """
     
     response = client.models.generate_content(
-        model='gemini-2.5-flash',
+        model='gemini-2.0-flash',
         contents=prompt
     )
     
