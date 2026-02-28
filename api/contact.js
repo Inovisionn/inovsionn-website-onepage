@@ -18,6 +18,13 @@ export default async function handler(req, res) {
     const repo = 'Inovisionn/inovsionn-website-onepage';
     const filePath = 'agent/used_emails.txt';
 
+    // 0. Whitelist for testing or admin bypass
+    const WHITELISTED_EMAILS = [
+        'inovisionn@hotmail.com',
+        'nielsheijman@hotmail.com'
+    ];
+    const isWhitelisted = WHITELISTED_EMAILS.includes(email.toLowerCase().trim());
+
     try {
         const payload = req.body;
 
@@ -35,9 +42,9 @@ export default async function handler(req, res) {
             usedEmails = Buffer.from(fileData.content, 'base64').toString('utf-8');
         }
 
-        // 2. Check if email exists
+        // 2. Check if email exists (skip if whitelisted)
         const emailList = usedEmails.toLowerCase().split('\n').map(e => e.trim());
-        if (emailList.includes(email.toLowerCase().trim())) {
+        if (!isWhitelisted && emailList.includes(email.toLowerCase().trim())) {
             return res.status(403).json({ message: 'LIMIT_REACHED' });
         }
 
