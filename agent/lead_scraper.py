@@ -122,10 +122,12 @@ def send_gmail_email(to_email, to_name, leads_data):
     """
     print(f"📧 Mail versturen naar {to_email} ({to_name}) via Gmail...")
     
-    msg = MIMEMultipart("mixed") # Gewijzigd naar mixed voor attachments
-    msg["Subject"] = "Je AI-gegeneerde Leadlijst is klaar!"
-    msg["From"] = f"Inovisionn Agent <{GMAIL_EMAIL}>"
+    msg = MIMEMultipart("mixed")
+    msg["Subject"] = f"Je AI-gegeneerde Leadlijst voor {to_name} is klaar!"
+    msg["From"] = f"Inovisionn Automation <{GMAIL_EMAIL}>"
     msg["To"] = to_email
+    msg["X-Priority"] = "3"
+    msg["X-Mailer"] = "Inovisionn-Agent-v1"
     
     full_html = f"""
     <html>
@@ -214,9 +216,10 @@ def send_contact_email(naam, email, bedrijfsnaam, vraag):
     to_email = "inovisionn@hotmail.com"
     
     msg = MIMEMultipart("alternative")
-    msg["Subject"] = f"Nieuwe Inovisionn Website Aanvraag: {bedrijfsnaam}"
-    msg["From"] = f"Inovisionn Website <{GMAIL_EMAIL}>"
+    msg["Subject"] = f"🚀 Nieuwe Aanvraag: {bedrijfsnaam}"
+    msg["From"] = f"Inovisionn Web <{GMAIL_EMAIL}>"
     msg["To"] = to_email
+    msg["X-Priority"] = "2"
     
     html_body = f"""
     <html>
