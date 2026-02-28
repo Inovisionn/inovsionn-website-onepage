@@ -256,6 +256,44 @@ def send_contact_email(naam, email, bedrijfsnaam, vraag):
         import traceback
         traceback.print_exc()
 
+def send_error_notification(error_msg, details=""):
+    """
+    Stuur een mail naar de beheerder als er iets misgaat (bijv. limiet bereikt).
+    """
+    to_email = "inovisionn@hotmail.com"
+    
+    msg = MIMEMultipart("alternative")
+    msg["Subject"] = "⚠️ Systeem Melding: Inovisionn Agent heeft hulp nodig"
+    msg["From"] = f"Inovisionn System <{GMAIL_EMAIL}>"
+    msg["To"] = to_email
+    
+    html_body = f"""
+    <html>
+      <body style="font-family: Arial, sans-serif; color: #333; line-height: 1.6;">
+        <h2 style="color: #e63b2e;">Systeem Alert</h2>
+        <p>Er is een probleem opgetreden bij het uitvoeren van een lead-scan.</p>
+        <div style="background-color: #fef2f2; border: 1px solid #fecaca; padding: 15px; border-radius: 8px;">
+            <p><strong>Foutmelding:</strong><br>{error_msg}</p>
+            <p style="font-size: 12px; color: #666;">{details}</p>
+        </div>
+        <p>Dit gebeurt meestal als een API-limiet (zoals Tavily of Gemini) is bereikt voor deze maand.</p>
+        <hr />
+        <p>Controleer je dashboards voor meer informatie.</p>
+      </body>
+    </html>
+    """
+    msg.attach(MIMEText(html_body, "html"))
+    
+    try:
+        server = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
+        server.starttls()
+        server.login(GMAIL_EMAIL, GMAIL_PASSWORD)
+        server.sendmail(GMAIL_EMAIL, to_email, msg.as_string())
+        server.quit()
+        print("✅ Foutmelding verzonden naar beheerder.")
+    except Exception as e:
+        print(f"❌ Kon foutmelding niet verzenden: {e}")
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Inovisionn Lead Scraper Agent")
     parser.add_argument("--form_type", default="lead_scraper")
@@ -268,21 +306,28 @@ if __name__ == "__main__":
     parser.add_argument("--extra_criteria", default="")
     args = parser.parse_args()
     
-    if args.form_type == "contact":
-        print(f"Binnenkomend contact verzoek van {args.naam}. Mail naar beheerder sturen.")
-        send_contact_email(args.naam, args.email, args.bedrijfsnaam, args.vraag)
-    else:
-        # 1. Zoek the ruwe data via Tavily
-        raw_data = search_leads(args.branche, args.regio, args.extra_criteria)
-        
-        if raw_data:
-            # 2. Verwerk en formatteer met Gemini in JSON
-            leads_data = process_leads_with_gemini(raw_data, args.branche, args.regio, args.extra_criteria)
-            
-            # 3. Verstuur de Gmail e-mail inclusief format en CSV
-            if leads_data:
-                send_gmail_email(args.email, args.naam, leads_data)
-            else:
-                print("Geen bruikbare JSON data van Gemini ontvangen.")
+    try:
+        if args.form_type == "contact":
+            print(f"Binnenkomend contact verzoek van {args.naam}. Mail naar beheerder sturen.")
+            send_contact_email(args.naam, args.email, args.bedrijfsnaam, args.vraag)
         else:
-            print("Kan geen rapport genereren zonder internet data.")
+            # 1. Zoek the ruwe data via Tavily
+            raw_data = search_leads(args.branche, args.regio, args.extra_criteria)
+            
+            if raw_data:
+                # 2. Verwerk en formatteer met Gemini in JSON
+                leads_data = process_leads_with_gemini(raw_data, args.branche, args.regio, args.extra_criteria)
+                
+                # 3. Verstuur de Gmail e-mail inclusief format en CSV
+                if leads_data:
+                    send_gmail_email(args.email, args.naam, leads_data)
+                else:
+                    raise Exception("Geen bruikbare JSON data van Gemini ontvangen.")
+            else:
+                raise Exception("Kan geen rapport genereren: Geen zoekresultaten van Tavily (mogelijk limiet bereikt).")
+    except Exception as e:
+        error_info = str(e)
+        print(f"❌ CRITICAL ERROR: {error_info}")
+        send_error_notification(error_info)
+        # We laten het script succesvol eindigen voor de GitHub workflow,
+        # maar de beheerder is nu op de hoogte via mail.
