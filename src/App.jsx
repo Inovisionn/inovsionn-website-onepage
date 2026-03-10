@@ -809,40 +809,151 @@ const TermsOfService = () => {
     return (
         <LegalLayout title="Algemene Voorwaarden">
             <h2 className="text-2xl font-bold text-primary mb-4">Artikel 1 - Definities</h2>
-            <p className="mb-4">Inovisionn, gevestigd te Roermond, KvK 91930391. Klant: de (rechts)persoon die een overeenkomst aangaat met Inovisionn.</p>
+            <p className="mb-4">1. <strong>Inovisionn:</strong> Inovisionn, gevestigd te Roermond, KvK-nummer 91930391.</p>
+            <p className="mb-4">2. <strong>Klant:</strong> de rechtspersoon of natuurlijke persoon handelend in uitoefening van beroep of bedrijf met wie Inovisionn een overeenkomst is aangegaan.</p>
+            <p className="mb-4">3. <strong>Partijen:</strong> Inovisionn en de Klant samen.</p>
 
             <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 2 - Toepasselijkheid</h2>
-            <p className="mb-4">Deze voorwaarden gelden voor alle offertes, werkzaamheden en overeenkomsten van Inovisionn.</p>
+            <p className="mb-4">1. Deze voorwaarden zijn van toepassing op alle offertes, aanbiedingen, werkzaamheden, bestellingen, overeenkomsten en leveringen van diensten of producten door of namens Inovisionn.</p>
+            <p className="mb-4">2. Partijen kunnen alleen afwijken van deze voorwaarden als dat schriftelijk is afgesproken.</p>
+            <p className="mb-4">3. De toepasselijkheid van de algemene voorwaarden van de Klant of van anderen wordt uitdrukkelijk uitgesloten.</p>
 
             <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 3 - Aanbiedingen en offertes</h2>
-            <p className="mb-4">Offertes zijn vrijblijvend en maximaal 2 weken geldig.</p>
+            <p className="mb-4">1. Aanbiedingen en offertes van Inovisionn zijn vrijblijvend, tenzij daarin uitdrukkelijk anders vermeld.</p>
+            <p className="mb-4">2. Een aanbod of offerte is maximaal 2 weken geldig.</p>
+            <p className="mb-4">3. Aanvaardt de Klant een aanbod of offerte niet binnen de geldende termijn, dan vervalt deze.</p>
+            <p className="mb-4">4. Aanbiedingen en offertes gelden niet voor nabestellingen, tenzij schriftelijk afgesproken.</p>
+
+            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 4 - Aanvaarding</h2>
+            <p className="mb-4">1. Bij aanvaarding van een vrijblijvende offerte of aanbieding, mag Inovisionn deze binnen 3 dagen na ontvangst alsnog intrekken.</p>
+            <p className="mb-4">2. Mondelinge aanvaarding verbindt Inovisionn slechts nadat de Klant deze schriftelijk of elektronisch heeft bevestigd.</p>
 
             <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 5 - Prijzen</h2>
-            <p className="mb-4">Prijzen zijn in euro, exclusief btw. Inovisionn mag prijzen aanpassen (max 10% per jaar).</p>
+            <p className="mb-4">1. Alle prijzen zijn in euro’s, exclusief btw en exclusief eventuele overige kosten.</p>
+            <p className="mb-4">2. Inovisionn mag de prijzen op de website en in andere uitingen altijd wijzigen.</p>
+            <p className="mb-4">3. Partijen spreken voor dienstverlening een totaalbedrag als richtprijs af.</p>
+            <p className="mb-4">4. Inovisionn mag tot 10% van de richtprijs afwijken.</p>
+            <p className="mb-4">5. Bij een verwachte overschrijding van meer dan 10% informeert Inovisionn de Klant tijdig.</p>
+            <p className="mb-4">6. De Klant mag het deel boven de 110% laten vervallen bij een dergelijke overschrijding.</p>
+            <p className="mb-4">7. Prijsaanpassingen worden vooraf aan de Klant meegedeeld.</p>
 
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 6 - Betalingen</h2>
-            <p className="mb-4">1. Aanbetaling tot 50% kan worden verlangd. 2. Betalingstermijn is 30 dagen na factuurdatum. 3. Bij overschrijding is de Klant direct in verzuim.</p>
+            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 6 - Betalingen en betalingstermijn</h2>
+            <p className="mb-4">1. Inovisionn mag een aanbetaling tot 50% verlangen.</p>
+            <p className="mb-4">2. Betaling geschiedt bij voorkeur via automatische incasso of overboeking.</p>
+            <p className="mb-4">3. Bij facturatie dient de Klant binnen 30 dagen na factuurdatum te betalen.</p>
+            <p className="mb-4">4. Bij overschrijding stuurt Inovisionn één kosteloze herinnering met een termijn van 7 dagen.</p>
+            <p className="mb-4">5. Blijft betaling daarna uit, dan is de Klant direct in verzuim zonder dat een nadere aanmaning nodig is.</p>
+            <p className="mb-4">6. Inovisionn mag levering afhankelijk stellen van onmiddellijke betaling of zekerheidstelling.</p>
+
+            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 7 - Gevolgen te late betaling</h2>
+            <p className="mb-4">1. Bij verzuim mag Inovisionn de wettelijke handelsrente in rekening brengen.</p>
+            <p className="mb-4">2. De Klant is tevens buitengerechtelijke incassokosten en eventuele schadevergoeding verschuldigd.</p>
+            <p className="mb-4">3. Inovisionn mag zijn verplichtingen opschorten totdat de Klant heeft betaald.</p>
+            <p className="mb-4">4. Bij liquidatie of faillissement van de Klant zijn vorderingen onmiddellijk opeisbaar.</p>
+            <p className="mb-4">5. De Klant blijft de afgesproken prijs verschuldigd bij weigering van medewerking.</p>
+
+            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 8 - Opschortingsrecht</h2>
+            <p className="mb-4">1. De Klant doet afstand van het recht om de nakoming van enige verbintenis uit deze overeenkomst op te schorten.</p>
+
+            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 9 - Verrekening</h2>
+            <p className="mb-4">1. De Klant doet afstand van zijn recht om een schuld aan Inovisionn te verrekenen met een vordering op Inovisionn.</p>
+
+            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 10 - Verzekering</h2>
+            <p className="mb-4">1. De Klant verzekert geleverde zaken noodzakelijk voor de uitvoering en zaken van Inovisionn die bij de Klant aanwezig zijn tegen brand, schade en diefstal.</p>
+            <p className="mb-4">2. De polis wordt op verzoek ter inzage gegeven.</p>
+
+            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 11 - Intrekking opdracht</h2>
+            <p className="mb-4">1. De Klant kan de opdracht op elk moment beëindigen tegen betaling van gemaakte kosten en de verschuldigde vergoeding voor het reeds uitgevoerde werk.</p>
+
+            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 12 - Klachtplicht</h2>
+            <p className="mb-4">1. Klachten over werkzaamheden moeten direct schriftelijk en gedetailleerd gemeld worden aan Inovisionn.</p>
+            <p className="mb-4">2. Een klacht leidt niet tot een verplichting voor Inovisionn om andere dan de overeengekomen werkzaamheden te verrichten.</p>
 
             <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 13 - Garantie</h2>
-            <p className="mb-4">De overeenkomst bevat slechts een inspanningsverplichting. Inovisionn garandeert niet dat AI-output altijd 100% accuraat is.</p>
+            <p className="mb-4">1. De overeenkomst bevat voor Inovisionn slechts een inspanningsverplichting en geen resultaatsverplichting. Inovisionn garandeert niet dat AI-output altijd 100% accuraat is.</p>
 
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 14 - Uitvoering</h2>
-            <p className="mb-4">1. Inovisionn voert werk naar beste inzicht uit. 2. Klant gebruikt de workflows uitsluitend voor legale doeleinden en conform Service Terms van AI-providers.</p>
+            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 14 - Uitvoering van de overeenkomst</h2>
+            <p className="mb-4">1. Inovisionn voert de overeenkomst naar beste inzicht en vermogen en volgens de eisen van goed vakmanschap uit.</p>
+            <p className="mb-4">2. Inovisionn mag de afgesproken dienstverlening in zijn geheel of deels laten uitvoeren door anderen.</p>
+            <p className="mb-4">3. De uitvoering van de overeenkomst gebeurt in overleg en na een schriftelijk akkoord en betaling van een eventueel voorschot door de Klant.</p>
+            <p className="mb-4">4. De Klant moet ervoor zorgen dat Inovisionn op tijd kan beginnen aan de uitvoering.</p>
+            <p className="mb-4">5. Zorgt de Klant er niet voor dat Inovisionn tijdig kan beginnen, dan komen de daaruit voortvloeiende extra kosten voor rekening van de Klant.</p>
+            <p className="mb-4">6. De Klant verplicht zich de workflows uitsluitend te gebruiken voor legale doeleinden en conform de Service Terms van onderliggende AI-providers (zoals OpenAI, Google).</p>
+
+            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 15 - Informatieverstrekking en Gegevenskwaliteit</h2>
+            <p className="mb-4">1. De Klant stelt alle informatie en bescheiden tijdig en in gewenste vorm beschikbaar.</p>
+            <p className="mb-4">2. De Klant staat in voor de juistheid en volledigheid van de informatie.</p>
+            <p className="mb-4">3. De Klant erkent dat de kwaliteit van de AI-output direct afhankelijk is van de verstrekte context en data. Inovisionn is niet aansprakelijk voor fouten door gebrekkige informatie van de Klant.</p>
+            <p className="mb-4">4. Wanneer de Klant dit verzoekt, retourneert Inovisionn de betreffende bescheiden.</p>
+            <p className="mb-4">5. Vertraging door het niet tijdig aanleveren van informatie komt voor rekening van de Klant.</p>
+
+            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 16 - Duur overeenkomst</h2>
+            <p className="mb-4">1. Overeenkomsten voor bepaalde tijd worden na afloop stilzwijgend omgezet in onbepaalde tijd, tenzij opgezegd met een termijn van 1 maand.</p>
+
+            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 17 - Opzeggen onbepaalde tijd</h2>
+            <p className="mb-4">1. De Klant kan een overeenkomst voor onbepaalde tijd opzeggen met een opzegtermijn van 1 maand.</p>
 
             <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 18 - Intellectueel eigendom</h2>
-            <p className="mb-4">1. Inovisionn behoudt rechten op de onderliggende methodiek (prompts, scripts, workflows). 2. Klant verkrijgt gebruiksrechten op de specifieke Output na volledige betaling.</p>
+            <p className="mb-4">1. <strong>Achtergrond-IE:</strong> Inovisionn behoudt alle rechten op ontwerpen, prompts, scripts en workflows (onderliggende methodiek).</p>
+            <p className="mb-4">2. <strong>Output:</strong> De Klant verkrijgt de rechten op de specifieke Output na betaling.</p>
+            <p className="mb-4">3. <strong>Licentie:</strong> De Klant verkrijgt een niet-exclusieve licentie voor gebruik binnen de eigen organisatie.</p>
 
             <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 19 - Geheimhouding</h2>
-            <p className="mb-4">Partijen houden vertrouwelijke informatie geheim tijdens en tot 3 jaar na de overeenkomst.</p>
+            <p className="mb-4">1. Partijen houden alle vertrouwelijke informatie die zij van elkaar ontvangen geheim.</p>
+            <p className="mb-4">2. De geheimhoudingsplicht geldt tijdens de overeenkomst en tot 3 jaar na afloop daarvan.</p>
 
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 25 - Aansprakelijkheid</h2>
-            <p className="mb-4">Aansprakelijkheid is beperkt tot het factuurbedrag. Indirecte schade is uitgesloten.</p>
+            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 20 - Boetebeding</h2>
+            <p className="mb-4">1. Bij overtreding van de geheimhouding of IE-rechten betaalt de Klant een direct opeisbare boete van € 5.000,- per overtreding.</p>
+            <p className="mb-4">2. Daarnaast is de Klant € 250,- verschuldigd voor elke dag dat de overtreding voortduurt.</p>
+
+            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 21 - Vrijwaring</h2>
+            <p className="mb-4">1. De Klant vrijwaart Inovisionn tegen alle aanspraken van derden die verband houden met de geleverde AI-diensten en het gebruik daarvan.</p>
+
+            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 22 - Klachten en Acceptatie</h2>
+            <p className="mb-4">1. De Klant onderzoekt de dienst direct op tekortkomingen.</p>
+            <p className="mb-4">2. <strong>Acceptatie:</strong> Indien niet binnen 5 werkdagen na oplevering schriftelijk is gereclameerd, geldt de dienst als volledig geaccepteatie.</p>
+            <p className="mb-4">3. Gebreken moeten binnen 1 maand na vaststelling worden gemeld.</p>
+
+            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 23 - Ingebrekestelling</h2>
+            <p className="mb-4">1. Een ingebrekestelling moet schriftelijk geschieden en Inovisionn daadwerkelijk bereiken.</p>
+
+            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 24 - Aansprakelijkheid Klant</h2>
+            <p className="mb-4">1. Bij meerdere klanten zijn zij ieder hoofdelijk aansprakelijk voor het geheel.</p>
+
+            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 25 - Aansprakelijkheid Inovisionn</h2>
+            <p className="mb-4">1. Inovisionn is alleen aansprakelijk voor directe schade door opzet of bewuste roekeloosheid.</p>
+            <p className="mb-4">2. Aansprakelijkheid is beperkt tot het factuurbedrag van de betreffende opdracht.</p>
+            <p className="mb-4">3. Indirecte schade (gevolgschade, gederfde winst, gemiste besparingen) is uitdrukkelijk uitgesloten.</p>
+
+            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 26 - Vervaltermijn</h2>
+            <p className="mb-4">1. Elk recht op schadevergoeding vervalt 12 maanden na de gebeurtenis waaruit de schade voortvloeit.</p>
+
+            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 27 - Ontbinding</h2>
+            <p className="mb-4">1. Partijen mogen de overeenkomst ontbinden indien de ander toerekenbaar tekortschiet in de verplichtingen.</p>
 
             <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 28 - Overmacht</h2>
-            <p className="mb-4">Inovisionn is niet aansprakelijk bij storingen van AI-providers of wijzigingen in API-voorwaarden.</p>
+            <p className="mb-4">1. Inovisionn is niet aansprakelijk bij overmacht, waaronder: internetstoringen, cyberaanvallen, wanprestatie van AI-providers en wijzigingen in API-voorwaarden van externe partijen.</p>
+            <p className="mb-4">2. Bij overmacht langer dan 30 dagen mogen beide partijen de overeenkomst ontbinden.</p>
 
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 33 - Toepasselijk recht</h2>
-            <p className="mb-4">Nederlands recht is van toepassing. De rechter te Roermond is exclusief bevoegd.</p>
+            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 29 - Wijziging overeenkomst</h2>
+            <p className="mb-4">1. Partijen kunnen in overleg de overeenkomst aanpassen.</p>
+
+            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 30 - Wijziging algemene voorwaarden</h2>
+            <p className="mb-4">1. Inovisionn mag deze algemene voorwaarden wijzigen.</p>
+
+            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 31 - Overgang van rechten</h2>
+            <p className="mb-4">1. De Klant kan geen rechten overdragen aan derden zonder schriftelijke toestemming van Inovisionn.</p>
+
+            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 32 - Privacy en Gegevensverwerking</h2>
+            <p className="mb-4">1. Inovisionn verwerkt persoonsgegevens conform de AVG. De Klant is verwerkingsverantwoordelijke, Inovisionn is verwerker.</p>
+            <p className="mb-4">2. De separate Verwerkersovereenkomst maakt integraal onderdeel uit van de afspraken.</p>
+
+            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 33 - Toepasselijk recht en rechter</h2>
+            <p className="mb-4">1. Nederlands recht is van toepassing. De rechter te Roermond is exclusief bevoegd.</p>
+
+            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 34 - Bijzondere bepalingen AI en Ondersteuning</h2>
+            <p className="mb-4">1. <strong>Hallucinaties:</strong> De Klant erkent dat AI onvoorspelbaar kan zijn. De eindverantwoordelijkheid voor controle van output ligt volledig bij de Klant.</p>
+            <p className="mb-4">2. <strong>Eigen toedoen:</strong> Herstelwerk door fouten van de Klant (bijv. API-wijzigingen door klant) kost € 85,- per uur excl. btw.</p>
         </LegalLayout>
     );
 };
