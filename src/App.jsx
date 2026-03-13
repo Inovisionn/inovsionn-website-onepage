@@ -739,12 +739,13 @@ const ScrollToTop = () => {
     return null;
 };
 
-const LegalLayout = ({ title, seoTitle, seoDescription, children }) => {
+const LegalLayout = ({ title, seoTitle, seoDescription, canonicalUrl, children }) => {
     return (
         <div className="min-h-screen bg-background text-dark font-heading selection:bg-accent selection:text-primary relative overflow-hidden">
             <Helmet>
                 <title>{seoTitle || `${title} | Inovisionn`}</title>
                 <meta name="description" content={seoDescription || `Lees de ${title} van Inovisionn met betrekking tot onze dienstverlening, AI-agents en verwerking van gegevens.`} />
+                {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
             </Helmet>
             <div className="noise-overlay"></div>
             <Navbar />
@@ -772,7 +773,7 @@ const LegalLayout = ({ title, seoTitle, seoDescription, children }) => {
 
 const PrivacyPolicy = () => {
     return (
-        <LegalLayout title="Privacyverklaring">
+        <LegalLayout title="Privacyverklaring" canonicalUrl="https://www.inovisionn.com/privacy/">
             <p className="mb-4 text-dark/60 italic">Laatste update: 02 maart 2026</p>
             <p className="mb-6">Inovisionn respecteert uw privacy en zorgt ervoor dat de persoonlijke informatie die u ons verstrekt vertrouwelijk en zorgvuldig wordt behandeld. In deze verklaring leggen wij uit hoe wij uw gegevens verzamelen, gebruiken en beschermen, specifiek in de context van onze AI-dienstverlening.</p>
 
@@ -873,7 +874,7 @@ const PrivacyPolicy = () => {
 
 const TermsOfService = () => {
     return (
-        <LegalLayout title="Algemene Voorwaarden">
+        <LegalLayout title="Algemene Voorwaarden" canonicalUrl="https://www.inovisionn.com/voorwaarden/">
             <h2 className="text-2xl font-bold text-primary mb-4">Artikel 1 - Definities</h2>
             <p className="mb-4">1. <strong>Inovisionn:</strong> Inovisionn, gevestigd te Roermond, KvK-nummer 91930391.</p>
             <p className="mb-4">2. <strong>Klant:</strong> de rechtspersoon of natuurlijke persoon handelend in uitoefening van beroep of bedrijf met wie Inovisionn een overeenkomst is aangegaan.</p>
@@ -1030,6 +1031,7 @@ const Home = () => {
             <Helmet>
                 <title>Inovisionn | Slimme AI-agents die voor je denken én doen.</title>
                 <meta name="description" content="Stop met handmatig werk. Inovisionn bouwt en implementeert AI-oplossingen, Make.com automatiseringen en digitale medewerkers. Gevestigd in Roermond (Limburg)." />
+                <link rel="canonical" href="https://www.inovisionn.com/" />
             </Helmet>
             <div className="noise-overlay"></div>
             <Navbar />

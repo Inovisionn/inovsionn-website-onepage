@@ -83,8 +83,9 @@ const LeadScanner = () => {
     return (
         <div className="min-h-screen bg-background text-dark font-heading selection:bg-accent selection:text-primary relative overflow-hidden">
             <Helmet>
-                <title>B2B Leads vinden via AI Systemen & Make.com | Inovisionn Roermond</title>
+                <title>B2B Leads vinden via AI Systemen &amp; Make.com | Inovisionn Roermond</title>
                 <meta name="description" content="Krijg binnen 5 minuten een gekwalificeerde leadlijst. Ontdek hoe Inovisionn in Limburg bedrijfsprocessen automatiseert via Make.com en AI API's." />
+                <link rel="canonical" href="https://www.inovisionn.com/lead-scanner/" />
             </Helmet>
             {/* Background elements */}
             <div className="absolute top-0 right-0 w-[400px] md:w-[800px] h-[400px] md:h-[800px] bg-accent/5 rounded-full blur-[60px] md:blur-[100px] -translate-y-1/2 translate-x-1/3 pointer-events-none" aria-hidden="true"></div>
