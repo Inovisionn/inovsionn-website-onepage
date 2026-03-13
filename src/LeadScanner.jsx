@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Mail, CheckCircle2, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const LeadScanner = () => {
     const [status, setStatus] = useState('idle'); // idle | loading | success
@@ -81,8 +82,12 @@ const LeadScanner = () => {
 
     return (
         <div className="min-h-screen bg-background text-dark font-heading selection:bg-accent selection:text-primary relative overflow-hidden">
+            <Helmet>
+                <title>B2B Leads vinden via AI Systemen & Make.com | Inovisionn Roermond</title>
+                <meta name="description" content="Krijg binnen 5 minuten een gekwalificeerde leadlijst. Ontdek hoe Inovisionn in Limburg bedrijfsprocessen automatiseert via Make.com en AI API's." />
+            </Helmet>
             {/* Background elements */}
-            <div className="absolute top-0 right-0 w-[400px] md:w-[800px] h-[400px] md:h-[800px] bg-accent/5 rounded-full blur-[60px] md:blur-[100px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+            <div className="absolute top-0 right-0 w-[400px] md:w-[800px] h-[400px] md:h-[800px] bg-accent/5 rounded-full blur-[60px] md:blur-[100px] -translate-y-1/2 translate-x-1/3 pointer-events-none" aria-hidden="true"></div>
 
             <div className="max-w-4xl mx-auto px-6 py-10 md:py-24 relative z-10">
                 <Link to="/" className="inline-flex items-center gap-2 text-dark/50 hover:text-primary transition-colors mb-8 md:mb-12 font-medium">

@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
+import { HelmetProvider, Helmet } from 'react-helmet-async';
 import { ArrowRight, ArrowLeft, Terminal, Activity, Zap, Beaker, CheckCircle2, ChevronRight, Calendar, Linkedin, Instagram, Mail, Phone, MapPin } from 'lucide-react';
 import { CoreSpinLoader } from './components/ui/core-spin-loader';
 import RadialPulseLoader from './components/ui/loading-animation';
@@ -112,19 +113,20 @@ function Hero() {
                     muted
                     playsInline
                     className="w-full h-full object-cover opacity-60 mix-blend-luminosity"
+                    aria-label="Abstracte achtergrond animatie die de continue stroom van AI-automatisering illustreert"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/80 to-transparent"></div>
             </div>
 
             <div className="relative z-10 max-w-4xl text-white">
                 <div className="overflow-hidden mb-1 md:mb-2">
-                    <h1 className="hero-elem text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-2 leading-tight">
-                        Maximale productiviteit
+                    <h1 className="hero-elem text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold tracking-tight text-white mb-2 leading-tight">
+                        Slimme AI-oplossingen
                     </h1>
                 </div>
                 <div className="overflow-hidden mb-8 md:mb-10">
-                    <h2 className="hero-elem text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-drama italic text-accent leading-none">
-                        door geavanceerde AI-workflows.
+                    <h2 className="hero-elem text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-drama italic text-accent leading-none">
+                        en Autonome Workflows voor bedrijven.
                     </h2>
                 </div>
                 <div className="hero-elem flex flex-col sm:flex-row gap-6 sm:gap-4 items-start sm:items-center">
@@ -163,7 +165,8 @@ const DiagnosticShuffler = () => {
     }, []);
 
     return (
-        <div className="relative h-40 md:h-48 w-full max-w-[280px] sm:max-w-sm mx-auto perspective-1000 mt-6 md:mt-8">
+        <div className="relative h-40 md:h-48 w-full max-w-[280px] sm:max-w-sm mx-auto perspective-1000 mt-6 md:mt-8" aria-label="Interactieve weergave van AI-data extractie workflows">
+            <span className="sr-only">AI Agent voert data-extractie, document-analyse en CRM registratie uit voor hogere efficiëntie.</span>
             {cards.map((card, i) => (
                 <div
                     key={card.id}
@@ -217,7 +220,8 @@ const TelemetryTypewriter = () => {
     }, []);
 
     return (
-        <div id="telemetry-terminal" className="mt-6 md:mt-8 bg-primary rounded-[1.5rem] md:rounded-[2rem] p-4 md:p-6 text-white text-xs md:text-sm font-data shadow-xl relative overflow-hidden h-40 md:h-48 flex flex-col">
+        <div id="telemetry-terminal" className="mt-6 md:mt-8 bg-primary rounded-[1.5rem] md:rounded-[2rem] p-4 md:p-6 text-white text-xs md:text-sm font-data shadow-xl relative overflow-hidden h-40 md:h-48 flex flex-col" aria-label="Terminal simulatie weergave die process-optimalisatie toont">
+            <span className="sr-only">Visuele weergave van een live foutloze terminal feed door AI validatie.</span>
             <div className="absolute top-0 left-0 w-full px-4 md:px-6 py-2.5 md:py-3 border-b border-white/10 flex items-center justify-between bg-white/5">
                 <div className="flex items-center gap-2 text-[10px] md:text-xs text-white/50"><Terminal size={12} className="md:size-3.5" /> telemetry_log.sh</div>
                 <div className="flex items-center gap-2 text-[10px] md:text-xs text-accent"><span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-accent animate-pulse"></span> Live Feed</div>
@@ -274,7 +278,8 @@ const CursorProtocolScheduler = () => {
     const days = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 
     return (
-        <div ref={containerRef} className="mt-6 md:mt-8 bg-white border border-dark/10 shadow-xl rounded-[1.5rem] md:rounded-[2rem] p-4 md:p-6 h-40 md:h-48 relative overflow-hidden select-none">
+        <div ref={containerRef} className="mt-6 md:mt-8 bg-white border border-dark/10 shadow-xl rounded-[1.5rem] md:rounded-[2rem] p-4 md:p-6 h-40 md:h-48 relative overflow-hidden select-none" aria-label="Kalender widget die wekelijkse workflows structureert door AI automation">
+            <span className="sr-only">Weergave van Make.com planning automatisering die wekelijkse uren en inspanning bespaart.</span>
             <div className="flex justify-between items-center mb-4 md:mb-6">
                 <h4 className="font-bold text-dark text-sm md:text-base flex items-center gap-1.5 md:gap-2"><Calendar size={16} className="md:size-[18px]" /> Workflow</h4>
                 <div className="text-[10px] font-data bg-accent/20 text-accent px-2 rounded-full font-bold">10u winst</div>
@@ -332,7 +337,7 @@ const Features = () => {
         <section id="ai-teams" ref={sectionRef} className="py-20 md:py-32 px-6 md:px-16 bg-background">
             <div className="max-w-6xl mx-auto">
                 <div className="mb-14 md:mb-20 space-y-4">
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary leading-tight">Jouw bedrijf,<br />maar dan efficiënter.</h2>
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary leading-tight">Bedrijfsproblemen oplossen<br />met AI-agents.</h2>
                     <p className="text-dark/60 max-w-2xl text-base md:text-lg text-balance">
                         Geen tijdelijke pleisters of wéér een nieuw systeem om aan te leren. Ik bouw een slimme, onzichtbare motor achter je bedrijf die het tijdrovende, dagelijkse werk écht van je overneemt.
                     </p>
@@ -406,8 +411,8 @@ const Philosophy = () => {
             {/* Parallax Background */}
             <div className="absolute inset-0 z-0">
                 <img
-                    src="/assets/AI_foto_systemen.png"
-                    alt="Systemen netwerk"
+                    src="/assets/ai-agentic-workflow-netwerk-roermond.jpg"
+                    alt="Visuele weergave van een intelligent AI-netwerk voor bedrijfsautomatisering."
                     className="w-full h-full object-cover opacity-70 mix-blend-luminosity"
                     data-speed="0.8"
                 />
@@ -442,7 +447,7 @@ const Protocol = () => {
             title: "Knelpunten aanpakken",
             desc: "Ik kijk samen met jou waar jij de meeste uren verliest aan onnodig handwerk. Ik pak precies díe processen aan die jou direct de meeste tijdswinst en rust opleveren.",
             Visual: () => (
-                <div className="w-full h-full flex items-center justify-center bg-primary rounded-3xl">
+                <div className="w-full h-full flex items-center justify-center bg-primary rounded-3xl" aria-label="AI-agent die bedrijfsprocessen versnelt.">
                     <CoreSpinLoader />
                 </div>
             )
@@ -452,7 +457,7 @@ const Protocol = () => {
             title: "Werken met wat je al hebt",
             desc: "Je hoeft geen nieuwe software te leren. Mijn oplossingen werken onzichtbaar samen met jouw huidige CRM en systemen. Je vertrouwde werkwijze blijft, maar de vertraging verdwijnt.",
             Visual: () => (
-                <div className="w-full h-full flex items-center justify-center bg-primary rounded-3xl">
+                <div className="w-full h-full flex items-center justify-center bg-primary rounded-3xl" aria-label="Systematische integratie via Make.com">
                     <RadialPulseLoader />
                 </div>
             )
@@ -462,7 +467,7 @@ const Protocol = () => {
             title: "Groeien zonder extra personeel",
             desc: "Je processen draaien voortaan soepel door, ongeacht hoe druk het wordt. Zo kan je bedrijf moeiteloos groeien, zonder dat je direct nieuwe mensen hoeft aan te nemen.",
             Visual: () => (
-                <div className="w-full h-full flex items-center justify-center bg-primary rounded-3xl overflow-hidden relative">
+                <div className="w-full h-full flex items-center justify-center bg-primary rounded-3xl overflow-hidden relative" aria-label="Automatisering van klantcontact via AI.">
                     <NeuralBackground color="#3B82F6" speed={0.8} />
                 </div>
             )
@@ -685,7 +690,7 @@ const Footer = () => {
                 <div>
                     <h2 className="text-2xl font-bold uppercase tracking-tighter mb-4">inovisionn</h2>
                     <p className="text-white/50 text-sm max-w-xs leading-relaxed text-balance">
-                        Maakt een einde aan onnodig handwerk, zodat jij weer kunt ondernemen.
+                        Geen onnodig handwerk meer, zodat jij kunt ondernemen. Gespecialiseerd in zakelijke AI-automatisering en software koppelingen
                     </p>
                 </div>
                 <div className="flex flex-col gap-3">
@@ -734,9 +739,13 @@ const ScrollToTop = () => {
     return null;
 };
 
-const LegalLayout = ({ title, children }) => {
+const LegalLayout = ({ title, seoTitle, seoDescription, children }) => {
     return (
         <div className="min-h-screen bg-background text-dark font-heading selection:bg-accent selection:text-primary relative overflow-hidden">
+            <Helmet>
+                <title>{seoTitle || `${title} | Inovisionn`}</title>
+                <meta name="description" content={seoDescription || `Lees de ${title} van Inovisionn met betrekking tot onze dienstverlening, AI-agents en verwerking van gegevens.`} />
+            </Helmet>
             <div className="noise-overlay"></div>
             <Navbar />
 
@@ -1018,6 +1027,10 @@ const TermsOfService = () => {
 const Home = () => {
     return (
         <div className="min-h-screen bg-background text-dark font-heading selection:bg-accent selection:text-primary">
+            <Helmet>
+                <title>Inovisionn | Slimme AI-agents die voor je denken én doen.</title>
+                <meta name="description" content="Stop met handmatig werk. Inovisionn bouwt en implementeert AI-oplossingen, Make.com automatiseringen en digitale medewerkers. Gevestigd in Roermond (Limburg)." />
+            </Helmet>
             <div className="noise-overlay"></div>
             <Navbar />
             <Hero />
@@ -1107,8 +1120,10 @@ const AppRoutes = () => {
 
 export default function App() {
     return (
-        <Router>
-            <AppRoutes />
-        </Router>
+        <HelmetProvider>
+            <Router>
+                <AppRoutes />
+            </Router>
+        </HelmetProvider>
     );
 }
