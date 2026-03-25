@@ -706,7 +706,7 @@ const Footer = () => {
                     <h4 className="font-bold mb-2">Informatie:</h4>
                     <a href="mailto:inovisionn@hotmail.com" className="text-white/50 hover:text-accent transition-colors text-sm flex items-center gap-2"><Mail size={16} /> inovisionn@hotmail.com</a>
                     <span className="text-white/50 text-sm flex items-center gap-2"><Phone size={16} /> +31 6 15088920</span>
-                    <span className="text-white/50 text-sm flex items-center gap-2"><MapPin size={16} /> Roermond</span>
+                    <span className="text-white/50 text-sm flex items-center gap-2"><MapPin size={16} /> Abdis Susannastraat 15, 6041 VK Roermond</span>
                 </div>
             </div>
 
