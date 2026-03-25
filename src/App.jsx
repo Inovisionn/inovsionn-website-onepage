@@ -3,87 +3,16 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import { HelmetProvider, Helmet } from 'react-helmet-async';
-import { ArrowRight, ArrowLeft, Terminal, Activity, Zap, Beaker, CheckCircle2, ChevronRight, Calendar, Linkedin, Instagram, Mail, Phone, MapPin } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Terminal, Activity, Zap, Beaker, CheckCircle2, Calendar } from 'lucide-react';
 import { CoreSpinLoader } from './components/ui/core-spin-loader';
 import RadialPulseLoader from './components/ui/loading-animation';
 import NeuralBackground from './components/ui/flow-field-background';
 import LeadScanner from './LeadScanner';
+import OverMij from './OverMij';
+import Tools from './Tools';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 gsap.registerPlugin(ScrollTrigger);
-
-// --- Component: Navbar ---
-const Navbar = () => {
-    const navRef = useRef(null);
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-            ScrollTrigger.create({
-                start: 'top -50',
-                end: 99999,
-                toggleClass: {
-                    className: 'scrolled-nav',
-                    targets: navRef.current
-                }
-            });
-        }, navRef);
-        return () => ctx.revert();
-    }, []);
-
-    return (
-        <nav
-            ref={navRef}
-            className="fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-5xl rounded-full md:rounded-full px-4 md:px-6 py-3 md:py-4 flex items-center justify-between transition-all duration-500 text-white
-                 [&:not(.scrolled-nav)]:bg-transparent
-                 [&.scrolled-nav]:bg-background/90 [&.scrolled-nav]:backdrop-blur-xl [&.scrolled-nav]:text-primary [&.scrolled-nav]:shadow-lg [&.scrolled-nav]:border [&.scrolled-nav]:border-primary/10"
-        >
-            <div className="font-bold text-lg md:text-xl tracking-tighter uppercase font-heading flex items-center gap-2 md:gap-3">
-                <img
-                    src="/logo-new.png"
-                    alt="Inovisionn Logo"
-                    className="h-8 md:h-12 w-auto object-contain rounded-full"
-                    style={{ filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.4))' }}
-                />
-                <span className="hidden xs:inline">Inovisionn</span>
-            </div>
-
-            {/* Desktop Links */}
-            <div className="hidden md:flex items-center gap-8 font-medium text-sm">
-                <a href="#ai-teams" className="link-lift">AI-Teams</a>
-                <a href="#contact" className="link-lift">Contact</a>
-                <a href="#werkwijze" className="link-lift">werkwijze</a>
-            </div>
-
-            <div className="flex items-center gap-2">
-                <a href="#start" className="btn-magnetic overflow-hidden relative group inline-flex items-center justify-center px-4 md:px-5 py-2 md:py-2.5 rounded-full bg-accent text-primary font-semibold text-xs md:text-sm shadow-md">
-                    <span className="relative z-10 flex items-center gap-1.5 md:gap-2">Start demo <ChevronRight size={14} className="md:size-4" /></span>
-                    <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></div>
-                </a>
-
-                {/* Mobile Toggle */}
-                <button
-                    onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    className="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 bg-accent/10 rounded-full text-accent transition-all hover:bg-accent/20"
-                >
-                    <span className={`w-5 h-0.5 bg-current rounded-full transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-                    <span className={`w-5 h-0.5 bg-current rounded-full transition-all duration-300 ${isMenuOpen ? 'opacity-0 scale-0' : ''}`}></span>
-                    <span className={`w-5 h-0.5 bg-current rounded-full transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
-                </button>
-            </div>
-
-            {/* Mobile Menu Overlay */}
-            <div className={`fixed inset-0 bg-background/98 backdrop-blur-3xl z-[100] transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] flex flex-col items-center justify-center gap-10 text-primary md:hidden ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full pointer-events-none'}`}>
-                <button onClick={() => setIsMenuOpen(false)} className="absolute top-8 right-8 w-12 h-12 flex items-center justify-center bg-gray-100 rounded-full text-primary/40 hover:text-primary transition-colors">
-                    <span className="text-2xl font-light">✕</span>
-                </button>
-                <div className="flex flex-col items-center gap-8">
-                    <a href="#ai-teams" onClick={() => setIsMenuOpen(false)} className="text-4xl font-bold font-heading hover:text-accent transition-colors">AI-Teams</a>
-                    <a href="#contact" onClick={() => setIsMenuOpen(false)} className="text-4xl font-bold font-heading text-[#3B82F6] hover:opacity-80 transition-all">Contact</a>
-                    <a href="#werkwijze" onClick={() => setIsMenuOpen(false)} className="text-4xl font-bold font-heading text-[#3B82F6] hover:opacity-80 transition-all">Werkwijze</a>
-                </div>
-            </div>
-        </nav>
-    );
-};
 
 // --- Component: Hero ---
 function Hero() {
@@ -121,12 +50,12 @@ function Hero() {
             <div className="relative z-10 max-w-4xl text-white">
                 <div className="overflow-hidden mb-1 md:mb-2">
                     <h1 className="hero-elem text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold tracking-tight text-white mb-2 leading-tight">
-                        Slimme AI-oplossingen
+                        Ik automatiseer de taken
                     </h1>
                 </div>
                 <div className="overflow-hidden mb-8 md:mb-10">
                     <h2 className="hero-elem text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-drama italic text-accent leading-none">
-                        en Autonome Workflows voor bedrijven.
+                        die jouw tijd innemen.
                     </h2>
                 </div>
                 <div className="hero-elem flex flex-col sm:flex-row gap-6 sm:gap-4 items-start sm:items-center">
@@ -135,7 +64,7 @@ function Hero() {
                         <div className="absolute inset-0 bg-white/30 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></div>
                     </a>
                     <p className="text-white/60 font-data text-xs md:text-sm max-w-[280px] md:max-w-xs border-l border-white/20 pl-4 py-1">
-                        Laat slimme software dagelijkse processen stroomlijnen. Zo komt er meer tijd vrij voor werk dat écht impact maakt.
+                        Laat slimme software het terugkerende werk voor je overnemen. Zo komt er meer tijd vrij voor werk dat écht telt.
                     </p>
                 </div>
             </div>
@@ -147,9 +76,9 @@ function Hero() {
 
 const DiagnosticShuffler = () => {
     const [cards, setCards] = useState([
-        { id: 1, title: 'Data-extractie', color: 'bg-primary', text: 'white' },
-        { id: 2, title: 'Document-analyse', color: 'bg-dark', text: 'white' },
-        { id: 3, title: 'CRM Registratie', color: 'bg-accent', text: 'primary' }
+        { id: 1, title: 'Data ophalen', color: 'bg-primary', text: 'white' },
+        { id: 2, title: 'Documenten verwerken', color: 'bg-dark', text: 'white' },
+        { id: 3, title: 'CRM bijwerken', color: 'bg-accent', text: 'primary' }
     ]);
 
     useEffect(() => {
@@ -166,7 +95,7 @@ const DiagnosticShuffler = () => {
 
     return (
         <div className="relative h-40 md:h-48 w-full max-w-[280px] sm:max-w-sm mx-auto perspective-1000 mt-6 md:mt-8" aria-label="Interactieve weergave van AI-data extractie workflows">
-            <span className="sr-only">AI Agent voert data-extractie, document-analyse en CRM registratie uit voor hogere efficiëntie.</span>
+            <span className="sr-only">Automatisering die non-stop voor je doorloopt.</span>
             {cards.map((card, i) => (
                 <div
                     key={card.id}
@@ -178,7 +107,7 @@ const DiagnosticShuffler = () => {
                     }}
                 >
                     <div className="font-bold text-sm md:text-base flex items-center gap-2 md:gap-3"><Activity size={18} className="md:size-5 opacity-80" /> {card.title}</div>
-                    <div className="font-data text-[10px] md:text-xs opacity-60">sys_ok</div>
+                    <div className="font-data text-[10px] md:text-xs opacity-60">✓</div>
                 </div>
             ))
             }
@@ -337,9 +266,9 @@ const Features = () => {
         <section id="ai-teams" ref={sectionRef} className="py-20 md:py-32 px-6 md:px-16 bg-background">
             <div className="max-w-6xl mx-auto">
                 <div className="mb-14 md:mb-20 space-y-4">
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary leading-tight">Bedrijfsproblemen oplossen<br />met AI-agents.</h2>
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-primary leading-tight">Minder handmatig werk.<br />Meer tijd voor je klanten.</h2>
                     <p className="text-dark/60 max-w-2xl text-base md:text-lg text-balance">
-                        Geen tijdelijke pleisters of wéér een nieuw systeem om aan te leren. Ik bouw een slimme, onzichtbare motor achter je bedrijf die het tijdrovende, dagelijkse werk écht van je overneemt.
+                        Geen tijdelijke pleisters en geen nieuw systeem om aan te leren. Ik bouw een automatisering die onzichtbaar op de achtergrond werkt en het terugkerende handmatige werk volledig van je overneemt.
                     </p>
                 </div>
 
@@ -349,7 +278,7 @@ const Features = () => {
                         <div className="bg-white rounded-[1.75rem] p-8 h-full border border-dark/5 shadow-sm hover:shadow-xl transition-shadow duration-500">
                             <h3 className="text-xl font-bold text-primary mb-3">Meer focus<br />en groei</h3>
                             <p className="text-dark/60 text-sm leading-relaxed text-balance">
-                                Laat de techniek het terugkerend werk voor je uitvoeren. Jij houdt de regie en het overzicht, terwijl de software het voor je oplost.
+                                Jij houdt de regie en het overzicht. De software doet het terugkerende werk.
                             </p>
                             <DiagnosticShuffler />
                         </div>
@@ -357,7 +286,7 @@ const Features = () => {
 
                     <div className="feature-card bg-white/50 rounded-[2rem] p-2 flex flex-col">
                         <div className="bg-white rounded-[1.75rem] p-8 h-full border border-dark/5 shadow-sm hover:shadow-xl transition-shadow duration-500">
-                            <h3 className="text-xl font-bold text-primary mb-3">100% Foutloos<br />verwerkt</h3>
+                            <h3 className="text-xl font-bold text-primary mb-3">Betrouwbaar<br />verwerkt</h3>
                             <p className="text-dark/60 text-sm leading-relaxed text-balance">
                                 Automatisering die non-stop voor je doordraait en data direct foutloos verwerkt in de systemen die je nu al gebruikt.
                             </p>
@@ -367,9 +296,9 @@ const Features = () => {
 
                     <div className="feature-card bg-white/50 rounded-[2rem] p-2 flex flex-col">
                         <div className="bg-white rounded-[1.75rem] p-8 h-full border border-dark/5 shadow-sm hover:shadow-xl transition-shadow duration-500">
-                            <h3 className="text-xl font-bold text-primary mb-3">Rust in je<br />operatie</h3>
+                            <h3 className="text-xl font-bold text-primary mb-3">Rust in je<br />bedrijf</h3>
                             <p className="text-dark/60 text-sm leading-relaxed text-balance">
-                                Klaar met de dagelijkse chaos. Minder oplossen, minder vertraging en meer tijd voor je klanten.
+                                Geen dagelijkse chaos meer. Minder oplossen, minder vertraging en meer tijd voor je klanten.
                             </p>
                             <CursorProtocolScheduler />
                         </div>
@@ -681,61 +610,20 @@ const ContactSection = () => {
     );
 };
 
-// --- Footer Component ---
-
-const Footer = () => {
-    return (
-        <footer className="bg-primary text-white px-6 py-12 md:py-20 relative z-30 overflow-hidden">
-            <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 border-b border-white/10 pb-12 mb-8">
-                <div>
-                    <h2 className="text-2xl font-bold uppercase tracking-tighter mb-4">inovisionn</h2>
-                    <p className="text-white/50 text-sm max-w-xs leading-relaxed text-balance">
-                        Geen onnodig handwerk meer, zodat jij kunt ondernemen. Gespecialiseerd in zakelijke AI-automatisering en software koppelingen
-                    </p>
-                </div>
-                <div className="flex flex-col gap-3">
-                    <h4 className="font-bold mb-2">Volg mij op:</h4>
-                    <a href="https://www.linkedin.com/in/niels-heijman/" target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-accent transition-colors text-sm flex items-center gap-2">
-                        <Linkedin size={16} /> LinkedIn
-                    </a>
-                    <a href="https://www.instagram.com/niels.heijman/" target="_blank" rel="noopener noreferrer" className="text-white/50 hover:text-accent transition-colors text-sm flex items-center gap-2">
-                        <Instagram size={16} /> Instagram
-                    </a>
-                </div>
-                <div className="flex flex-col gap-3">
-                    <h4 className="font-bold mb-2">Informatie:</h4>
-                    <a href="mailto:inovisionn@hotmail.com" className="text-white/50 hover:text-accent transition-colors text-sm flex items-center gap-2"><Mail size={16} /> inovisionn@hotmail.com</a>
-                    <span className="text-white/50 text-sm flex items-center gap-2"><Phone size={16} /> +31 6 15088920</span>
-                    <span className="text-white/50 text-sm flex items-center gap-2"><MapPin size={16} /> Abdis Susannastraat 15, 6041 VK Roermond</span>
-                </div>
-            </div>
-
-            <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0">
-                <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
-                    <p className="text-white/40 text-xs font-data">
-                        &copy; 2026 Inovisionn. All rights reserved.
-                    </p>
-                    <div className="flex items-center gap-4 text-white/40 text-xs font-data">
-                        <Link to="/privacy" className="hover:text-white transition-colors">Privacybeleid</Link>
-                        <Link to="/voorwaarden" className="hover:text-white transition-colors">Algemene Voorwaarden</Link>
-                    </div>
-                </div>
-                <div className="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full border border-white/10">
-                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-                    <span className="text-xs font-data text-white/70">System Operational</span>
-                </div>
-            </div>
-        </footer>
-    );
-};
-
 // --- Legal Components ---
 
 const ScrollToTop = () => {
-    const { pathname } = useLocation();
+    const { pathname, hash } = useLocation();
     useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [pathname]);
+        if (hash) {
+            setTimeout(() => {
+                const el = document.getElementById(hash.slice(1));
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        } else {
+            window.scrollTo(0, 0);
+        }
+    }, [pathname, hash]);
     return null;
 };
 
@@ -773,7 +661,7 @@ const LegalLayout = ({ title, seoTitle, seoDescription, canonicalUrl, children }
 
 const PrivacyPolicy = () => {
     return (
-        <LegalLayout title="Privacyverklaring" canonicalUrl="https://www.inovisionn.com/privacy/">
+        <LegalLayout title="Privacyverklaring" canonicalUrl="https://www.inovisionn.com/privacy">
             <p className="mb-4 text-dark/60 italic">Laatste update: 02 maart 2026</p>
             <p className="mb-6">Inovisionn respecteert uw privacy en zorgt ervoor dat de persoonlijke informatie die u ons verstrekt vertrouwelijk en zorgvuldig wordt behandeld. In deze verklaring leggen wij uit hoe wij uw gegevens verzamelen, gebruiken en beschermen, specifiek in de context van onze AI-dienstverlening.</p>
 
@@ -874,7 +762,7 @@ const PrivacyPolicy = () => {
 
 const TermsOfService = () => {
     return (
-        <LegalLayout title="Algemene Voorwaarden" canonicalUrl="https://www.inovisionn.com/voorwaarden/">
+        <LegalLayout title="Algemene Voorwaarden" canonicalUrl="https://www.inovisionn.com/voorwaarden">
             <h2 className="text-2xl font-bold text-primary mb-4">Artikel 1 - Definities</h2>
             <p className="mb-4">1. <strong>Inovisionn:</strong> Inovisionn, gevestigd te Roermond, KvK-nummer 91930391.</p>
             <p className="mb-4">2. <strong>Klant:</strong> de rechtspersoon of natuurlijke persoon handelend in uitoefening van beroep of bedrijf met wie Inovisionn een overeenkomst is aangegaan.</p>
@@ -1111,6 +999,8 @@ const AppRoutes = () => {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/lead-scanner" element={<LeadScanner />} />
+                <Route path="/over-mij" element={<OverMij />} />
+                <Route path="/tools" element={<Tools />} />
                 <Route path="/forbidden" element={<Forbidden />} />
                 <Route path="/privacy" element={<PrivacyPolicy />} />
                 <Route path="/voorwaarden" element={<TermsOfService />} />

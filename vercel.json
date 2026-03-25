@@ -1,4 +1,17 @@
 {
+    "redirects": [
+        {
+            "source": "/(.*)",
+            "has": [{ "type": "host", "value": "inovisionn.com" }],
+            "destination": "https://www.inovisionn.com/$1",
+            "permanent": true
+        },
+        { "source": "/tools/", "destination": "/tools", "permanent": true },
+        { "source": "/over-mij/", "destination": "/over-mij", "permanent": true },
+        { "source": "/lead-scanner/", "destination": "/lead-scanner", "permanent": true },
+        { "source": "/privacy/", "destination": "/privacy", "permanent": true },
+        { "source": "/voorwaarden/", "destination": "/voorwaarden", "permanent": true }
+    ],
     "rewrites": [
         {
             "source": "/(.*)",

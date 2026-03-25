@@ -85,7 +85,7 @@ const LeadScanner = () => {
             <Helmet>
                 <title>B2B Leads vinden via AI Systemen &amp; Make.com | Inovisionn Roermond</title>
                 <meta name="description" content="Krijg binnen 5 minuten een gekwalificeerde leadlijst. Ontdek hoe Inovisionn in Limburg bedrijfsprocessen automatiseert via Make.com en AI API's." />
-                <link rel="canonical" href="https://www.inovisionn.com/lead-scanner/" />
+                <link rel="canonical" href="https://www.inovisionn.com/lead-scanner" />
             </Helmet>
             {/* Background elements */}
             <div className="absolute top-0 right-0 w-[400px] md:w-[800px] h-[400px] md:h-[800px] bg-accent/5 rounded-full blur-[60px] md:blur-[100px] -translate-y-1/2 translate-x-1/3 pointer-events-none" aria-hidden="true"></div>
@@ -102,6 +102,28 @@ const LeadScanner = () => {
                     <p className="text-dark/60 text-base md:text-lg max-w-2xl px-1">
                         Definieer jouw ideale klant. Ons AI-team zoekt direct het internet, KvK databases en socials af om 10 relevante leads voor je te verzamelen.
                     </p>
+                </div>
+
+                {/* SEO-rijke uitleg sectie */}
+                <div className="mb-10 md:mb-14 flex flex-col gap-6">
+                    <div className="bg-white rounded-[1.5rem] p-6 border border-dark/5 shadow-sm w-full">
+                        <h2 className="text-base font-bold text-primary mb-2">Wat doet de AI Lead Scanner?</h2>
+                        <p className="text-dark/60 text-sm leading-relaxed">
+                            De Lead Scanner is een live demonstratie van hoe ik bedrijfsprocessen automatiseer. Je geeft aan in welke branche, regio en welk type bedrijf jouw ideale klant is. Ons geautomatiseerde AI-systeem doorzoekt vervolgens openbare bronnen zoals het KvK-register, LinkedIn en bedrijvengidsen. Binnen enkele minuten ontvang je een overzichtelijk Google Doc met 10 gekwalificeerde leads, inclusief bedrijfsnaam, contactgegevens.
+                        </p>
+                    </div>
+                    <div className="bg-white rounded-[1.5rem] p-6 border border-dark/5 shadow-sm w-full">
+                        <h2 className="text-base font-bold text-primary mb-2">Waarom AI-gedreven leadgeneratie werkt</h2>
+                        <p className="text-dark/60 text-sm leading-relaxed">
+                            Uit mijn ervaring kost handmatige leadgeneratie ondernemers gemiddeld vier tot acht uur per week aan zoek- en kwalificatiewerk. Of je betaalt advertentiegeld om leads te genereren. Door dit proces te automatiseren met AI-agents en slimme workflows, haal je die uren terug. De kwaliteit van leads is hoger omdat het systeem op basis van meerdere criteria filtert, niet op gevoel. Ook is het mogelijk om met dit proces de follow-up te doen. Dit is precies hoe ik werk: ik analyseer waar jouw organisatie de meeste tijd verliest aan terugkerend handwerk, en vervang dat door een betrouwbare, autonome workflow die voor je doorloopt, ook als jij niet achter je scherm zit.
+                        </p>
+                    </div>
+                    <div className="bg-white rounded-[1.5rem] p-6 border border-dark/5 shadow-sm w-full">
+                        <h2 className="text-base font-bold text-primary mb-2">Van demo naar volledige automatisering</h2>
+                        <p className="text-dark/60 text-sm leading-relaxed">
+                            De Lead Scanner is een klein voorproefje van wat er mogelijk is. Inovisionn, gevestigd in Roermond (Limburg), bouwt voor mkb-bedrijven in heel Nederland complete AI-automatiseringen: van klantopvolging tot interne rapportages en CRM-integraties. Onze oplossingen werken samen met systemen die je al gebruikt, zoals HubSpot, Exact, Monday of een maatwerk CRM. Er is geen nieuwe software om te leren, de automatisering werkt onzichtbaar op de achtergrond. Wil je weten hoeveel uur per week wij voor jou kunnen vrijmaken? Plan een gratis kennismaking in via de homepage.
+                        </p>
+                    </div>
                 </div>
 
                 <div className="bg-white rounded-[1.5rem] md:rounded-[2rem] p-6 md:p-12 shadow-xl border border-dark/5">
