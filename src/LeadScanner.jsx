@@ -90,14 +90,14 @@ const LeadScanner = () => {
             {/* Background elements */}
             <div className="absolute top-0 right-0 w-[400px] md:w-[800px] h-[400px] md:h-[800px] bg-accent/5 rounded-full blur-[60px] md:blur-[100px] -translate-y-1/2 translate-x-1/3 pointer-events-none" aria-hidden="true"></div>
 
-            <div className="max-w-4xl mx-auto px-6 py-10 md:py-24 relative z-10">
+            <main className="max-w-4xl mx-auto px-6 py-10 md:py-24 relative z-10">
                 <Link to="/" className="inline-flex items-center gap-2 text-dark/50 hover:text-primary transition-colors mb-8 md:mb-12 font-medium">
                     <ArrowLeft size={16} /> Terug
                 </Link>
 
                 <div className="mb-8 md:mb-12">
                     <h1 className="text-3xl md:text-6xl font-bold tracking-tight text-primary mb-4 leading-tight">
-                        Doelgroep configuratie.
+                        Doelgroep configuratie
                     </h1>
                     <p className="text-dark/60 text-base md:text-lg max-w-2xl px-1">
                         Definieer jouw ideale klant. Ons AI-team zoekt direct het internet, KvK databases en socials af om 10 relevante leads voor je te verzamelen.
@@ -179,7 +179,7 @@ const LeadScanner = () => {
                         </div>
                     </form>
                 </div>
-            </div>
+            </main>
         </div>
     );
 };

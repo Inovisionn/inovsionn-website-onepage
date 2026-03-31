@@ -15,9 +15,9 @@ export default {
                 'accent-dark': '#2563EB', // for hover states if needed
             },
             fontFamily: {
-                heading: ['Space Mono', 'monospace'],
-                drama: ['Space Mono', 'monospace'],
-                body: ['Roboto', 'sans-serif'],
+                heading: ['Safira March', 'serif'],
+                drama: ['Safira March', 'serif'],
+                body: ['Coco Gothic', 'sans-serif'],
                 data: ['JetBrains Mono', 'monospace'],
             },
         },

@@ -212,6 +212,7 @@ const OverMij = () => {
 
             <Navbar />
 
+            <main>
             {/* Hero Section */}
             <section className="pt-28 pb-16 md:pt-36 md:pb-24 px-6 md:px-16 bg-primary text-white">
                 <div className="max-w-5xl mx-auto">
@@ -219,7 +220,7 @@ const OverMij = () => {
                         <div>
                             <p className="hero-stagger text-accent font-medium text-xs mb-4 uppercase tracking-widest">AI Automatisering Specialist · Roermond, Limburg</p>
                             <h1 className="hero-stagger text-4xl md:text-6xl font-bold tracking-tight leading-tight mb-6">
-                                <span className="font-drama italic text-accent">Niels Heijman.</span>
+                                <span className="font-drama italic text-accent">Niels Heijman</span>
                             </h1>
                             <p className="hero-stagger text-white/70 text-base md:text-lg leading-relaxed mb-8">
                                 Mijn naam is Niels Heijman, oprichter van Inovisionn, gevestigd in Roermond. Ik help mkb-bedrijven in Nederland de bottlenecks in hun dagelijkse processen te automatiseren, niet met tijdelijke pleisters, maar met slimme AI-workflows die het echte werk voor je overnemen.
@@ -261,7 +262,7 @@ const OverMij = () => {
             {/* Achtergrond */}
             <section className="py-20 md:py-28 px-6 md:px-16 bg-background">
                 <div className="max-w-4xl mx-auto scroll-fade-up">
-                    <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6 tracking-tight leading-tight">Van e-commerce naar AI-automatisering.</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6 tracking-tight leading-tight">Van e-commerce naar AI-automatisering</h2>
                     <div className="space-y-5 text-dark/70 text-base md:text-lg leading-relaxed">
                         <p>
                             Mijn achtergrond ligt in e-commerce. Na mijn opleiding tot e-commerce specialist werkte ik aan online advertentiecampagnes voor ondernemers. Ik leerde hoe bedrijven groeien, waar tijd verloren gaat en hoe kleine verbeteringen in processen grote impact kunnen hebben.
@@ -276,7 +277,7 @@ const OverMij = () => {
             {/* Case Studies */}
             <section className="py-20 md:py-28 px-6 md:px-16 bg-white">
                 <div className="max-w-5xl mx-auto">
-                    <h2 className="scroll-fade-up text-3xl md:text-4xl font-bold text-primary mb-4 tracking-tight leading-tight">Wat ik voor klanten heb gebouwd.</h2>
+                    <h2 className="scroll-fade-up text-3xl md:text-4xl font-bold text-primary mb-4 tracking-tight leading-tight">Wat ik voor klanten heb gebouwd</h2>
                     <p className="scroll-fade-up text-dark/60 text-base md:text-lg mb-10 max-w-2xl leading-relaxed">
                         Hieronder drie concrete automatiseringen die ik heb gebouwd. Geen theorie, dit zijn echte processen die dagelijks voor mijn klanten doordraaien.
                     </p>
@@ -289,7 +290,7 @@ const OverMij = () => {
             {/* Aanpak */}
             <section className="py-20 md:py-28 px-6 md:px-16 bg-background">
                 <div className="max-w-5xl mx-auto">
-                    <h2 className="scroll-fade-up text-3xl md:text-4xl font-bold text-primary mb-4 tracking-tight leading-tight">Hoe ik werk.</h2>
+                    <h2 className="scroll-fade-up text-3xl md:text-4xl font-bold text-primary mb-4 tracking-tight leading-tight">Hoe ik werk</h2>
                     <p className="scroll-fade-up text-dark/60 text-base md:text-lg leading-relaxed max-w-2xl mb-12">
                         Elk traject begint hetzelfde: analyseren waar de pijn zit, dan de juiste tool kiezen en bouwen. Geen onnodige complexiteit, geen nieuwe software om te leren.
                     </p>
@@ -333,7 +334,7 @@ const OverMij = () => {
             {/* FAQ */}
             <section className="py-20 md:py-28 px-6 md:px-16 bg-white">
                 <div className="max-w-4xl mx-auto scroll-fade-up">
-                    <h2 className="text-3xl md:text-4xl font-bold text-primary mb-10 tracking-tight">Veelgestelde vragen.</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold text-primary mb-10 tracking-tight">Veelgestelde vragen</h2>
                     <div className="bg-background rounded-[1.5rem] md:rounded-[2rem] border border-dark/5 px-6 md:px-10 divide-y divide-dark/5">
                         <FaqItem
                             question="Hoe kan ik AI-automatisering gebruiken om mijn bedrijfsprocessen te optimaliseren in 2026?"
@@ -419,6 +420,7 @@ const OverMij = () => {
                 </div>
             </section>
 
+            </main>
             <Footer />
         </div>
     );

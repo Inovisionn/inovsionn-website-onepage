@@ -440,6 +440,7 @@ const Tools = () => {
 
             <Navbar />
 
+            <main>
             {/* Hero */}
             <section className="pt-28 pb-16 md:pt-36 md:pb-24 px-6 md:px-16 bg-primary text-white overflow-hidden">
                 <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -447,7 +448,7 @@ const Tools = () => {
                         <p className="hero-stagger text-accent font-medium text-xs mb-4 uppercase tracking-widest">De technische stack</p>
                         <h1 className="hero-stagger text-4xl md:text-6xl font-bold tracking-tight leading-tight mb-6">
                             De tools achter<br />
-                            <span className="font-drama italic text-accent">de automatisering.</span>
+                            <span className="font-drama italic text-accent">de automatisering</span>
                         </h1>
                         <p className="hero-stagger text-white/70 text-base md:text-lg leading-relaxed">
                             Elke automatisering draait op een van deze drie platforms. Ik kies altijd de oplossing die het beste resultaat geeft tegen de laagst mogelijke kosten.
@@ -565,7 +566,7 @@ const Tools = () => {
             {/* FAQ */}
             <section className="py-20 md:py-28 px-6 md:px-16 bg-background">
                 <div className="max-w-4xl mx-auto scroll-fade-up">
-                    <h2 className="text-3xl md:text-4xl font-bold text-primary mb-10 tracking-tight">Veelgestelde vragen.</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold text-primary mb-10 tracking-tight">Veelgestelde vragen</h2>
                     <div className="bg-white rounded-[1.5rem] md:rounded-[2rem] border border-dark/5 px-6 md:px-10 divide-y divide-dark/5">
                         <FaqItem
                             question="Hoe kan ik AI gebruiken voor klantenservice zonder dat het robotachtig aanvoelt?"
@@ -604,6 +605,7 @@ const Tools = () => {
                     </a>
                 </div>
             </section>
+            </main>
 
             <Footer />
         </div>

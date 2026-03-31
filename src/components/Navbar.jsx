@@ -48,6 +48,7 @@ const Navbar = () => {
 
     return (
         <>
+            <header>
             <nav
                 ref={navRef}
                 className="fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-5xl rounded-full md:rounded-full px-4 md:px-6 py-3 md:py-4 flex items-center justify-between transition-all duration-500 text-white
@@ -88,6 +89,7 @@ const Navbar = () => {
                     </button>
                 </div>
             </nav>
+            </header>
 
             {/* Mobile Menu — bottom sheet, rendered outside the nav pill so it's never clipped */}
             <div

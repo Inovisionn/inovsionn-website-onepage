@@ -436,7 +436,7 @@ const Protocol = () => {
                         <div className="flex-1 p-6 sm:p-8 md:p-20 flex flex-col justify-center">
                             <span className="font-data text-accent text-sm md:text-xl mb-3 md:mb-4 py-1 px-3 bg-accent/10 rounded-full w-fit">_{step.num}</span>
                             <h3 className="text-2xl sm:text-3xl md:text-5xl font-bold font-heading text-primary tracking-tight mb-4 md:mb-6 leading-tight">
-                                {step.title}.
+                                {step.title}
                             </h3>
                             <p className="text-dark/60 text-base md:text-xl max-w-md text-balance leading-relaxed">
                                 {step.desc}
@@ -526,7 +526,7 @@ const ContactSection = () => {
         <section id="contact" className="py-24 bg-primary text-white border-t border-white/5 relative z-20">
             <div className="max-w-4xl mx-auto px-6">
                 <div className="text-center mb-12">
-                    <h2 className="text-3xl md:text-5xl font-bold font-heading mb-4 text-white">Contact.</h2>
+                    <h2 className="text-3xl md:text-5xl font-bold font-heading mb-4 text-white">Contact</h2>
                     <p className="text-white/60 text-lg max-w-xl mx-auto">
                         Heb je een specifieke uitdaging of wil je weten welke agents voor jou kunnen werken? Stuur mij een bericht.
                     </p>
@@ -640,21 +640,21 @@ const LegalLayout = ({ title, seoTitle, seoDescription, canonicalUrl, children }
             <div className="noise-overlay"></div>
             <Navbar />
 
-            <div className="relative z-10 pt-32 pb-20 px-6">
+            <main className="relative z-10 pt-32 pb-20 px-6">
                 <div className="max-w-4xl mx-auto">
                     <Link to="/" className="inline-flex items-center gap-2 text-primary/60 hover:text-accent transition-colors mb-8 group">
                         <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" /> Terug naar Home
                     </Link>
 
                     <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-primary mb-12 leading-tight">
-                        {title}<span className="text-accent">.</span>
+                        {title}
                     </h1>
 
                     <div className="bg-white/50 backdrop-blur-sm border border-dark/5 rounded-[2rem] p-8 md:p-12 shadow-xl prose prose-slate max-w-none text-dark/80 leading-relaxed font-sans">
                         {children}
                     </div>
                 </div>
-            </div>
+            </main>
 
             <Footer />
         </div>
@@ -991,12 +991,14 @@ const Home = () => {
             </Helmet>
             <div className="noise-overlay"></div>
             <Navbar />
-            <Hero />
-            <Features />
-            <Philosophy />
-            <Protocol />
-            <CTA />
-            <ContactSection />
+            <main>
+                <Hero />
+                <Features />
+                <Philosophy />
+                <Protocol />
+                <CTA />
+                <ContactSection />
+            </main>
             <Footer />
         </div>
     );
@@ -1015,7 +1017,7 @@ const Forbidden = () => {
                     </h1>
                     <div className="mt-[-4rem] md:mt-[-8rem]">
                         <h2 className="text-3xl md:text-6xl font-bold tracking-tight text-primary mb-4 leading-tight">
-                            Protocol: <span className="font-drama italic text-red-500 capitalize">Toegang Geweigerd.</span>
+                            Protocol: <span className="font-drama italic text-red-500 capitalize">Toegang Geweigerd</span>
                         </h2>
                         <p className="text-dark/60 text-base md:text-lg max-w-lg mx-auto mb-10">
                             U heeft niet de benodigde autorisatie om dit onderdeel te benaderen. Voor de Lead Scanner geldt een limiet van 1 scan per adres.
@@ -1044,7 +1046,7 @@ const NotFound = () => {
                     </h1>
                     <div className="mt-[-4rem] md:mt-[-8rem]">
                         <h2 className="text-3xl md:text-6xl font-bold tracking-tight text-primary mb-4 leading-tight">
-                            Status: <span className="font-drama italic text-accent capitalize">Niet Gevonden.</span>
+                            Status: <span className="font-drama italic text-accent capitalize">Niet Gevonden</span>
                         </h2>
                         <p className="text-dark/60 text-base md:text-lg max-w-lg mx-auto mb-10">
                             De opgevraagde parameter bestaat niet in onze architectuur. Laten we je terugbrengen naar de hoofdpagina.

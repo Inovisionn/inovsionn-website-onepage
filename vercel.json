@@ -2,6 +2,12 @@
     "redirects": [
         {
             "source": "/(.*)",
+            "has": [{ "type": "host", "value": "inovisionn-web.vercel.app" }],
+            "destination": "https://www.inovisionn.com/$1",
+            "permanent": true
+        },
+        {
+            "source": "/(.*)",
             "has": [{ "type": "host", "value": "inovisionn.com" }],
             "destination": "https://www.inovisionn.com/$1",
             "permanent": true
