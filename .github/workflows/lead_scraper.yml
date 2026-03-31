@@ -7,32 +7,35 @@ on:
 jobs:
   run-scraper:
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-      
+
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
         python-version: '3.12'
-        cache: 'pip'
-        cache-dependency-path: 'agent/requirements.txt'
-        
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r agent/requirements.txt
-        
+
     - name: Run Lead Scraper Agent
       env:
-        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+        HUNTER_API_KEY: ${{ secrets.HUNTER_API_KEY }}
+        SNOV_API_USER_ID: ${{ secrets.SNOV_API_USER_ID }}
+        SNOV_API_SERCET: ${{ secrets.SNOV_API_SERCET }}
+        PROSPEO_API_KEY: ${{ secrets.PROSPEO_API_KEY }}
+        APOLLO_API_KEY: ${{ secrets.APOLLO_API_KEY }}
+        CLAUDE_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
+        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        OVERHEID_API_KEY: ${{ secrets.OVERHEID_API_KEY }}
         GMAIL_EMAIL: ${{ secrets.GMAIL_EMAIL }}
         GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
       run: |
-        # De data komt binnen via de github dispatch payload:
-        # github.event.client_payload
         python agent/lead_scraper.py \
           --form_type "${{ github.event.client_payload.form_type }}" \
           --bedrijfsnaam "${{ github.event.client_payload.bedrijfsnaam }}" \

@@ -17,6 +17,7 @@ const Footer = () => {
                     <Link to="/over-mij" className="text-white/50 hover:text-accent transition-colors text-sm">Over mij</Link>
                     <Link to="/tools" className="text-white/50 hover:text-accent transition-colors text-sm">Werkwijze</Link>
                     <Link to="/lead-scanner" className="text-white/50 hover:text-accent transition-colors text-sm">Lead Scanner</Link>
+                    <a href="/#contact" className="text-white/50 hover:text-accent transition-colors text-sm">Contact</a>
                 </div>
                 <div className="flex flex-col gap-3">
                     <h4 className="font-bold mb-2">Volg mij op:</h4>
@@ -31,7 +32,14 @@ const Footer = () => {
                     <h4 className="font-bold mb-2">Informatie:</h4>
                     <a href="mailto:inovisionn@hotmail.com" className="text-white/50 hover:text-accent transition-colors text-sm flex items-center gap-2"><Mail size={16} /> inovisionn@hotmail.com</a>
                     <span className="text-white/50 text-sm flex items-center gap-2"><Phone size={16} /> +31 6 15088920</span>
-                    <span className="text-white/50 text-sm flex items-center gap-2"><MapPin size={16} /> Abdis Susannastraat 15, 6041 VK Roermond</span>
+                    <a 
+                        href="https://maps.app.goo.gl/kvnDpu95vx85uQEh7" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="text-white/50 hover:text-accent transition-colors text-sm flex items-center gap-2"
+                    >
+                        <MapPin size={16} /> Abdis Susannastraat 15, 6041 VK Roermond
+                    </a>
                 </div>
             </div>
 

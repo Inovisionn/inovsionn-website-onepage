@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, Navigate, useLocation } from 'react-router-dom';
 import { HelmetProvider, Helmet } from 'react-helmet-async';
 import { ArrowRight, ArrowLeft, Terminal, Activity, Zap, Beaker, CheckCircle2, Calendar } from 'lucide-react';
 import { CoreSpinLoader } from './components/ui/core-spin-loader';
@@ -341,7 +341,7 @@ const Philosophy = () => {
             <div className="absolute inset-0 z-0">
                 <img
                     src="/assets/ai-agentic-workflow-netwerk-roermond.jpg"
-                    alt="Visuele weergave van een intelligent AI-netwerk voor bedrijfsautomatisering."
+                    alt="AI-automatisering en agentic workflows voor bedrijven in Roermond en Limburg - Inovisionn"
                     className="w-full h-full object-cover opacity-70 mix-blend-luminosity"
                     data-speed="0.8"
                 />
@@ -358,7 +358,9 @@ const Philosophy = () => {
                     {text2.map((word, i) => (
                         <span key={i} className="phil-word inline-block mr-3">{word}</span>
                     ))}
-                    <span className="phil-word inline-block text-accent">tijdswinst en controle geeft.</span>
+                    {"tijdswinst en controle geeft.".split(" ").map((word, i) => (
+                        <span key={`accent-${i}`} className="phil-word inline-block mr-3 text-accent">{word}</span>
+                    ))}
                 </h2>
             </div>
         </section>
@@ -431,7 +433,7 @@ const Protocol = () => {
                             zIndex: i + 1
                         }}>
 
-                        <div className="flex-1 p-8 sm:p-10 md:p-20 flex flex-col justify-center">
+                        <div className="flex-1 p-6 sm:p-8 md:p-20 flex flex-col justify-center">
                             <span className="font-data text-accent text-sm md:text-xl mb-3 md:mb-4 py-1 px-3 bg-accent/10 rounded-full w-fit">_{step.num}</span>
                             <h3 className="text-2xl sm:text-3xl md:text-5xl font-bold font-heading text-primary tracking-tight mb-4 md:mb-6 leading-tight">
                                 {step.title}.
@@ -460,7 +462,7 @@ const CTA = () => {
             <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
 
                 {/* Strategische Route */}
-                <div className="bg-primary text-white rounded-[3rem] p-10 md:p-16 flex flex-col items-start justify-between relative overflow-hidden group">
+                <div className="bg-primary text-white rounded-[2rem] md:rounded-[3rem] p-8 md:p-16 flex flex-col items-start justify-between relative overflow-hidden group">
                     <div className="absolute right-0 top-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-accent/20 transition-colors"></div>
                     <div className="relative z-10 mb-12">
                         <h3 className="text-3xl font-bold mb-4">Laten we de ruis wegnemen</h3>
@@ -474,7 +476,7 @@ const CTA = () => {
                 </div>
 
                 {/* Directe Bewijsvoering */}
-                <div className="bg-white border border-dark/5 shadow-xl rounded-[3rem] p-10 md:p-16 flex flex-col items-start justify-between group">
+                <div className="bg-white border border-dark/5 shadow-xl rounded-[2rem] md:rounded-[3rem] p-8 md:p-16 flex flex-col items-start justify-between group">
                     <div className="mb-12">
                         <h3 className="text-3xl font-bold mb-4 text-primary">Test de workflow</h3>
                         <p className="text-dark/60 text-balance leading-relaxed">
@@ -917,9 +919,10 @@ const Home = () => {
     return (
         <div className="min-h-screen bg-background text-dark font-heading selection:bg-accent selection:text-primary">
             <Helmet>
-                <title>Inovisionn | Slimme AI-agents die voor je denken én doen.</title>
-                <meta name="description" content="Stop met handmatig werk. Inovisionn bouwt en implementeert AI-oplossingen, Make.com automatiseringen en digitale medewerkers. Gevestigd in Roermond (Limburg)." />
+                <title>Inovisionn | AI Automatisering & Software Koppelingen Roermond</title>
+                <meta name="description" content="Stop met handmatig werk. Inovisionn is uw partner voor AI-automatisering en software koppelingen (Make.com) in Roermond en Limburg. Wij bouwen slimme AI-agents die direct tijd en kosten besparen." />
                 <link rel="canonical" href="https://www.inovisionn.com/" />
+                <meta name="keywords" content="AI automatisering Roermond, Make.com specialist Limburg, AI agents Nederland, bedrijfsprocessen automatiseren, Inovisionn" />
             </Helmet>
             <div className="noise-overlay"></div>
             <Navbar />
@@ -1000,7 +1003,8 @@ const AppRoutes = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="/lead-scanner" element={<LeadScanner />} />
                 <Route path="/over-mij" element={<OverMij />} />
-                <Route path="/tools" element={<Tools />} />
+                <Route path="/werkwijze" element={<Tools />} />
+                <Route path="/tools" element={<Navigate to="/werkwijze" replace />} />
                 <Route path="/forbidden" element={<Forbidden />} />
                 <Route path="/privacy" element={<PrivacyPolicy />} />
                 <Route path="/voorwaarden" element={<TermsOfService />} />

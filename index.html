@@ -1,40 +1,101 @@
 <!doctype html>
-<html lang="en">
+<html lang="nl">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Inovisionn | Slimme AI-agents die voor je denken én doen.</title>
-  <meta name="description" content="Stop met handmatig werk. Ik bouw digitale medewerkers die niet alleen taken uitvoeren, maar ook zelf beslissingen nemen." />
+  <meta name="description" content="Stop met handmatig werk. Inovisionn bouwt en implementeert AI-oplossingen, Make.com automatiseringen en digitale medewerkers voor mkb-bedrijven. Gevestigd in Roermond, Limburg." />
+  
+  <!-- GEO Tags for Local SEO (Roermond, Limburg) -->
+  <meta name="geo.region" content="NL-LI" />
+  <meta name="geo.placename" content="Roermond" />
+  <meta name="geo.position" content="51.196222;5.996076" />
+  <meta name="ICBM" content="51.196222, 5.996076" />
+
+  <!-- Google Search Console verificatie -->
+  <meta name="google-site-verification" content="VERVANG_DIT_MET_JE_VERIFICATIECODE" />
+
   <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
+  
+  <!-- OpenGraph / Facebook visibility -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.inovisionn.com/" />
+  <meta property="og:title" content="Inovisionn | Slimme AI-agents die voor je denken én doen." />
+  <meta property="og:description" content="Inovisionn bouwt en implementeert AI-oplossingen, Make.com automatiseringen en digitale medewerkers voor mkb-bedrijven in Roermond, Limburg." />
+  <meta property="og:image" content="https://www.inovisionn.com/logo-full.png" />
+
+  <!-- Twitter visibility -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://www.inovisionn.com/" />
+  <meta property="twitter:title" content="Inovisionn | Slimme AI-agents die voor je denken én doen." />
+  <meta property="twitter:description" content="AI-oplossingen en automatisering voor mkb-bedrijven in Roermond, Limburg." />
+  <meta property="twitter:image" content="https://www.inovisionn.com/logo-full.png" />
+
+  <!-- Structured Data: LocalBusiness + ProfessionalService -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": ["LocalBusiness", "ProfessionalService"],
     "name": "Inovisionn",
     "url": "https://www.inovisionn.com/",
-    "telephone": "+31 6 15088920",
+    "telephone": "+31615088920",
+    "email": "inovisionn@hotmail.com",
+    "priceRange": "€€",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Abdis Susannastraat 15",
       "addressLocality": "Roermond",
+      "addressRegion": "Limburg",
       "postalCode": "6041 VK",
       "addressCountry": "NL"
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": "51.1962",
-      "longitude": "5.9961"
+      "latitude": "51.196222",
+      "longitude": "5.996076"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      }
+    ],
+    "knowsLanguage": ["nl", "en"],
+    "areaServed": [
+      { "@type": "City", "name": "Roermond" },
+      { "@type": "City", "name": "Venlo" },
+      { "@type": "City", "name": "Weert" },
+      { "@type": "City", "name": "Maastricht" },
+      { "@type": "Country", "name": "Nederland" }
+    ],
+    "hasMap": "https://maps.app.goo.gl/kvnDpu95vx85uQEh7",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "AI Automatisering Diensten",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Make.com Workflow Automatisering" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "n8n Automatisering" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Agents & Claude Code Maatwerk" } }
+      ]
     },
     "sameAs": [
       "https://maps.app.goo.gl/kvnDpu95vx85uQEh7",
       "https://www.linkedin.com/company/inovisionn"
     ],
-    "description": "Inovisionn is een geautoriseerde expertentiteit gevestigd in Roermond, gespecialiseerd in digitale innovatie en strategie.",
-    "image": "https://www.inovisionn.com/logo.png"
+    "description": "Inovisionn is gespecialiseerd in AI-automatisering voor mkb-bedrijven in Nederland. Wij bouwen op maat gemaakte AI-workflows, Make.com en n8n koppelingen en maatwerk AI-agents die terugkerende taken volledig overnemen.",
+    "image": "https://www.inovisionn.com/logo-full.png",
+    "founder": {
+      "@type": "Person",
+      "name": "Niels Heijman"
+    }
   }
   </script>
-  <!-- Custom Typography: Space Mono & Roboto -->
+
+  <!-- Custom Typography: JetBrains Mono & Roboto -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link

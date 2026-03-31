@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /lead-scanner
+Disallow: /forbidden
+
+Sitemap: https://www.inovisionn.com/sitemap.xml

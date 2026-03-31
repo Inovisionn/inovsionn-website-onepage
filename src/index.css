@@ -45,3 +45,8 @@
     transform: translateY(-1px);
   }
 }
+
+@keyframes tabFill {
+  from { height: 0%; }
+  to   { height: 100%; }
+}

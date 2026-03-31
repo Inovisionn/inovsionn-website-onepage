@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { ArrowRight, ChevronLeft, ChevronRight, ChevronDown, ChevronUp, Star, Zap, BarChart3, Clock, User } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight, ChevronDown, ChevronUp, Star, Zap, BarChart3, Clock, User, CheckCircle2 } from 'lucide-react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const FaqItem = ({ question, answer }) => {
     const [open, setOpen] = useState(false);
@@ -25,8 +29,152 @@ const FaqItem = ({ question, answer }) => {
     );
 };
 
+const CASES = [
+    {
+        num: "01",
+        icon: BarChart3,
+        title: "Amazon Product Research",
+        tag: "E-commerce automatisering",
+        desc: "Een Amazon-verkoper deed zijn product research volledig handmatig: uren per week zoeken, vergelijken en noteren. Ik bouwde een systeem dat binnen enkele minuten de Amazon-pagina scrapt en een compleet Excel-overzicht genereert van producten die voldoen aan zijn wensen, met inkoopprijs, verkoopprijs, concurrentieanalyse en concrete verbeterpunten.",
+        impact: "Uren handwerk → minuten",
+    },
+    {
+        num: "02",
+        icon: Zap,
+        title: "AI Klantenservice Bot",
+        tag: "AI klantencontact",
+        desc: "Voor een webshop bouwde ik een support bot die het eerste-lijns klantencontact volledig overneemt. De bot haalt bestellingen op uit de backend door middel van naam of bestelnummer, herkent terugkerende klanten en past zijn toon daarop aan. Hij leert continu van feedback en gouden voorbeelden.",
+        impact: "80%+ vragen geautomatiseerd",
+    },
+    {
+        num: "03",
+        icon: Clock,
+        title: "Automatische Advertentierapportages",
+        tag: "Data & rapportage",
+        desc: "Een ondernemer met meerdere advertentiekanalen moest wekelijks handmatig data ophalen en samenvoegen. Nu haalt een workflow automatisch alle kanaaldata op, voegt deze samen en genereert een rapport met conclusies en aanbevelingen — op het juiste moment, in de inbox.",
+        impact: "Wekelijks uren teruggewonnen",
+    },
+];
+
+const CaseStudyTabs = () => {
+    const [activeTab, setActiveTab] = useState(0);
+    const intervalRef = useRef(null);
+    const DURATION = 5000;
+
+    const resetTimer = () => {
+        clearInterval(intervalRef.current);
+        intervalRef.current = setInterval(() => {
+            setActiveTab(prev => (prev + 1) % CASES.length);
+        }, DURATION);
+    };
+
+    useEffect(() => {
+        resetTimer();
+        return () => clearInterval(intervalRef.current);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+    const handleClick = (i) => {
+        setActiveTab(i);
+        resetTimer();
+    };
+
+    const active = CASES[activeTab];
+
+    return (
+        <div className="flex flex-col md:flex-row rounded-[1.5rem] md:rounded-[2rem] overflow-hidden border border-dark/5 shadow-sm">
+            {/* Left: tab list */}
+            <div className="md:w-[38%] flex flex-col bg-white divide-y divide-dark/5 border-b md:border-b-0 md:border-r border-dark/5">
+                {CASES.map((c, i) => (
+                    <button
+                        key={i}
+                        onClick={() => handleClick(i)}
+                        className={`relative text-left px-5 py-4 md:px-7 md:py-6 transition-colors duration-300 ${activeTab === i ? 'bg-background' : 'hover:bg-dark/[0.02]'}`}
+                    >
+                        {activeTab === i && (
+                            <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-dark/10 rounded-r">
+                                <div
+                                    key={`prog-${activeTab}`}
+                                    className="absolute top-0 left-0 w-full bg-accent rounded-r"
+                                    style={{ animation: `tabFill ${DURATION}ms linear forwards` }}
+                                />
+                            </div>
+                        )}
+                        <span className="font-data text-accent text-xs mb-2 block">_{c.num}</span>
+                        <h3 className={`font-bold text-sm leading-snug transition-colors duration-300 ${activeTab === i ? 'text-primary' : 'text-dark/35'}`}>
+                            {c.title}
+                        </h3>
+                        {activeTab === i && (
+                            <p className="text-dark/40 text-xs mt-1">{c.tag}</p>
+                        )}
+                    </button>
+                ))}
+            </div>
+
+            {/* Right: case detail */}
+            <div className="md:w-[62%] p-6 md:p-10 bg-background flex flex-col justify-between min-h-[280px] md:min-h-[320px]">
+                <div>
+                    <div className="flex items-center gap-3 mb-6">
+                        <div className="w-10 h-10 bg-accent/20 rounded-xl flex items-center justify-center shrink-0">
+                            <active.icon size={20} className="text-accent" />
+                        </div>
+                        <span className="text-xs font-medium text-dark/40 bg-dark/5 px-3 py-1 rounded-full">{active.tag}</span>
+                    </div>
+                    <h3 className="text-2xl md:text-3xl font-bold text-primary mb-4 leading-tight">{active.title}</h3>
+                    <p className="text-dark/60 text-sm md:text-base leading-relaxed">{active.desc}</p>
+                </div>
+                <div className="mt-8">
+                    <div className="bg-accent/10 rounded-xl px-5 py-3 inline-block">
+                        <span className="text-accent font-bold text-sm">{active.impact}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
 const OverMij = () => {
     const [activeReview, setActiveReview] = useState(0);
+    const containerRef = useRef(null);
+
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            // Hero Animation
+            gsap.fromTo(".hero-stagger", 
+                { y: 30, opacity: 0 }, 
+                { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: "power3.out" }
+            );
+
+            // Scroll animations for sections
+            gsap.utils.toArray('.scroll-fade-up').forEach((el) => {
+                gsap.fromTo(el,
+                    { y: 40, opacity: 0 },
+                    {
+                        y: 0, opacity: 1, duration: 0.8, ease: "power3.out",
+                        scrollTrigger: {
+                            trigger: el,
+                            start: "top 85%",
+                        }
+                    }
+                );
+            });
+
+            // Werkwijze stappen stagger
+            gsap.fromTo(".werkwijze-step",
+                { y: 40, opacity: 0 },
+                {
+                    y: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: ".werkwijze-step",
+                        start: "top 85%",
+                    }
+                }
+            );
+        }, containerRef);
+
+        ScrollTrigger.refresh();
+
+        return () => ctx.revert();
+    }, []);
 
     const reviews = [
         {
@@ -50,7 +198,7 @@ const OverMij = () => {
     const prevReview = () => setActiveReview((prev) => (prev - 1 + reviews.length) % reviews.length);
 
     return (
-        <div className="min-h-screen bg-background text-dark font-heading selection:bg-accent selection:text-primary">
+        <div ref={containerRef} className="min-h-screen bg-background text-dark font-heading selection:bg-accent selection:text-primary overflow-x-hidden">
             <Helmet>
                 <title>Over Niels Heijman | AI Automatisering Specialist Roermond | Inovisionn</title>
                 <meta name="description" content="Leer Niels Heijman kennen, oprichter van Inovisionn. Gecertificeerd AI-automatisering specialist uit Roermond met aantoonbare resultaten in Make.com, n8n en Claude." />
@@ -69,18 +217,32 @@ const OverMij = () => {
                 <div className="max-w-5xl mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-1 max-w-3xl gap-12 items-center">
                         <div>
-                            <p className="text-accent font-medium text-xs mb-4 uppercase tracking-widest">AI Automatisering Specialist · Roermond, Limburg</p>
-                            <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight mb-6">
-                                Hoi, ik ben<br />
-                                <span className="font-drama italic text-accent">Niels.</span>
+                            <p className="hero-stagger text-accent font-medium text-xs mb-4 uppercase tracking-widest">AI Automatisering Specialist · Roermond, Limburg</p>
+                            <h1 className="hero-stagger text-4xl md:text-6xl font-bold tracking-tight leading-tight mb-6">
+                                <span className="font-drama italic text-accent">Niels Heijman.</span>
                             </h1>
-                            <p className="text-white/70 text-base md:text-lg leading-relaxed mb-8">
-                                Ik ben Niels Heijman, oprichter van Inovisionn, gevestigd in Roermond. Ik help mkb-bedrijven in Nederland de bottlenecks in hun dagelijkse processen te automatiseren, niet met tijdelijke pleisters, maar met slimme AI-workflows die het echte werk voor je overnemen.
+                            <p className="hero-stagger text-white/70 text-base md:text-lg leading-relaxed mb-8">
+                                Mijn naam is Niels Heijman, oprichter van Inovisionn, gevestigd in Roermond. Ik help mkb-bedrijven in Nederland de bottlenecks in hun dagelijkse processen te automatiseren, niet met tijdelijke pleisters, maar met slimme AI-workflows die het echte werk voor je overnemen.
                             </p>
-                            <div className="flex flex-wrap gap-2 md:gap-3">
-                                <span className="bg-white/10 border border-white/20 text-white/80 text-xs px-3 md:px-4 py-2 rounded-full font-medium">✓ Make.com Gecertificeerd</span>
-                                <span className="bg-white/10 border border-white/20 text-white/80 text-xs px-3 md:px-4 py-2 rounded-full font-medium">✓ n8n Gecertificeerd</span>
-                                <span className="bg-white/10 border border-white/20 text-white/80 text-xs px-3 md:px-4 py-2 rounded-full font-medium">✓ Claude Gecertificeerd</span>
+
+                            {/* Certificeringen / Autoriteit */}
+                            <div className="hero-stagger flex flex-wrap items-center gap-8 pt-6 border-t border-white/5">
+                                <div className="flex flex-col gap-2">
+                                    <span className="text-[10px] text-accent/50 uppercase tracking-[0.2em] font-bold">Gecertificeerd</span>
+                                    <a 
+                                        href="https://www.credly.com/badges/e70de52a-fb18-4afa-be9d-8cb70b6a97e4/linked_in_profile" 
+                                        target="_blank" 
+                                        rel="noopener noreferrer"
+                                        className="block group-hover:scale-105 transition-transform"
+                                    >
+                                        <img 
+                                            src="/assets/make-academy-ai-agent-builder-certificaat-roermond.png" 
+                                            alt="Make Academy AI Agent Builder Certificaat - Inovisionn Roermond" 
+                                            className="h-12 md:h-16 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity" 
+                                        />
+                                    </a>
+                                </div>
+                                {/* Ruimte voor toekomstige badges */}
                             </div>
                         </div>
 
@@ -98,7 +260,7 @@ const OverMij = () => {
 
             {/* Achtergrond */}
             <section className="py-20 md:py-28 px-6 md:px-16 bg-background">
-                <div className="max-w-4xl mx-auto">
+                <div className="max-w-4xl mx-auto scroll-fade-up">
                     <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6 tracking-tight leading-tight">Van e-commerce naar AI-automatisering.</h2>
                     <div className="space-y-5 text-dark/70 text-base md:text-lg leading-relaxed">
                         <p>
@@ -114,101 +276,85 @@ const OverMij = () => {
             {/* Case Studies */}
             <section className="py-20 md:py-28 px-6 md:px-16 bg-white">
                 <div className="max-w-5xl mx-auto">
-                    <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4 tracking-tight leading-tight">Wat ik voor klanten heb gebouwd.</h2>
-                    <p className="text-dark/60 text-base md:text-lg mb-12 max-w-2xl leading-relaxed">
+                    <h2 className="scroll-fade-up text-3xl md:text-4xl font-bold text-primary mb-4 tracking-tight leading-tight">Wat ik voor klanten heb gebouwd.</h2>
+                    <p className="scroll-fade-up text-dark/60 text-base md:text-lg mb-10 max-w-2xl leading-relaxed">
                         Hieronder drie concrete automatiseringen die ik heb gebouwd. Geen theorie, dit zijn echte processen die dagelijks voor mijn klanten doordraaien.
                     </p>
-
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-                        <div className="bg-background rounded-[1.5rem] p-6 border border-dark/5">
-                            <div className="w-10 h-10 bg-accent/20 rounded-xl flex items-center justify-center mb-4">
-                                <BarChart3 size={20} className="text-accent" />
-                            </div>
-                            <h3 className="font-bold text-primary text-lg mb-3 leading-tight">Amazon Product Research</h3>
-                            <p className="text-dark/60 text-sm leading-relaxed mb-5">
-                                Een Amazon-verkoper deed zijn product research volledig handmatig: uren per week zoeken, vergelijken en noteren. Ik bouwde een systeem dat binnen enkele minuten de Amazon-pagina scrapt en een compleet Excel-overzicht genereert van producten die voldoen aan zijn wensen, met inkoopprijs, verkoopprijs, concurrentieanalyse en concrete verbeterpunten om zich te onderscheiden.
-                            </p>
-                            <div className="bg-accent/10 rounded-xl px-4 py-2 inline-block">
-                                <span className="text-accent font-bold text-sm">Uren handwerk → minuten</span>
-                            </div>
-                        </div>
-
-                        <div className="bg-background rounded-[1.5rem] p-6 border border-dark/5">
-                            <div className="w-10 h-10 bg-accent/20 rounded-xl flex items-center justify-center mb-4">
-                                <Zap size={20} className="text-accent" />
-                            </div>
-                            <h3 className="font-bold text-primary text-lg mb-3 leading-tight">AI Klantenservice Bot</h3>
-                            <p className="text-dark/60 text-sm leading-relaxed mb-5">
-                                Voor een webshop bouwde ik een support bot die het eerste-lijns klantencontact volledig overneemt. De bot haalt bestellingen op uit de backend door middel van naam of bestelnummer, herkent terugkerende klanten en past zijn toon daarop aan. Hij leert continu van feedback en gouden voorbeelden.
-                            </p>
-                            <div className="bg-accent/10 rounded-xl px-4 py-2 inline-block">
-                                <span className="text-accent font-bold text-sm">80%+ vragen geautomatiseerd</span>
-                            </div>
-                        </div>
-
-                        <div className="bg-background rounded-[1.5rem] p-6 border border-dark/5">
-                            <div className="w-10 h-10 bg-accent/20 rounded-xl flex items-center justify-center mb-4">
-                                <Clock size={20} className="text-accent" />
-                            </div>
-                            <h3 className="font-bold text-primary text-lg mb-3 leading-tight">Automatische Advertentie­rapportages</h3>
-                            <p className="text-dark/60 text-sm leading-relaxed mb-5">
-                                Een ondernemer met meerdere advertentiekanalen moest wekelijks handmatig data ophalen en samenvoegen om te bekijken welke kanalen goed lopen en welke vooruit of achteruit zijn gegaan. Nu haalt een workflow automatisch alle kanaaldata op, voegt deze samen en genereert een rapport met conclusies en aanbevelingen, op het juiste moment, in de inbox.
-                            </p>
-                            <div className="bg-accent/10 rounded-xl px-4 py-2 inline-block">
-                                <span className="text-accent font-bold text-sm">Wekelijks uren teruggewonnen</span>
-                            </div>
-                        </div>
-
+                    <div className="scroll-fade-up">
+                        <CaseStudyTabs />
                     </div>
                 </div>
             </section>
 
             {/* Aanpak */}
             <section className="py-20 md:py-28 px-6 md:px-16 bg-background">
-                <div className="max-w-4xl mx-auto">
-                    <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6 tracking-tight leading-tight">Hoe ik werk.</h2>
-                    <p className="text-dark/60 text-base md:text-lg leading-relaxed max-w-2xl">
-                        Elk traject begint hetzelfde: we kijken samen naar welke processen de meeste tijd innemen of terugkerende taken zijn. We analyseren alle bottlenecks en bekijken welke oplossing daar het beste bij past. Geen onnodige complexiteit, geen nieuwe software om te leren. De automatisering werkt onzichtbaar op de achtergrond, terwijl jij je richt op wat écht telt.
+                <div className="max-w-5xl mx-auto">
+                    <h2 className="scroll-fade-up text-3xl md:text-4xl font-bold text-primary mb-4 tracking-tight leading-tight">Hoe ik werk.</h2>
+                    <p className="scroll-fade-up text-dark/60 text-base md:text-lg leading-relaxed max-w-2xl mb-12">
+                        Elk traject begint hetzelfde: analyseren waar de pijn zit, dan de juiste tool kiezen en bouwen. Geen onnodige complexiteit, geen nieuwe software om te leren.
                     </p>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        {[
+                            {
+                                num: "01",
+                                icon: BarChart3,
+                                title: "Analyseren",
+                                desc: "We kijken samen welke processen de meeste tijd kosten en waar de echte bottlenecks zitten.",
+                            },
+                            {
+                                num: "02",
+                                icon: Zap,
+                                title: "Tool kiezen & bouwen",
+                                desc: "Ik kies Make.com, n8n of Claude Code op basis van jouw situatie en bouw de automatisering op maat.",
+                            },
+                            {
+                                num: "03",
+                                icon: CheckCircle2,
+                                title: "Opleveren & doordraaien",
+                                desc: "De workflow werkt onzichtbaar op de achtergrond. Na oplevering pas ik direct aan als er iets niet klopt.",
+                            },
+                        ].map((step, i) => (
+                            <div key={i} className="werkwijze-step relative bg-white rounded-[1.5rem] p-6 border border-dark/5 overflow-hidden">
+                                <span className="font-data text-accent text-xs bg-accent/10 px-2 py-1 rounded-full">_{step.num}</span>
+                                <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center mt-5 mb-4">
+                                    <step.icon size={20} className="text-white" />
+                                </div>
+                                <h3 className="font-bold text-primary text-lg mb-2 leading-tight">{step.title}</h3>
+                                <p className="text-dark/55 text-sm leading-relaxed">{step.desc}</p>
+                                <span className="absolute bottom-3 right-4 font-drama italic text-dark/[0.04] text-8xl font-bold select-none leading-none pointer-events-none">
+                                    {step.num}
+                                </span>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </section>
 
             {/* FAQ */}
             <section className="py-20 md:py-28 px-6 md:px-16 bg-white">
-                <div className="max-w-4xl mx-auto">
+                <div className="max-w-4xl mx-auto scroll-fade-up">
                     <h2 className="text-3xl md:text-4xl font-bold text-primary mb-10 tracking-tight">Veelgestelde vragen.</h2>
                     <div className="bg-background rounded-[1.5rem] md:rounded-[2rem] border border-dark/5 px-6 md:px-10 divide-y divide-dark/5">
                         <FaqItem
-                            question="Wat kost AI automatisering voor een mkb-bedrijf?"
+                            question="Hoe kan ik AI-automatisering gebruiken om mijn bedrijfsprocessen te optimaliseren in 2026?"
+                            answer="In het kort: In 2026 draait AI-optimalisatie om het koppelen van slimme taalmodellen aan je eigen bedrijfsdata. Door repetitieve taken zoals data-entry (het overtikken van gegevens), leadopvolging (contact opnemen met potentiële klanten) en klantenservice te automatiseren via API-verbindingen (digitale sleutels waarmee software met elkaar praat) of MCP-servers (Model Context Protocol: een veilige techniek om AI direct toegang te geven tot specifieke bedrijfsdata), bespaar je gemiddeld 10 tot 15 uur per week aan de hand van welke automatiseringen en hoeveel werk hierin omgaat."
+                        />
+                        <FaqItem
+                            question="Is het veilig om gevoelige bedrijfsdata te delen met AI-modellen?"
                             answer={[
-                                "De kosten van AI automatisering hangen af van meerdere factoren. Denk aan de complexiteit van het proces, het aantal systemen dat gekoppeld moet worden en hoe intensief de automatisering gebruikt wordt. Een workflow die één keer per dag een rapport verstuurt vraagt minder dan een klantenservice bot die continu draait en duizenden berichten per maand verwerkt.",
-                                "Om een concreet beeld te geven: een eenvoudige automatisering kan vanaf ongeveer 300 euro gebouwd worden. Een uitgebreidere oplossing, zoals een volledige klantenservice bot of een rapportagesysteem dat meerdere kanalen samenvoegt, kan richting de duizend of duizenden euro's gaan. Wat het precies kost hangt echt af van wat je wilt en wat je nodig hebt.",
-                                "Wat ik wel kan zeggen: de investering verdient zich in de meeste gevallen binnen enkele maanden terug. Zeker als je bedenkt hoeveel uren er wekelijks opgaan aan taken die een workflow volledig kan overnemen. Tijdens een vrijblijvend kennismakingsgesprek breng ik samen met jou in kaart wat een automatisering jou zou opleveren en wat het realistisch kost."
+                                "In het kort: Ja, mits je gebruikmaakt van Enterprise-grade API-verbindingen (zakelijke verbindingen met extra hoge beveiliging). In tegenstelling tot de gratis consumentenversie van ChatGPT, wordt data die via een professionele API-koppeling wordt verstuurd niet gebruikt om publieke modellen te trainen. Jouw data blijft 100% privé.",
+                                "• AVG/GDPR-compliance: Voldoen aan de strenge Europese privacywetgeving.",
+                                "• Data-encryptie: Het versleutelen van gegevens zodat ze onleesbaar zijn voor onbevoegden.",
+                                "• Zero Data Retention (ZDR): Een beleid waarbij de AI-aanbieder je gegevens direct na verwerking verwijdert en niet opslaat."
                             ]}
                         />
                         <FaqItem
-                            question="Wat is het verschil tussen Make.com en n8n?"
-                            answer={[
-                                "Beide platforms zijn krachtige tools voor het bouwen van automatiseringen, maar ze hebben elk hun eigen sterktes.",
-                                "Make.com is visueel, intuïtief en werkt volledig in de cloud. Het is ideaal voor bedrijven die snel willen starten zonder technische infrastructuur. n8n is een open-source platform dat je ook zelf kunt hosten. Dat geeft meer controle over je data en is op de lange termijn voordeliger bij hoog gebruik.",
-                                "In de praktijk kies ik het platform op basis van jouw situatie. Heb je gevoelige klantdata en wil je volledige controle? Dan is n8n vaak de betere keuze. Wil je snel schakelen en heb je geen eigen server? Dan past Make.com beter. Soms combineer ik beide platforms binnen één oplossing."
-                            ]}
+                            question="Wat is de verwachte ROI van een AI-implementatie voor een klein team?"
+                            answer="In het kort: De gemiddelde ROI (Return on Investment, het bedrag dat je terugverdient vergeleken met de kosten) van AI-automatisering ligt aan wat je automatiseert, stel je vervangt een klantenservice medewerker van 40 uur per week naar een automatisering die een weekelijkse check nodig heeft van 2,5 uur dan is dat een behoorlijke besparing op salaris. Naast directe besparing op manuren, verhoogt het de winstgevendheid door snellere leadopvolging en het elimineren van menselijke fouten in de administratie. Ook is de AI-agent die ik opzet nooit ziek en loop 24/7 door."
                         />
                         <FaqItem
-                            question="Welke processen zijn geschikt voor AI automatisering?"
-                            answer={[
-                                "Een proces is geschikt voor automatisering als het regelmatig terugkomt, altijd ongeveer hetzelfde verloopt en weinig creatieve beslissingen vereist. Denk aan het verwerken van binnenkomende orders, het beantwoorden van veelgestelde klantvragen, het opstellen van rapportages, het verrijken van leads of het doorsturen van gegevens tussen systemen.",
-                                "AI voegt daar een extra laag aan toe. Waar traditionele automatisering stopt bij vaste regels, kan een AI-workflow ook tekst begrijpen, samenvatten, beoordelen en genereren. Dat maakt het mogelijk om ook complexere taken te automatiseren, zoals het opstellen van offertes op basis van een intake, het categoriseren van klantvragen of het analyseren van reviews.",
-                                "Een goede vuistregel: als je een taak aan een nieuwe medewerker zou kunnen uitleggen in een paar stappen, is de kans groot dat een AI-workflow het kan overnemen."
-                            ]}
-                        />
-                        <FaqItem
-                            question="Hoe weet ik of automatisering iets voor mijn bedrijf is?"
-                            answer={[
-                                "Als je regelmatig tijd kwijt bent aan taken die steeds hetzelfde zijn, is de kans groot dat automatisering iets voor jou kan betekenen. Denk aan het handmatig kopiëren van gegevens tussen systemen, het beantwoorden van dezelfde klantvragen, het opstellen van wekelijkse rapporten of het opvolgen van leads.",
-                                "Maar ook als je een idee hebt, iets wat je denkt dat misschien mogelijk is, is een kennismakingsgesprek waardevol. Tegenwoordig kun je zo gek niet bedenken of het is te bouwen. In een vrijblijvend gesprek kijk ik samen met jou of jouw idee werkelijkheid kan worden. Blijkt het toch niet haalbaar of niet zinvol? Dan ben ik daar eerlijk over. Geen verkooppraatje, gewoon een eerlijk gesprek over wat wel en niet werkt voor jouw situatie."
-                            ]}
+                            question="Wat is het verschil tussen ChatGPT en een custom AI-oplossing voor mijn bedrijf?"
+                            answer="In het kort: ChatGPT is een algemene tool met brede kennis; een custom AI-oplossing (een op maat gemaakte assistent) is een specialist die werkt met jouw specifieke bedrijfsdata en tone-of-voice (de unieke manier waarop jouw bedrijf communiceert). Deze AI-oplossing ondersteunen niet alleen informatie maar voeren daadwerkelijk taken uit. Bovendien kan een custom oplossing acties uitvoeren in je eigen software, wat de standaard ChatGPT niet kan."
                         />
                     </div>
                 </div>
@@ -257,7 +403,7 @@ const OverMij = () => {
 
             {/* CTA */}
             <section className="py-20 md:py-28 px-6 md:px-16 bg-primary text-white text-center">
-                <div className="max-w-2xl mx-auto">
+                <div className="max-w-2xl mx-auto scroll-fade-up">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">Benieuwd wat ik voor jou kan doen?</h2>
                     <p className="text-white/70 text-base md:text-lg mb-8 leading-relaxed">
                         Plan een gratis, vrijblijvende kennismaking in. Ik kijk samen met jou naar de mogelijkheden.
