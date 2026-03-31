@@ -6,6 +6,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import certificateImg from './assets/make-academy-ai-agent-builder-certificaat-roermond.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -237,7 +238,7 @@ const OverMij = () => {
                                         className="block group-hover:scale-105 transition-transform"
                                     >
                                         <img 
-                                            src="/assets/make-academy-ai-agent-builder-certificaat-roermond.png" 
+                                            src={certificateImg} 
                                             alt="Make Academy AI Agent Builder Certificaat - Inovisionn Roermond" 
                                             className="h-12 md:h-16 w-auto object-contain opacity-90 hover:opacity-100 transition-opacity" 
                                         />
