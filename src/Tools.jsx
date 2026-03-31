@@ -176,20 +176,60 @@ const TOOL_COLORS = {
 
 const AnimatedWorkflowViz = ({ steps }) => {
     const [activeStep, setActiveStep] = useState(0);
+    const [isMobile, setIsMobile] = useState(false);
     const intervalRef = useRef(null);
 
     useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        
         intervalRef.current = setInterval(() => {
             setActiveStep(prev => (prev + 1) % steps.length);
         }, 1600);
-        return () => clearInterval(intervalRef.current);
+
+        return () => {
+            clearInterval(intervalRef.current);
+            window.removeEventListener('resize', checkMobile);
+        };
     }, [steps.length]);
 
     const NODE_R = 14;
-    const SPACING = 54;
-    const SVG_W = 110;
-    const SVG_H = steps.length * SPACING + 10;
-    const CX = SVG_W / 2;
+    const SPACING_V = 54;
+    const SPACING_H = 80;
+    
+    // Vertical Layout (Desktop)
+    const SVG_W_V = 110;
+    const SVG_H_V = steps.length * SPACING_V + 10;
+    const CX_V = SVG_W_V / 2;
+
+    // Horizontal Snake Layout (Mobile)
+    const ROWS = 2;
+    const COLS = 3;
+    const SVG_W_H = COLS * SPACING_H + 20;
+    const SVG_H_H = ROWS * SPACING_V + 40;
+    const PADDING = 20;
+
+    const getCoords = (i) => {
+        if (!isMobile) {
+            return { cx: CX_V, cy: i * SPACING_V + NODE_R + 10 };
+        }
+        // Snake logic: row 0 (0,1,2), row 1 (reverse: 5,4,3)
+        const row = Math.floor(i / COLS);
+        let col = i % COLS;
+        if (row === 1) {
+            col = (COLS - 1) - col; 
+        }
+        return {
+            cx: col * SPACING_H + PADDING + NODE_R,
+            cy: row * SPACING_V + PADDING + NODE_R
+        };
+    };
+
+    const SVG_W = isMobile ? SVG_W_H : SVG_W_V;
+    const SVG_H = isMobile ? SVG_H_H : SVG_H_V;
 
     return (
         <div className="flex flex-col items-center justify-center h-full py-4" aria-hidden="true">
@@ -199,31 +239,32 @@ const AnimatedWorkflowViz = ({ steps }) => {
                 viewBox={`0 0 ${SVG_W} ${SVG_H}`}
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                style={{ overflow: 'visible' }}
+                style={{ overflow: 'visible', transition: 'width 0.3s, height 0.3s' }}
             >
                 {/* Connecting lines */}
                 {steps.map((_, i) => {
                     if (i === steps.length - 1) return null;
-                    const y1 = i * SPACING + NODE_R + 4;
-                    const y2 = (i + 1) * SPACING - NODE_R - 4;
+                    const p1 = getCoords(i);
+                    const p2 = getCoords(i + 1);
                     const isActive = activeStep === i;
+                    
+                    // Simple path for line
+                    const linePath = `M ${p1.cx} ${p1.cy} L ${p2.cx} ${p2.cy}`;
+                    
                     return (
                         <g key={`line-${i}`}>
-                            {/* base line */}
-                            <line
-                                x1={CX} y1={y1 + NODE_R}
-                                x2={CX} y2={y2}
+                            <path
+                                d={linePath}
                                 stroke="rgba(255,255,255,0.12)"
                                 strokeWidth="2"
                                 strokeLinecap="round"
                             />
-                            {/* animated flow dot */}
                             {isActive && (
                                 <circle r="4" fill="#3B82F6" opacity="0.9">
                                     <animateMotion
                                         dur="1.5s"
                                         repeatCount="1"
-                                        path={`M ${CX} ${y1 + NODE_R} L ${CX} ${y2}`}
+                                        path={linePath}
                                     />
                                     <animate attributeName="opacity" values="0;1;1;0" dur="1.5s" repeatCount="1" />
                                 </circle>
@@ -234,62 +275,55 @@ const AnimatedWorkflowViz = ({ steps }) => {
 
                 {/* Nodes */}
                 {steps.map((step, i) => {
-                    const cy = i * SPACING + NODE_R + 4;
+                    const { cx, cy } = getCoords(i);
                     const isActive = activeStep === i;
                     const toolInfo = TOOL_COLORS[step.tool] || TOOL_COLORS['Make.com'];
+                    
+                    // On mobile, alternate label position to avoid overlap
+                    const isTopRow = Math.floor(i / COLS) === 0;
+                    const labelYOffset = isMobile ? (isTopRow ? -28 : 10) : -9;
+                    const labelXOffset = isMobile ? -26 : (NODE_R + 6);
+
                     return (
-                        <g key={`node-${i}`}>
-                            {/* Glow ring for active */}
+                        <g key={`node-${i}`} style={{ transition: 'transform 0.4s ease' }}>
                             {isActive && (
                                 <circle
-                                    cx={CX} cy={cy} r={NODE_R + 7}
+                                    cx={cx} cy={cy} r={NODE_R + 7}
                                     fill="none"
                                     stroke={toolInfo.border}
                                     strokeWidth="2"
                                     opacity="0"
                                 >
-                                    <animate
-                                        attributeName="r"
-                                        values={`${NODE_R};${NODE_R + 12}`}
-                                        dur="1s" repeatCount="indefinite"
-                                    />
-                                    <animate
-                                        attributeName="opacity"
-                                        values="0.8;0"
-                                        dur="1s" repeatCount="indefinite"
-                                    />
+                                    <animate attributeName="r" values={`${NODE_R};${NODE_R + 12}`} dur="1s" repeatCount="indefinite" />
+                                    <animate attributeName="opacity" values="0.8;0" dur="1s" repeatCount="indefinite" />
                                 </circle>
                             )}
-                            {/* Node circle */}
                             <circle
-                                cx={CX} cy={cy} r={NODE_R}
+                                cx={cx} cy={cy} r={NODE_R}
                                 fill={isActive ? toolInfo.border : 'rgba(255,255,255,0.07)'}
                                 stroke={isActive ? toolInfo.border : 'rgba(255,255,255,0.18)'}
                                 strokeWidth="1.5"
-                                style={{ transition: 'fill 0.4s ease, stroke 0.4s ease' }}
+                                style={{ transition: 'fill 0.4s, stroke 0.4s' }}
                             />
-                            {/* Step number */}
                             <text
-                                x={CX} y={cy + 1}
+                                x={cx} y={cy + 1}
                                 textAnchor="middle"
                                 dominantBaseline="middle"
                                 fontSize="10"
                                 fontFamily="'JetBrains Mono', monospace"
                                 fontWeight="700"
                                 fill={isActive ? '#0D1B2A' : 'rgba(255,255,255,0.5)'}
-                                style={{ transition: 'fill 0.4s ease' }}
                             >
                                 {i + 1}
                             </text>
                             {/* Tool badge */}
-                            <g transform={`translate(${CX + NODE_R + 6}, ${cy - 9})`}>
+                            <g transform={`translate(${cx + labelXOffset}, ${cy + labelYOffset})`}>
                                 <rect
                                     rx="5" ry="5"
                                     width="52" height="18"
                                     fill={isActive ? toolInfo.bg : 'rgba(255,255,255,0.04)'}
                                     stroke={isActive ? toolInfo.border : 'rgba(255,255,255,0.1)'}
                                     strokeWidth="1"
-                                    style={{ transition: 'fill 0.4s ease, stroke 0.4s ease' }}
                                 />
                                 <text
                                     x="26" y="9"
@@ -299,7 +333,6 @@ const AnimatedWorkflowViz = ({ steps }) => {
                                     fontFamily="'JetBrains Mono', monospace"
                                     fontWeight="600"
                                     fill={isActive ? toolInfo.text : 'rgba(255,255,255,0.3)'}
-                                    style={{ transition: 'fill 0.4s ease' }}
                                 >
                                     {toolInfo.label}
                                 </text>
