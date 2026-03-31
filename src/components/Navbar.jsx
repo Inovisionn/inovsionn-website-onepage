@@ -56,10 +56,9 @@ const Navbar = () => {
             >
                 <Link to="/" className="font-bold text-lg md:text-xl tracking-tighter uppercase font-heading flex items-center gap-2 md:gap-3">
                     <img
-                        src="/logo-full.png"
+                        src="/logo-transparent.png"
                         alt="Inovisionn Logo"
-                        className="h-8 md:h-12 w-auto object-contain rounded-full"
-                        style={{ filter: 'drop-shadow(0 1px 3px rgba(0,0,0,0.4))' }}
+                        className="h-8 md:h-11 w-auto object-contain"
                     />
                     <span className="hidden xs:inline">Inovisionn</span>
                 </Link>

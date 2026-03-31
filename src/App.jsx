@@ -664,100 +664,141 @@ const LegalLayout = ({ title, seoTitle, seoDescription, canonicalUrl, children }
 const PrivacyPolicy = () => {
     return (
         <LegalLayout title="Privacyverklaring" canonicalUrl="https://www.inovisionn.com/privacy">
-            <p className="mb-4 text-dark/60 italic">Laatste update: 02 maart 2026</p>
-            <p className="mb-6">Inovisionn respecteert uw privacy en zorgt ervoor dat de persoonlijke informatie die u ons verstrekt vertrouwelijk en zorgvuldig wordt behandeld. In deze verklaring leggen wij uit hoe wij uw gegevens verzamelen, gebruiken en beschermen, specifiek in de context van onze AI-dienstverlening.</p>
+            <div className="mb-8 p-4 bg-primary/5 rounded-xl border border-primary/10 text-sm text-primary/80">
+                <p className="font-bold uppercase tracking-wide mb-1">Inovisionn</p>
+                <p>KvK: 91930391 | Abdis Susannastraat 15, 6041 VK Roermond</p>
+            </div>
 
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">1. Wanneer is deze privacyverklaring van toepassing?</h2>
-            <p className="mb-4">Deze verklaring is van toepassing op alle persoonsgegevens die Inovisionn verwerkt van iedereen die contact heeft (gehad) met Inovisionn, zoals bezoekers van onze website (https://www.inovisionn.com/), klanten, en zakelijke contactpersonen.</p>
+            <h2 className="text-2xl font-bold text-primary mb-6">PRIVACYVERKLARING</h2>
 
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">2. Wie is de verwerkingsverantwoordelijke?</h2>
-            <p className="mb-4">Inovisionn is de verantwoordelijke voor de verwerking van persoonsgegevens zoals weergegeven in deze privacyverklaring.</p>
-            <ul className="list-none space-y-2 mb-4">
-                <li><strong>Bedrijfsnaam:</strong> Inovisionn</li>
-                <li><strong>Adres:</strong> Abdis Susannastraat 15, 6041VK Roermond</li>
-                <li><strong>KvK-nummer:</strong> 91930391</li>
-                <li><strong>Contactpersoon:</strong> Niels Heijman</li>
-                <li><strong>E-mailadres:</strong> inovisionn@hotmail.com</li>
-            </ul>
+            <section className="mb-10">
+                <h3 className="text-xl font-bold text-primary mb-4">1. Inleiding</h3>
+                <p className="mb-4">Inovisionn, gevestigd aan de Abdis Susannastraat 15, 6041 VK te Roermond, is verantwoordelijk voor de verwerking van persoonsgegevens zoals weergegeven in deze privacyverklaring. Inovisionn is een eenmanszaak ingeschreven bij de Kamer van Koophandel onder nummer 91930391.</p>
+                <div className="bg-dark/5 p-5 rounded-2xl mb-4">
+                    <p className="font-bold mb-2">Contactgegevens:</p>
+                    <p>Inovisionn</p>
+                    <p>Abdis Susannastraat 15</p>
+                    <p>6041 VK Roermond</p>
+                    <p>E-mail: <a href="mailto:inovisionn@hotmail.com" className="text-primary hover:underline">inovisionn@hotmail.com</a></p>
+                </div>
+                <p>Inovisionn heeft geen Functionaris Gegevensbescherming (FG) aangesteld, aangezien dit voor de organisatie niet wettelijk verplicht is.</p>
+            </section>
 
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">3. Van wie verwerken wij gegevens?</h2>
-            <p className="mb-4">Wij verwerken persoonsgegevens van:</p>
-            <ul className="list-disc ml-6 space-y-2 mb-4">
-                <li>Bezoekers van onze website.</li>
-                <li>(Potentiële) klanten die onze AI-diensten afnemen.</li>
-                <li>Contactpersonen bij leveranciers of partners.</li>
-            </ul>
+            <section className="mb-10">
+                <h3 className="text-xl font-bold text-primary mb-4">2. Welke persoonsgegevens verwerken wij</h3>
+                <p className="mb-4">Inovisionn verwerkt persoonsgegevens doordat u gebruik maakt van onze diensten en/of doordat u deze gegevens zelf aan ons verstrekt. Het gaat om de volgende persoonsgegevens:</p>
+                <ul className="list-disc ml-6 space-y-2">
+                    <li>Naam en voornaam</li>
+                    <li>E-mailadres</li>
+                    <li>Bedrijfsnaam</li>
+                    <li>KvK-nummer</li>
+                    <li>Adresgegevens</li>
+                    <li>Telefoonnummer (indien verstrekt)</li>
+                    <li>Gegevens die u invult via het contactformulier op onze website</li>
+                    <li>IP-adres en browsgegevens (bij websitebezoek)</li>
+                </ul>
+            </section>
 
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">4. Welke gegevens verwerken wij?</h2>
-            <p className="mb-4">Wij verwerken de volgende persoonsgegevens die u rechtstreeks aan ons verstrekt:</p>
-            <ul className="list-disc ml-6 space-y-2 mb-4">
-                <li><strong>Contactgegevens:</strong> Naam, bedrijfsnaam, e-mailadres, telefoonnummer.</li>
-                <li><strong>Betaalgegevens:</strong> Factuuradres en bankgegevens (indien van toepassing voor facturatie).</li>
-                <li><strong>Technische data:</strong> Inputgegevens (zoals teksten, documenten of data-feeds) die u verstrekt voor de configuratie van AI-workflows.</li>
-                <li><strong>Interactiegegevens:</strong> Inhoud van e-mailwisselingen of chatgesprekken.</li>
-            </ul>
+            <section className="mb-10">
+                <h3 className="text-xl font-bold text-primary mb-4">3. Doeleinden van de verwerking</h3>
+                <p className="mb-4">Inovisionn verwerkt uw persoonsgegevens voor de volgende doeleinden:</p>
+                <ul className="list-disc ml-6 space-y-2">
+                    <li>Het uitvoeren van een overeenkomst die u met ons heeft gesloten (rechtsgrond: uitvoering overeenkomst)</li>
+                    <li>Het verzenden van facturen en het afhandelen van betalingen (rechtsgrond: uitvoering overeenkomst)</li>
+                    <li>Het onderhouden van contact met u per e-mail, telefoon of messaging-apps (rechtsgrond: uitvoering overeenkomst)</li>
+                    <li>Het voldoen aan wettelijke verplichtingen, zoals de fiscale bewaarplicht (rechtsgrond: wettelijke verplichting)</li>
+                    <li>Het beveiligen en verbeteren van onze website (rechtsgrond: gerechtvaardigd belang)</li>
+                    <li>Het afhandelen van uw verzoeken via het contactformulier (rechtsgrond: toestemming / uitvoering overeenkomst)</li>
+                </ul>
+            </section>
 
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">5. Grondslagen en doelen van de verwerking</h2>
-            <p className="mb-4">Wij verwerken uw gegevens uitsluitend op basis van de volgende juridische grondslagen:</p>
-            <ul className="list-disc ml-6 space-y-2 mb-4">
-                <li><strong>Uitvoering van de overeenkomst:</strong> Voor het bouwen, implementeren en onderhouden van AI-automatiseringen.</li>
-                <li><strong>Wettelijke verplichting:</strong> Voor onze fiscale administratie (bewaarplicht van 7 jaar).</li>
-                <li><strong>Gerechtvaardigd belang:</strong> Voor marketingdoeleinden en het verbeteren van onze dienstverlening.</li>
-            </ul>
+            <section className="mb-10">
+                <h3 className="text-xl font-bold text-primary mb-4">4. Bewaartermijnen</h3>
+                <p className="mb-4">Inovisionn bewaart uw persoonsgegevens niet langer dan strikt noodzakelijk is. Wij hanteren de volgende bewaartermijnen:</p>
+                <ul className="list-disc ml-6 space-y-2">
+                    <li><strong>Klantgegevens (naam, e-mail, bedrijfsnaam, KvK, adres):</strong> 7 jaar na het einde van de overeenkomst, in verband met de fiscale bewaarplicht.</li>
+                    <li><strong>Factuurgegevens en financiële administratie:</strong> 7 jaar, conform de wettelijke bewaarplicht (artikel 2:10 BW en artikel 52 AWR).</li>
+                    <li><strong>Gegevens uit het contactformulier:</strong> 1 jaar na afhandeling van uw verzoek, tenzij er een overeenkomst uit voortvloeit.</li>
+                    <li><strong>Projectbestanden en correspondentie:</strong> tot 1 jaar na afronding van het project, tenzij een doorlopende overeenkomst van toepassing is.</li>
+                    <li><strong>IP-adressen en browsgegevens:</strong> maximaal 6 maanden.</li>
+                </ul>
+            </section>
 
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">6. Specifieke bepalingen voor AI-Dienstverlening</h2>
-            <p className="mb-4"><strong>6.1 Transparantie (EU AI Act):</strong> Conform Artikel 50 van de EU AI Act informeert Inovisionn u dat de geleverde diensten gebruikmaken van systemen voor kunstmatige intelligentie. Indien Inovisionn voor u een chatbot of AI-agent bouwt, bent u als "operator" verantwoordelijk om uw eindgebruikers te informeren dat zij communiceren met een AI-systeem.</p>
-            <p className="mb-4"><strong>6.2 Gegevensgebruik en Training:</strong> Inovisionn garandeert dat persoonlijke data die via zakelijke API-koppelingen (zoals OpenAI API, Google Cloud Vertex AI of Anthropic API) wordt verwerkt, niet door deze providers wordt gebruikt om hun publieke modellen te trainen. Uw data blijft vertrouwelijk binnen de afgeschermde omgeving van de betreffende service.</p>
-            <p className="mb-4"><strong>6.3 Privacy by Design:</strong> Bij het bouwen van workflows passen wij technieken toe om de verzending van gevoelige gegevens (PII - Personally Identifiable Information) naar externe AI-modellen te minimaliseren, bijvoorbeeld door anonimisering of filtering waar technisch mogelijk.</p>
+            <section className="mb-10">
+                <h3 className="text-xl font-bold text-primary mb-4">5. Delen met derden</h3>
+                <p className="mb-4">Inovisionn verstrekt uw gegevens niet aan derden, tenzij dit noodzakelijk is voor de uitvoering van de overeenkomst, of om te voldoen aan een wettelijke verplichting. Wij maken gebruik van de volgende categorieën verwerkers:</p>
+                <ul className="list-disc ml-6 space-y-2 mb-6">
+                    <li><strong>Hostingprovider:</strong> Vercel (voor onze eigen website)</li>
+                    <li><strong>Domeinnaamregistratie:</strong> GoDaddy</li>
+                    <li><strong>E-maildienst:</strong> Microsoft Outlook</li>
+                    <li><strong>Boekhoudpakket:</strong> Moneybird</li>
+                    <li><strong>Projectbeheer en klantgegevens:</strong> Notion</li>
+                    <li><strong>Automatiseringsplatformen:</strong> Make, n8n</li>
+                    <li><strong>AI-diensten:</strong> Anthropic (Claude)</li>
+                    <li><strong>Ontwikkelomgeving:</strong> Google Antigravity (IDE)</li>
+                </ul>
+                <p className="italic">Met alle verwerkers die persoonsgegevens verwerken in onze opdracht sluiten wij een verwerkersovereenkomst om te zorgen voor eenzelfde niveau van beveiliging en vertrouwelijkheid van uw gegevens.</p>
+            </section>
 
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">7. Bewaartermijnen</h2>
-            <p className="mb-4">Wij bewaren uw gegevens niet langer dan strikt nodig is:</p>
-            <ul className="list-disc ml-6 space-y-2 mb-4">
-                <li><strong>Klantdossiers:</strong> Tot 2 jaar na beëindiging van de overeenkomst, tenzij langer noodzakelijk voor juridische doeleinden.</li>
-                <li><strong>Administratieve gegevens:</strong> 7 jaar conform de wettelijke fiscale bewaarplicht.</li>
-                <li><strong>Marketinggegevens:</strong> Totdat u zich hiervoor afmeldt.</li>
-            </ul>
+            <section className="mb-10">
+                <h3 className="text-xl font-bold text-primary mb-4">6. Doorgifte buiten de Europese Economische Ruimte (EER)</h3>
+                <p className="mb-4">Een aantal van de hierboven genoemde verwerkers is gevestigd in de Verenigde Staten of slaat gegevens op buiten de EER. Dit betreft in ieder geval:</p>
+                <ul className="list-disc ml-6 space-y-2 mb-6">
+                    <li><strong>Notion</strong> – gevestigd in de VS. Doorgifte vindt plaats op basis van door de Europese Commissie goedgekeurde Standard Contractual Clauses (SCCs).</li>
+                    <li><strong>Vercel</strong> – gevestigd in de VS. Doorgifte vindt plaats op basis van SCCs en/of het EU-US Data Privacy Framework.</li>
+                    <li><strong>Anthropic (Claude)</strong> – gevestigd in de VS. Doorgifte vindt plaats op basis van SCCs.</li>
+                    <li><strong>GoDaddy</strong> – gevestigd in de VS. Doorgifte vindt plaats op basis van SCCs en/of het EU-US Data Privacy Framework.</li>
+                    <li><strong>Make</strong> – kan gegevens verwerken buiten de EER. Doorgifte vindt plaats op basis van SCCs.</li>
+                </ul>
+                <p>Inovisionn zorgt ervoor dat passende waarborgen worden getroffen bij doorgifte van persoonsgegevens buiten de EER.</p>
+            </section>
 
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">8. Delen met derden (Sub-verwerkers)</h2>
-            <p className="mb-4">Wij delen uw gegevens uitsluitend met derden als dit noodzakelijk is voor de uitvoering van de overeenkomst. Dit omvat:</p>
-            <ul className="list-disc ml-6 space-y-2 mb-4">
-                <li><strong>AI-Modelproviders:</strong> Voor het verwerken van prompts en data (bijv. OpenAI, Anthropic).</li>
-                <li><strong>Automatiseringsplatformen:</strong> Zoals Make.com voor de logica van de workflows.</li>
-                <li><strong>Hosting- en mailproviders:</strong> Voor onze website en communicatie.</li>
-            </ul>
-            <p className="mt-4 mb-4">Wij verkopen uw gegevens nooit aan derden. Met alle sub-verwerkers zijn (verwerkers)overeenkomsten gesloten die voldoen aan de AVG.</p>
+            <section className="mb-10">
+                <h3 className="text-xl font-bold text-primary mb-4">7. Cookies</h3>
+                <p>De website van Inovisionn maakt op dit moment geen gebruik van cookies. Mocht dit in de toekomst veranderen, dan zal deze privacyverklaring worden bijgewerkt en zal, indien vereist, voorafgaande toestemming worden gevraagd via een cookiebanner.</p>
+            </section>
 
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">9. Doorgifte buiten de EER</h2>
-            <p className="mb-4">Indien gegevens buiten de Europese Economische Ruimte (EER) worden verwerkt (bijvoorbeeld in de VS), geschiedt dit uitsluitend onder bescherming van het EU-U.S. Data Privacy Framework of via door de Europese Commissie goedgekeurde modelcontractbepalingen (Standard Contractual Clauses).</p>
+            <section className="mb-10">
+                <h3 className="text-xl font-bold text-primary mb-4">8. Beveiliging</h3>
+                <p className="mb-4">Inovisionn neemt passende technische en organisatorische maatregelen om uw persoonsgegevens te beschermen tegen verlies, ongeoorloofd gebruik of onbevoegde toegang. Wij treffen onder andere de volgende maatregelen:</p>
+                <ul className="list-disc ml-6 space-y-2">
+                    <li>Tweestapsverificatie (2FA) op alle accounts en systemen</li>
+                    <li>Gebruik van cloudsleutels en herstelsleutels voor veilige toegang</li>
+                    <li>Versleutelde verbindingen (SSL/TLS) voor gegevensoverdracht</li>
+                    <li>Regelmatige software-updates en beveiligingspatches</li>
+                    <li>Beperkte toegang tot persoonsgegevens (alleen de eigenaar van Inovisionn)</li>
+                </ul>
+            </section>
 
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">10. Beveiliging</h2>
-            <p className="mb-4">Inovisionn heeft passende technische en organisatorische maatregelen genomen om uw persoonsgegevens te beveiligen tegen verlies, misbruik en ongeoorloofde toegang. Dit omvat versleuteling van data, het gebruik van beveiligde verbindingen en strikte toegangscontrole voor medewerkers en vervangers.</p>
+            <section className="mb-10">
+                <h3 className="text-xl font-bold text-primary mb-4">9. Uw rechten</h3>
+                <p className="mb-4">Op grond van de Algemene Verordening Gegevensbescherming (AVG) heeft u de volgende rechten:</p>
+                <ul className="list-disc ml-6 space-y-2 mb-6">
+                    <li><strong>Recht op inzage:</strong> u kunt opvragen welke persoonsgegevens wij van u verwerken.</li>
+                    <li><strong>Recht op rectificatie:</strong> u kunt verzoeken om onjuiste gegevens te laten corrigeren.</li>
+                    <li><strong>Recht op verwijdering:</strong> u kunt verzoeken om uw gegevens te laten verwijderen, tenzij wij wettelijk verplicht zijn deze te bewaren.</li>
+                    <li><strong>Recht op beperking van de verwerking:</strong> u kunt verzoeken om de verwerking te beperken.</li>
+                    <li><strong>Recht op overdraagbaarheid:</strong> u kunt verzoeken om uw gegevens in een gestructureerd, gangbaar en machineleesbaar formaat te ontvangen.</li>
+                    <li><strong>Recht van bezwaar:</strong> u kunt bezwaar maken tegen de verwerking van uw gegevens op basis van gerechtvaardigd belang.</li>
+                </ul>
+                <p>U kunt uw verzoek indienen via het e-mailadres dat bovenaan deze verklaring vermeld staat. Wij reageren uiterlijk binnen 4 weken op uw verzoek.</p>
+            </section>
 
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">11. Uw rechten</h2>
-            <p className="mb-4">Op basis van de AVG heeft u de volgende rechten:</p>
-            <ul className="list-disc ml-6 space-y-2 mb-4">
-                <li><strong>Inzage en correctie:</strong> U mag weten welke gegevens wij van u hebben.</li>
-                <li><strong>Vergetelheid:</strong> U kunt verzoeken om verwijdering van uw gegevens.</li>
-                <li><strong>Beperking en bezwaar:</strong> U kunt de verwerking tijdelijk laten stopzetten of bezwaar maken.</li>
-                <li><strong>Dataportabiliteit:</strong> U heeft het recht uw gegevens in een gestructureerd formaat te ontvangen.</li>
-            </ul>
-            <p className="mt-4 mb-4">U kunt deze rechten uitoefenen door een e-mail te sturen naar inovisionn@hotmail.com. Wij reageren binnen vier weken.</p>
+            <section className="mb-10">
+                <h3 className="text-xl font-bold text-primary mb-4">10. Datalekken</h3>
+                <p>Inovisionn heeft passende maatregelen getroffen om datalekken te voorkomen. Mocht er onverhoopt toch een datalek plaatsvinden, dan zal Inovisionn dit binnen 72 uur melden bij de Autoriteit Persoonsgegevens, indien het lek een risico vormt voor de rechten en vrijheden van betrokkenen. Betrokkenen worden zo spoedig mogelijk geïnformeerd indien het lek waarschijnlijk een hoog risico oplevert.</p>
+            </section>
 
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">12. Klachten en Geschillen</h2>
-            <p className="mb-4">Mocht u niet tevreden zijn over hoe wij met uw privacy omgaan, dan kunt u een klacht indienen bij de Autoriteit Persoonsgegevens. Bij juridische geschillen is de rechtbank in Roermond exclusief bevoegd, en is het Nederlands recht van toepassing.</p>
+            <section className="mb-10">
+                <h3 className="text-xl font-bold text-primary mb-4">11. Klachten</h3>
+                <p>Indien u een klacht heeft over de verwerking van uw persoonsgegevens, neem dan contact met ons op. Wij helpen u graag verder. U heeft daarnaast altijd het recht om een klacht in te dienen bij de Autoriteit Persoonsgegevens (www.autoriteitpersoonsgegevens.nl).</p>
+            </section>
 
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">13. Cookies</h2>
-            <p className="mb-4">Onze website maakt gebruik van functionele cookies die essentieel zijn voor de werking van de site (zoals afspraak-tools). Analytische cookies worden uitsluitend anoniem gebruikt en hebben geen of geringe impact op uw persoonlijke levenssfeer.</p>
-
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">14. Minderjarigen</h2>
-            <p className="mb-4">Onze diensten zijn niet bedoeld voor personen jonger dan 18 jaar. Wij verzamelen niet bewust gegevens van minderjarigen zonder toestemming van ouders of voogd.</p>
-
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">15. Contact</h2>
-            <p className="mb-4">Voor vragen over dit privacybeleid kunt u contact opnemen via:</p>
-            <ul className="list-none space-y-1 mb-4">
-                <li><strong>E-mail:</strong> inovisionn@hotmail.com</li>
-                <li><strong>Post:</strong> Abdis Susannastraat 15, 6041VK Roermond</li>
-            </ul>
+            <section className="mb-6">
+                <h3 className="text-xl font-bold text-primary mb-4">12. Wijzigingen in deze privacyverklaring</h3>
+                <p className="mb-6">Inovisionn behoudt zich het recht voor om deze privacyverklaring te wijzigen. Wijzigingen worden gepubliceerd op onze website. Wij raden u aan om deze verklaring regelmatig te raadplegen.</p>
+                <p className="text-dark/60 italic">Deze privacyverklaring is voor het laatst gewijzigd op 30 maart 2026.</p>
+            </section>
         </LegalLayout>
     );
 };
@@ -765,152 +806,176 @@ const PrivacyPolicy = () => {
 const TermsOfService = () => {
     return (
         <LegalLayout title="Algemene Voorwaarden" canonicalUrl="https://www.inovisionn.com/voorwaarden">
-            <h2 className="text-2xl font-bold text-primary mb-4">Artikel 1 - Definities</h2>
-            <p className="mb-4">1. <strong>Inovisionn:</strong> Inovisionn, gevestigd te Roermond, KvK-nummer 91930391.</p>
-            <p className="mb-4">2. <strong>Klant:</strong> de rechtspersoon of natuurlijke persoon handelend in uitoefening van beroep of bedrijf met wie Inovisionn een overeenkomst is aangegaan.</p>
-            <p className="mb-4">3. <strong>Partijen:</strong> Inovisionn en de Klant samen.</p>
+            <div className="mb-8 p-4 bg-primary/5 rounded-xl border border-primary/10 text-sm text-primary/80">
+                <p className="font-bold uppercase tracking-wide mb-1">Inovisionn</p>
+                <p>KvK: 91930391 | Abdis Susannastraat 15, 6041 VK Roermond</p>
+            </div>
 
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 2 - Toepasselijkheid</h2>
-            <p className="mb-4">1. Deze voorwaarden zijn van toepassing op alle offertes, aanbiedingen, werkzaamheden, bestellingen, overeenkomsten en leveringen van diensten of producten door of namens Inovisionn.</p>
-            <p className="mb-4">2. Partijen kunnen alleen afwijken van deze voorwaarden als dat schriftelijk is afgesproken.</p>
-            <p className="mb-4">3. De toepasselijkheid van de algemene voorwaarden van de Klant of van anderen wordt uitdrukkelijk uitgesloten.</p>
+            <h2 className="text-2xl font-bold text-primary mb-6">ALGEMENE VOORWAARDEN INOVISIONN</h2>
 
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 3 - Aanbiedingen en offertes</h2>
-            <p className="mb-4">1. Aanbiedingen en offertes van Inovisionn zijn vrijblijvend, tenzij daarin uitdrukkelijk anders vermeld.</p>
-            <p className="mb-4">2. Een aanbod of offerte is maximaal 2 weken geldig.</p>
-            <p className="mb-4">3. Aanvaardt de Klant een aanbod of offerte niet binnen de geldende termijn, dan vervalt deze.</p>
-            <p className="mb-4">4. Aanbiedingen en offertes gelden niet voor nabestellingen, tenzij schriftelijk afgesproken.</p>
+            <section className="mb-10">
+                <h3 className="text-xl font-bold text-primary mb-4">Artikel 1 – Definities</h3>
+                <p className="mb-3 italic">In deze algemene voorwaarden wordt verstaan onder:</p>
+                <ul className="list-none space-y-3">
+                    <li><strong>1.1 Opdrachtnemer:</strong> Inovisionn, eenmanszaak, ingeschreven bij de Kamer van Koophandel onder nummer 91930391, gevestigd aan de Abdis Susannastraat 15, 6041 VK te Roermond.</li>
+                    <li><strong>1.2 Opdrachtgever:</strong> iedere natuurlijke of rechtspersoon die met Opdrachtnemer een overeenkomst is aangegaan of wenst aan te gaan.</li>
+                    <li><strong>1.3 Overeenkomst:</strong> iedere afspraak tussen Opdrachtnemer en Opdrachtgever tot het verlenen van diensten door Opdrachtnemer ten behoeve van Opdrachtgever.</li>
+                    <li><strong>1.4 Diensten:</strong> alle werkzaamheden en leveringen die onderwerp zijn van de Overeenkomst, waaronder maar niet beperkt tot: het ontwerpen en bouwen van websites, het ontwikkelen van automatiseringen, AI-implementaties, chatbots en aanverwante digitale diensten.</li>
+                    <li><strong>1.5 Meerwerk:</strong> werkzaamheden die buiten de oorspronkelijk overeengekomen opdracht vallen en apart in rekening worden gebracht.</li>
+                    <li><strong>1.6 Schriftelijk:</strong> per e-mail, per brief of via een ander digitaal communicatiemiddel dat door beide partijen wordt gebruikt (waaronder messaging-apps), mits de identiteit van de afzender voldoende vaststaat.</li>
+                </ul>
+            </section>
 
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 4 - Aanvaarding</h2>
-            <p className="mb-4">1. Bij aanvaarding van een vrijblijvende offerte of aanbieding, mag Inovisionn deze binnen 3 dagen na ontvangst alsnog intrekken.</p>
-            <p className="mb-4">2. Mondelinge aanvaarding verbindt Inovisionn slechts nadat de Klant deze schriftelijk of elektronisch heeft bevestigd.</p>
+            <section className="mb-10">
+                <h3 className="text-xl font-bold text-primary mb-4">Artikel 2 – Toepasselijkheid</h3>
+                <ul className="list-none space-y-3">
+                    <li><strong>2.1</strong> Deze algemene voorwaarden zijn van toepassing op alle aanbiedingen, offertes, werkzaamheden, overeenkomsten en leveringen van Opdrachtnemer, tenzij schriftelijk anders is overeengekomen.</li>
+                    <li><strong>2.2</strong> Afwijkingen van deze voorwaarden zijn slechts geldig indien deze schriftelijk zijn overeengekomen.</li>
+                    <li><strong>2.3</strong> De toepasselijkheid van eventuele inkoop- of andere voorwaarden van Opdrachtgever wordt uitdrukkelijk van de hand gewezen.</li>
+                    <li><strong>2.4</strong> Indien een of meerdere bepalingen in deze voorwaarden nietig zijn of vernietigd worden, blijven de overige bepalingen onverminderd van kracht.</li>
+                    <li><strong>2.5</strong> Opdrachtgever verklaart deze algemene voorwaarden te hebben ontvangen vóór of bij het sluiten van de overeenkomst.</li>
+                </ul>
+            </section>
 
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 5 - Prijzen</h2>
-            <p className="mb-4">1. Alle prijzen zijn in euro’s, exclusief btw en exclusief eventuele overige kosten.</p>
-            <p className="mb-4">2. Inovisionn mag de prijzen op de website en in andere uitingen altijd wijzigen.</p>
-            <p className="mb-4">3. Partijen spreken voor dienstverlening een totaalbedrag als richtprijs af.</p>
-            <p className="mb-4">4. Inovisionn mag tot 10% van de richtprijs afwijken.</p>
-            <p className="mb-4">5. Bij een verwachte overschrijding van meer dan 10% informeert Inovisionn de Klant tijdig.</p>
-            <p className="mb-4">6. De Klant mag het deel boven de 110% laten vervallen bij een dergelijke overschrijding.</p>
-            <p className="mb-4">7. Prijsaanpassingen worden vooraf aan de Klant meegedeeld.</p>
+            <section className="mb-10">
+                <h3 className="text-xl font-bold text-primary mb-4">Artikel 3 – Offertes en aanbiedingen</h3>
+                <ul className="list-none space-y-3">
+                    <li><strong>3.1</strong> Alle offertes en aanbiedingen van Opdrachtnemer zijn vrijblijvend, tenzij uitdrukkelijk anders vermeld.</li>
+                    <li><strong>3.2</strong> Offertes hebben een geldigheidsduur van 30 dagen, tenzij anders aangegeven.</li>
+                    <li><strong>3.3</strong> De in een offerte vermelde prijzen zijn exclusief btw, tenzij anders vermeld.</li>
+                    <li><strong>3.4</strong> Een overeenkomst komt tot stand op het moment dat de Opdrachtgever de offerte schriftelijk aanvaardt, dan wel op het moment dat Opdrachtnemer feitelijk met de uitvoering van de opdracht aanvangt.</li>
+                </ul>
+            </section>
 
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 6 - Betalingen en betalingstermijn</h2>
-            <p className="mb-4">1. Inovisionn mag een aanbetaling tot 50% verlangen.</p>
-            <p className="mb-4">2. Betaling geschiedt bij voorkeur via automatische incasso of overboeking.</p>
-            <p className="mb-4">3. Bij facturatie dient de Klant binnen 30 dagen na factuurdatum te betalen.</p>
-            <p className="mb-4">4. Bij overschrijding stuurt Inovisionn één kosteloze herinnering met een termijn van 7 dagen.</p>
-            <p className="mb-4">5. Blijft betaling daarna uit, dan is de Klant direct in verzuim zonder dat een nadere aanmaning nodig is.</p>
-            <p className="mb-4">6. Inovisionn mag levering afhankelijk stellen van onmiddellijke betaling of zekerheidstelling.</p>
+            <section className="mb-10">
+                <h3 className="text-xl font-bold text-primary mb-4">Artikel 4 – Uitvoering van de overeenkomst</h3>
+                <ul className="list-none space-y-3">
+                    <li><strong>4.1</strong> Opdrachtnemer zal de overeenkomst naar beste inzicht en vermogen uitvoeren, overeenkomstig de eisen van goed vakmanschap. De verplichting van Opdrachtnemer betreft een inspanningsverplichting en uitdrukkelijk geen resultaatsverplichting.</li>
+                    <li><strong>4.2</strong> Opdrachtgever draagt er zorg voor dat alle gegevens en materialen die nodig zijn voor de uitvoering van de opdracht tijdig en in de gewenste vorm aan Opdrachtnemer worden verstrekt. Opdrachtnemer is niet aansprakelijk voor schade die voortvloeit uit onjuiste of onvolledige informatie van Opdrachtgever.</li>
+                    <li><strong>4.3</strong> Indien tijdens de uitvoering van de overeenkomst blijkt dat aanvullende werkzaamheden noodzakelijk zijn (meerwerk), zal Opdrachtnemer dit vooraf schriftelijk melden aan Opdrachtgever. Meerwerk wordt pas uitgevoerd na schriftelijke goedkeuring door Opdrachtgever per e-mail of messaging-app. Meerwerk wordt apart in rekening gebracht tegen het overeengekomen tarief.</li>
+                    <li><strong>4.4</strong> Opdrachtnemer heeft het recht om derden in te schakelen bij de uitvoering van de overeenkomst.</li>
+                    <li><strong>4.5</strong> Door Opdrachtnemer opgegeven termijnen zijn indicatief en gelden niet als fatale termijnen, tenzij uitdrukkelijk schriftelijk anders is overeengekomen.</li>
+                </ul>
+            </section>
 
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 7 - Gevolgen te late betaling</h2>
-            <p className="mb-4">1. Bij verzuim mag Inovisionn de wettelijke handelsrente in rekening brengen.</p>
-            <p className="mb-4">2. De Klant is tevens buitengerechtelijke incassokosten en eventuele schadevergoeding verschuldigd.</p>
-            <p className="mb-4">3. Inovisionn mag zijn verplichtingen opschorten totdat de Klant heeft betaald.</p>
-            <p className="mb-4">4. Bij liquidatie of faillissement van de Klant zijn vorderingen onmiddellijk opeisbaar.</p>
-            <p className="mb-4">5. De Klant blijft de afgesproken prijs verschuldigd bij weigering van medewerking.</p>
+            <section className="mb-10">
+                <h3 className="text-xl font-bold text-primary mb-4">Artikel 5 – Tarieven en kosten</h3>
+                <ul className="list-none space-y-3">
+                    <li><strong>5.1</strong> De overeengekomen tarieven zijn exclusief btw, tenzij uitdrukkelijk anders vermeld.</li>
+                    <li><strong>5.2</strong> Opdrachtnemer is gerechtigd om jaarlijks per 1 januari de tarieven te indexeren op basis van de Consumentenprijsindex (CPI) zoals gepubliceerd door het Centraal Bureau voor de Statistiek (CBS). Opdrachtnemer zal Opdrachtgever hiervan vooraf schriftelijk op de hoogte stellen.</li>
+                    <li><strong>5.3</strong> Indien zich na het sluiten van de overeenkomst kostprijsverhogende omstandigheden voordoen die niet voorzienbaar waren, is Opdrachtnemer gerechtigd de overeengekomen prijs dienovereenkomstig aan te passen.</li>
+                    <li><strong>5.4</strong> Reiskosten worden in rekening gebracht tegen een tarief van € 0,23 per kilometer.</li>
+                </ul>
+            </section>
 
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 8 - Opschortingsrecht</h2>
-            <p className="mb-4">1. De Klant doet afstand van het recht om de nakoming van enige verbintenis uit deze overeenkomst op te schorten.</p>
+            <section className="mb-10">
+                <h3 className="text-xl font-bold text-primary mb-4">Artikel 6 – Betaling</h3>
+                <ul className="list-none space-y-3">
+                    <li><strong>6.1</strong> Betaling dient te geschieden binnen 30 dagen na factuurdatum, op de door Opdrachtnemer aangegeven wijze, tenzij schriftelijk anders is overeengekomen.</li>
+                    <li><strong>6.2</strong> Bij projectmatige opdrachten is Opdrachtgever 50% van de overeengekomen projectprijs verschuldigd bij aanvang van de werkzaamheden. De resterende 50% is verschuldigd na oplevering en goedkeuring, dan wel na het verstrijken van de goedkeuringstermijn zoals bedoeld in artikel 6.3.</li>
+                    <li><strong>6.3</strong> Na oplevering heeft Opdrachtgever een goedkeuringstermijn van 5 werkdagen (maandag tot en met vrijdag). Indien Opdrachtgever binnen deze termijn geen schriftelijke bezwaren kenbaar maakt, wordt het opgeleverde geacht te zijn goedgekeurd.</li>
+                    <li><strong>6.4</strong> Indien Opdrachtgever niet binnen de betalingstermijn betaalt, ontvangt Opdrachtgever eerst een betalingsherinnering. Indien na de herinnering betaling alsnog uitblijft, is Opdrachtgever van rechtswege in verzuim en is Opdrachtgever de wettelijke handelsrente verschuldigd over het openstaande bedrag.</li>
+                    <li><strong>6.5</strong> Alle redelijke kosten ter verkrijging van voldoening buiten rechte komen voor rekening van Opdrachtgever. De buitengerechtelijke incassokosten bedragen minimaal 15% van het openstaande bedrag, met een minimum van € 150,00.</li>
+                </ul>
+            </section>
 
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 9 - Verrekening</h2>
-            <p className="mb-4">1. De Klant doet afstand van zijn recht om een schuld aan Inovisionn te verrekenen met een vordering op Inovisionn.</p>
+            <section className="mb-10">
+                <h3 className="text-xl font-bold text-primary mb-4">Artikel 7 – Aansprakelijkheid</h3>
+                <ul className="list-none space-y-3">
+                    <li><strong>7.1</strong> De aansprakelijkheid van Opdrachtnemer is beperkt tot het bedrag dat in het desbetreffende geval door de aansprakelijkheidsverzekering van Opdrachtnemer wordt uitgekeerd, vermeerderd met het eigen risico. Indien en voor zover de verzekeraar niet uitkeert, is de aansprakelijkheid beperkt tot maximaal het factuurbedrag over de laatste 3 maanden voorafgaand aan het schadeveroorzakende feit.</li>
+                    <li><strong>7.2</strong> Opdrachtnemer is nimmer aansprakelijk voor indirecte schade, waaronder maar niet beperkt tot gevolgschade, gederfde winst, gemiste besparingen, schade door bedrijfsstagnatie of verlies van gegevens.</li>
+                    <li><strong>7.3</strong> Opdrachtnemer is niet aansprakelijk voor schade die het gevolg is van handelen of nalaten van Opdrachtgever of door Opdrachtgever ingeschakelde derden.</li>
+                    <li><strong>7.4</strong> Opdrachtnemer is niet aansprakelijk voor schade die voortvloeit uit het niet of niet tijdig functioneren van door derden geleverde diensten, waaronder maar niet beperkt tot hosting, domeinnaamregistratie en externe software.</li>
+                    <li><strong>7.5</strong> Opdrachtgever vrijwaart Opdrachtnemer tegen alle aanspraken van derden die voortvloeien uit of verband houden met door Opdrachtgever aan Opdrachtnemer aangeleverd materiaal, waaronder maar niet beperkt tot teksten, afbeeldingen, logo’s en overig materiaal waarop intellectuele eigendomsrechten van derden rusten.</li>
+                </ul>
+            </section>
 
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 10 - Verzekering</h2>
-            <p className="mb-4">1. De Klant verzekert geleverde zaken noodzakelijk voor de uitvoering en zaken van Inovisionn die bij de Klant aanwezig zijn tegen brand, schade en diefstal.</p>
-            <p className="mb-4">2. De polis wordt op verzoek ter inzage gegeven.</p>
+            <section className="mb-10">
+                <h3 className="text-xl font-bold text-primary mb-4">Artikel 8 – Overmacht</h3>
+                <ul className="list-none space-y-3">
+                    <li><strong>8.1</strong> Onder overmacht wordt verstaan elke omstandigheid buiten de wil en toedoen van Opdrachtnemer, waardoor nakoming van de overeenkomst geheel of gedeeltelijk wordt verhinderd. Hieronder wordt in ieder geval begrepen: ziekte, overheidsmaatregelen, brand, natuurrampen, epidemieën en pandemieën, stakingen, cyberaanvallen, hacks, DDoS-aanvallen, storingen in het internet- of telefoonnetwerk, storingen bij hosting- of cloudproviders, stroomuitval en tekortkomingen van toeleveranciers.</li>
+                    <li><strong>8.2</strong> Gedurende de periode van overmacht worden de verplichtingen van Opdrachtnemer opgeschort.</li>
+                    <li><strong>8.3</strong> Indien de overmachtsituatie langer dan 60 dagen voortduurt, zijn beide partijen gerechtigd de overeenkomst schriftelijk te ontbinden, zonder dat er een verplichting tot schadevergoeding ontstaat.</li>
+                </ul>
+            </section>
 
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 11 - Intrekking opdracht</h2>
-            <p className="mb-4">1. De Klant kan de opdracht op elk moment beëindigen tegen betaling van gemaakte kosten en de verschuldigde vergoeding voor het reeds uitgevoerde werk.</p>
+            <section className="mb-10">
+                <h3 className="text-xl font-bold text-primary mb-4">Artikel 9 – Opzegging en beëindiging</h3>
+                <ul className="list-none space-y-3">
+                    <li><strong>9.1</strong> Beide partijen kunnen de overeenkomst schriftelijk opzeggen met een opzegtermijn van 1 maand, tegen het einde van een kalendermaand.</li>
+                    <li><strong>9.2</strong> Bij tussentijdse beëindiging door Opdrachtgever is Opdrachtgever gehouden tot betaling van alle reeds uitgevoerde werkzaamheden. Opdrachtnemer zal een eindafrekening opstellen op basis van de tot dan toe verrichte werkzaamheden en gemaakte kosten.</li>
+                    <li><strong>9.3</strong> Opdrachtnemer is gerechtigd de overeenkomst met onmiddellijke ingang te ontbinden indien Opdrachtgever in verzuim is met de nakoming van enige verplichting uit de overeenkomst, in surseance van betaling verkeert, faillissement is aangevraagd, of de onderneming wordt geliquideerd of gestaakt.</li>
+                    <li><strong>9.4</strong> In geval van ontbinding op grond van artikel 9.3 is Opdrachtnemer niet gehouden tot enige schadevergoeding, onverminderd het recht van Opdrachtnemer op vergoeding van geleden schade.</li>
+                </ul>
+            </section>
 
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 12 - Klachtplicht</h2>
-            <p className="mb-4">1. Klachten over werkzaamheden moeten direct schriftelijk en gedetailleerd gemeld worden aan Inovisionn.</p>
-            <p className="mb-4">2. Een klacht leidt niet tot een verplichting voor Inovisionn om andere dan de overeengekomen werkzaamheden te verrichten.</p>
+            <section className="mb-10">
+                <h3 className="text-xl font-bold text-primary mb-4">Artikel 10 – Intellectueel eigendom</h3>
+                <ul className="list-none space-y-3">
+                    <li><strong>10.1</strong> Alle intellectuele eigendomsrechten op de door Opdrachtnemer ontwikkelde werken, waaronder ontwerpen, code, concepten en overige creatieve uitingen, berusten bij Opdrachtnemer.</li>
+                    <li><strong>10.2</strong> Na volledige betaling van alle verschuldigde bedragen verkrijgt Opdrachtgever een niet-exclusief, niet-overdraagbaar gebruiksrecht op het opgeleverde werk, uitsluitend voor het doel waarvoor het is ontwikkeld.</li>
+                    <li><strong>10.3</strong> Het is Opdrachtgever niet toegestaan om zonder voorafgaande schriftelijke toestemming van Opdrachtnemer het opgeleverde werk te wijzigen, te verveelvoudigen of aan derden ter beschikking te stellen.</li>
+                    <li><strong>10.4</strong> Opdrachtnemer behoudt het recht om het opgeleverde werk te gebruiken voor eigen promotie- en portfoliodoeleinden, tenzij schriftelijk anders is overeengekomen.</li>
+                </ul>
+            </section>
 
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 13 - Garantie</h2>
-            <p className="mb-4">1. De overeenkomst bevat voor Inovisionn slechts een inspanningsverplichting en geen resultaatsverplichting. Inovisionn garandeert niet dat AI-output altijd 100% accuraat is.</p>
+            <section className="mb-10">
+                <h3 className="text-xl font-bold text-primary mb-4">Artikel 11 – Retentierecht</h3>
+                <ul className="list-none space-y-3">
+                    <li><strong>11.1</strong> Opdrachtnemer is gerechtigd om de afgifte van alle in het kader van de overeenkomst vervaardigde of bewerkte bestanden, ontwerpen, code en overige materialen op te schorten totdat Opdrachtgever alle opeisbare vorderingen van Opdrachtnemer volledig heeft voldaan.</li>
+                    <li><strong>11.2</strong> Gedurende de periode dat Opdrachtnemer het retentierecht uitoefent, is Opdrachtnemer gerechtigd het opgeleverde werk offline te halen of de toegang daartoe op te schorten.</li>
+                </ul>
+            </section>
 
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 14 - Uitvoering van de overeenkomst</h2>
-            <p className="mb-4">1. Inovisionn voert de overeenkomst naar beste inzicht en vermogen en volgens de eisen van goed vakmanschap uit.</p>
-            <p className="mb-4">2. Inovisionn mag de afgesproken dienstverlening in zijn geheel of deels laten uitvoeren door anderen.</p>
-            <p className="mb-4">3. De uitvoering van de overeenkomst gebeurt in overleg en na een schriftelijk akkoord en betaling van een eventueel voorschot door de Klant.</p>
-            <p className="mb-4">4. De Klant moet ervoor zorgen dat Inovisionn op tijd kan beginnen aan de uitvoering.</p>
-            <p className="mb-4">5. Zorgt de Klant er niet voor dat Inovisionn tijdig kan beginnen, dan komen de daaruit voortvloeiende extra kosten voor rekening van de Klant.</p>
-            <p className="mb-4">6. De Klant verplicht zich de workflows uitsluitend te gebruiken voor legale doeleinden en conform de Service Terms van onderliggende AI-providers (zoals OpenAI, Google).</p>
+            <section className="mb-10">
+                <h3 className="text-xl font-bold text-primary mb-4">Artikel 12 – Geheimhouding</h3>
+                <ul className="list-none space-y-3">
+                    <li><strong>12.1</strong> Beide partijen zijn verplicht tot geheimhouding van alle vertrouwelijke informatie die zij in het kader van de overeenkomst van elkaar of uit andere bron hebben verkregen. Informatie geldt als vertrouwelijk als dit door de andere partij is medegedeeld of als dit redelijkerwijs voortvloeit uit de aard van de informatie.</li>
+                    <li><strong>12.2</strong> De geheimhoudingsverplichting geldt gedurende de looptijd van de overeenkomst en tot 1 jaar na beëindiging daarvan.</li>
+                    <li><strong>12.3</strong> Deze geheimhoudingsverplichting geldt niet voor informatie die reeds openbaar is, die de ontvangende partij al rechtmatig in bezit had, of die op grond van een wettelijke verplichting moet worden verstrekt.</li>
+                </ul>
+            </section>
 
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 15 - Informatieverstrekking en Gegevenskwaliteit</h2>
-            <p className="mb-4">1. De Klant stelt alle informatie en bescheiden tijdig en in gewenste vorm beschikbaar.</p>
-            <p className="mb-4">2. De Klant staat in voor de juistheid en volledigheid van de informatie.</p>
-            <p className="mb-4">3. De Klant erkent dat de kwaliteit van de AI-output direct afhankelijk is van de verstrekte context en data. Inovisionn is niet aansprakelijk voor fouten door gebrekkige informatie van de Klant.</p>
-            <p className="mb-4">4. Wanneer de Klant dit verzoekt, retourneert Inovisionn de betreffende bescheiden.</p>
-            <p className="mb-4">5. Vertraging door het niet tijdig aanleveren van informatie komt voor rekening van de Klant.</p>
+            <section className="mb-10">
+                <h3 className="text-xl font-bold text-primary mb-4">Artikel 13 – Klachten</h3>
+                <ul className="list-none space-y-3">
+                    <li><strong>13.1</strong> Klachten over de verrichte werkzaamheden dienen door Opdrachtgever schriftelijk kenbaar te worden gemaakt binnen 14 dagen na ontdekking van het gebrek, doch uiterlijk binnen 30 dagen na oplevering.</li>
+                    <li><strong>13.2</strong> Het indienen van een klacht schort de betalingsverplichting van Opdrachtgever niet op.</li>
+                    <li><strong>13.3</strong> Indien een klacht gegrond is, zal Opdrachtnemer de werkzaamheden alsnog verrichten zoals overeengekomen, tenzij dit inmiddels aantoonbaar zinloos is geworden.</li>
+                </ul>
+            </section>
 
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 16 - Duur overeenkomst</h2>
-            <p className="mb-4">1. Overeenkomsten voor bepaalde tijd worden na afloop stilzwijgend omgezet in onbepaalde tijd, tenzij opgezegd met een termijn van 1 maand.</p>
+            <section className="mb-10">
+                <h3 className="text-xl font-bold text-primary mb-4">Artikel 14 – Privacy en gegevensverwerking</h3>
+                <ul className="list-none space-y-3">
+                    <li><strong>14.1</strong> Opdrachtnemer verwerkt persoonsgegevens in overeenstemming met de Algemene Verordening Gegevensbescherming (AVG). De privacyverklaring van Opdrachtnemer is beschikbaar op verzoek en/of op de website van Opdrachtnemer.</li>
+                    <li><strong>14.2</strong> Indien Opdrachtnemer in het kader van de overeenkomst persoonsgegevens verwerkt namens Opdrachtgever, zullen partijen een afzonderlijke verwerkersovereenkomst sluiten.</li>
+                </ul>
+            </section>
 
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 17 - Opzeggen onbepaalde tijd</h2>
-            <p className="mb-4">1. De Klant kan een overeenkomst voor onbepaalde tijd opzeggen met een opzegtermijn van 1 maand.</p>
+            <section className="mb-10">
+                <h3 className="text-xl font-bold text-primary mb-4">Artikel 15 – Geschillenbeslechting</h3>
+                <ul className="list-none space-y-3">
+                    <li><strong>15.1</strong> Partijen zullen eerst trachten een geschil in onderling overleg op te lossen.</li>
+                    <li><strong>15.2</strong> Indien onderling overleg niet tot een oplossing leidt, zullen partijen het geschil voorleggen aan een onafhankelijke mediator, alvorens het geschil aan de rechter voor te leggen. De kosten van mediation worden door beide partijen gelijk gedragen.</li>
+                    <li><strong>15.3</strong> Indien mediation niet tot een oplossing leidt, is de rechtbank Limburg bevoegd om van het geschil kennis te nemen.</li>
+                </ul>
+            </section>
 
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 18 - Intellectueel eigendom</h2>
-            <p className="mb-4">1. <strong>Achtergrond-IE:</strong> Inovisionn behoudt alle rechten op ontwerpen, prompts, scripts en workflows (onderliggende methodiek).</p>
-            <p className="mb-4">2. <strong>Output:</strong> De Klant verkrijgt de rechten op de specifieke Output na betaling.</p>
-            <p className="mb-4">3. <strong>Licentie:</strong> De Klant verkrijgt een niet-exclusieve licentie voor gebruik binnen de eigen organisatie.</p>
+            <section className="mb-10">
+                <h3 className="text-xl font-bold text-primary mb-4">Artikel 16 – Toepasselijk recht</h3>
+                <ul className="list-none space-y-3">
+                    <li><strong>16.1</strong> Op alle overeenkomsten tussen Opdrachtnemer en Opdrachtgever is Nederlands recht van toepassing.</li>
+                </ul>
+            </section>
 
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 19 - Geheimhouding</h2>
-            <p className="mb-4">1. Partijen houden alle vertrouwelijke informatie die zij van elkaar ontvangen geheim.</p>
-            <p className="mb-4">2. De geheimhoudingsplicht geldt tijdens de overeenkomst en tot 3 jaar na afloop daarvan.</p>
-
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 20 - Boetebeding</h2>
-            <p className="mb-4">1. Bij overtreding van de geheimhouding of IE-rechten betaalt de Klant een direct opeisbare boete van € 5.000,- per overtreding.</p>
-            <p className="mb-4">2. Daarnaast is de Klant € 250,- verschuldigd voor elke dag dat de overtreding voortduurt.</p>
-
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 21 - Vrijwaring</h2>
-            <p className="mb-4">1. De Klant vrijwaart Inovisionn tegen alle aanspraken van derden die verband houden met de geleverde AI-diensten en het gebruik daarvan.</p>
-
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 22 - Klachten en Acceptatie</h2>
-            <p className="mb-4">1. De Klant onderzoekt de dienst direct op tekortkomingen.</p>
-            <p className="mb-4">2. <strong>Acceptatie:</strong> Indien niet binnen 5 werkdagen na oplevering schriftelijk is gereclameerd, geldt de dienst als volledig geaccepteatie.</p>
-            <p className="mb-4">3. Gebreken moeten binnen 1 maand na vaststelling worden gemeld.</p>
-
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 23 - Ingebrekestelling</h2>
-            <p className="mb-4">1. Een ingebrekestelling moet schriftelijk geschieden en Inovisionn daadwerkelijk bereiken.</p>
-
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 24 - Aansprakelijkheid Klant</h2>
-            <p className="mb-4">1. Bij meerdere klanten zijn zij ieder hoofdelijk aansprakelijk voor het geheel.</p>
-
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 25 - Aansprakelijkheid Inovisionn</h2>
-            <p className="mb-4">1. Inovisionn is alleen aansprakelijk voor directe schade door opzet of bewuste roekeloosheid.</p>
-            <p className="mb-4">2. Aansprakelijkheid is beperkt tot het factuurbedrag van de betreffende opdracht.</p>
-            <p className="mb-4">3. Indirecte schade (gevolgschade, gederfde winst, gemiste besparingen) is uitdrukkelijk uitgesloten.</p>
-
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 26 - Vervaltermijn</h2>
-            <p className="mb-4">1. Elk recht op schadevergoeding vervalt 12 maanden na de gebeurtenis waaruit de schade voortvloeit.</p>
-
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 27 - Ontbinding</h2>
-            <p className="mb-4">1. Partijen mogen de overeenkomst ontbinden indien de ander toerekenbaar tekortschiet in de verplichtingen.</p>
-
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 28 - Overmacht</h2>
-            <p className="mb-4">1. Inovisionn is niet aansprakelijk bij overmacht, waaronder: internetstoringen, cyberaanvallen, wanprestatie van AI-providers en wijzigingen in API-voorwaarden van externe partijen.</p>
-            <p className="mb-4">2. Bij overmacht langer dan 30 dagen mogen beide partijen de overeenkomst ontbinden.</p>
-
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 29 - Wijziging overeenkomst</h2>
-            <p className="mb-4">1. Partijen kunnen in overleg de overeenkomst aanpassen.</p>
-
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 30 - Wijziging algemene voorwaarden</h2>
-            <p className="mb-4">1. Inovisionn mag deze algemene voorwaarden wijzigen.</p>
-
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 31 - Overgang van rechten</h2>
-            <p className="mb-4">1. De Klant kan geen rechten overdragen aan derden zonder schriftelijke toestemming van Inovisionn.</p>
-
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 32 - Privacy en Gegevensverwerking</h2>
-            <p className="mb-4">1. Inovisionn verwerkt persoonsgegevens conform de AVG. De Klant is verwerkingsverantwoordelijke, Inovisionn is verwerker.</p>
-            <p className="mb-4">2. De separate Verwerkersovereenkomst maakt integraal onderdeel uit van de afspraken.</p>
-
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 33 - Toepasselijk recht en rechter</h2>
-            <p className="mb-4">1. Nederlands recht is van toepassing. De rechter te Roermond is exclusief bevoegd.</p>
-
-            <h2 className="text-2xl font-bold text-primary mt-8 mb-4">Artikel 34 - Bijzondere bepalingen AI en Ondersteuning</h2>
-            <p className="mb-4">1. <strong>Hallucinaties:</strong> De Klant erkent dat AI onvoorspelbaar kan zijn. De eindverantwoordelijkheid voor controle van output ligt volledig bij de Klant.</p>
-            <p className="mb-4">2. <strong>Eigen toedoen:</strong> Herstelwerk door fouten van de Klant (bijv. API-wijzigingen door klant) kost € 85,- per uur excl. btw.</p>
+            <section className="mb-6">
+                <h3 className="text-xl font-bold text-primary mb-4">Artikel 17 – Slotbepalingen</h3>
+                <ul className="list-none space-y-3">
+                    <li><strong>17.1</strong> Opdrachtnemer behoudt zich het recht voor deze algemene voorwaarden te wijzigen. Gewijzigde voorwaarden treden in werking 30 dagen na schriftelijke bekendmaking aan Opdrachtgever. Indien Opdrachtgever de gewijzigde voorwaarden niet wenst te accepteren, heeft Opdrachtgever het recht de overeenkomst op te zeggen tegen de datum waarop de gewijzigde voorwaarden in werking treden.</li>
+                    <li><strong>17.2</strong> Deze algemene voorwaarden zijn voor het laatst gewijzigd op 30 maart 2026.</li>
+                </ul>
+            </section>
         </LegalLayout>
     );
 };
