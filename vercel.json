@@ -12,6 +12,7 @@
             "destination": "https://www.inovisionn.com/$1",
             "permanent": true
         },
+        { "source": "/home-02", "destination": "/", "permanent": true },
         { "source": "/tools/", "destination": "/tools", "permanent": true },
         { "source": "/over-mij/", "destination": "/over-mij", "permanent": true },
         { "source": "/lead-scanner/", "destination": "/lead-scanner", "permanent": true },
