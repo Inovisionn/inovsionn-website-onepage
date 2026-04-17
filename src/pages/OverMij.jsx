@@ -4,9 +4,9 @@ import { Helmet } from 'react-helmet-async';
 import { ArrowRight, ChevronLeft, ChevronRight, ChevronDown, ChevronUp, Star, Zap, BarChart3, Clock, User, CheckCircle2 } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import certificateImg from './assets/make-academy-ai-agent-builder-certificaat-roermond.png';
+import Navbar from '../components/layout/Navbar';
+import Footer from '../components/layout/Footer';
+import certificateImg from '../assets/make-academy-ai-agent-builder-certificaat-roermond.png';
 
 gsap.registerPlugin(ScrollTrigger);
 

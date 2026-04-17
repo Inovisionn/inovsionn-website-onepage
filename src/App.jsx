@@ -7,11 +7,11 @@ import { ArrowRight, ArrowLeft, Terminal, Activity, Zap, Beaker, CheckCircle2, C
 import { CoreSpinLoader } from './components/ui/core-spin-loader';
 import RadialPulseLoader from './components/ui/loading-animation';
 import NeuralBackground from './components/ui/flow-field-background';
-import LeadScanner from './LeadScanner';
-import OverMij from './OverMij';
-import Tools from './Tools';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import LeadScanner from './pages/LeadScanner';
+import OverMij from './pages/OverMij';
+import Tools from './pages/Tools';
+import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer';
 gsap.registerPlugin(ScrollTrigger);
 
 // --- Component: Hero ---
